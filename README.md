@@ -1,2 +1,2 @@
-*Proyecto Integrador*
-**Integrantes: Aris, Miguel, Josep y Dani**
+**Proyecto Integrador**
+***Integrantes: Aris, Miguel, Josep y Dani***
