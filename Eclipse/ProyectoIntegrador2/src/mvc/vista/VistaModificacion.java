@@ -11,14 +11,14 @@ public class VistaModificacion extends JFrame {
 
     public VistaModificacion() {
         // Configuración de la ventana
-        super("Modificación");
+        super("Menu Modificación");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(425, 236);
+        setSize(440, 250);
         setLocationRelativeTo(null);
 
         // Creación de los componentes
         titulo = new JLabel("Modificar");
-        titulo.setFont(new Font("Arial", Font.BOLD, 20));
+        titulo.setFont(new Font("Tahoma", Font.BOLD, 20));
         titulo.setHorizontalAlignment(SwingConstants.CENTER);
 
         labelTipo = new JLabel("Tipos:");
@@ -43,28 +43,28 @@ public class VistaModificacion extends JFrame {
         // Configuración del layout
         getContentPane().setLayout(null);
 
-        titulo.setBounds(0, 10, 400, 30);
+        titulo.setBounds(10, 28, 400, 30);
         getContentPane().add(titulo);
 
-        labelTipo.setBounds(24, 42, 50, 30);
+        labelTipo.setBounds(56, 68, 50, 30);
         getContentPane().add(labelTipo);
 
-        radioAlumno.setBounds(97, 42, 87, 30);
+        radioAlumno.setBounds(170, 68, 61, 30);
         getContentPane().add(radioAlumno);
 
-        radioProyecto.setBounds(186, 42, 80, 30);
+        radioProyecto.setBounds(296, 68, 65, 30);
         getContentPane().add(radioProyecto);
 
-        radioAreas.setBounds(279, 42, 100, 30);
+        radioAreas.setBounds(233, 68, 61, 30);
         getContentPane().add(radioAreas);
 
-        labelNombre.setBounds(24, 83, 61, 30);
+        labelNombre.setBounds(56, 108, 61, 30);
         getContentPane().add(labelNombre);
 
-        campoNombre.setBounds(102, 83, 200, 30);
+        campoNombre.setBounds(170, 109, 200, 30);
         getContentPane().add(campoNombre);
 
-        botonBuscar.setBounds(160, 134, 80, 30);
+        botonBuscar.setBounds(290, 160, 80, 30);
         getContentPane().add(botonBuscar);
     }
 }

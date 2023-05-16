@@ -14,7 +14,7 @@ public class VistaDarAlta extends JFrame {
 
         // Configuración de la ventana
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(430, 275);
+        setSize(440, 250);
         setLocationRelativeTo(null);
 
         // Creación de los componentes
@@ -25,14 +25,14 @@ public class VistaDarAlta extends JFrame {
 
         enunciado = new JLabel("¿Que quieres dar de alta?");
         enunciado.setFont(new Font("Tahoma", Font.PLAIN, 11));
-        enunciado.setBounds(20, 64, 148, 30);
+        enunciado.setBounds(29, 63, 148, 30);
         
         opcionAlumno = new JRadioButton("Alumno");
         opcionProyecto = new JRadioButton("Proyecto");
         opcionAreas = new JRadioButton("Áreas");
-        opcionAlumno.setBounds(150, 83, 80, 20);
-        opcionProyecto.setBounds(150, 106, 80, 20);
-        opcionAreas.setBounds(150, 129, 80, 20);
+        opcionAlumno.setBounds(157, 84, 80, 20);
+        opcionProyecto.setBounds(157, 106, 80, 20);
+        opcionAreas.setBounds(157, 128, 80, 20);
 
         ButtonGroup grupoOpciones = new ButtonGroup();
         grupoOpciones.add(opcionAlumno);
@@ -40,7 +40,7 @@ public class VistaDarAlta extends JFrame {
         grupoOpciones.add(opcionAreas);
 
         enviar = new JButton("Enviar");
-        enviar.setBounds(137, 166, 100, 30);
+        enviar.setBounds(157, 159, 100, 30);
 
       
         getContentPane().setLayout(null);

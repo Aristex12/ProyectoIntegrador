@@ -27,7 +27,7 @@ public class ModificacionArea extends JFrame{
 	    	
 	    	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    	//Configuramos la ventana
-	    	setSize(466, 248);
+	    	setSize(440, 250);
 	        setLocationRelativeTo(null);
 	        getContentPane().setLayout(null);
 	        setVisible(true);
@@ -48,7 +48,7 @@ public class ModificacionArea extends JFrame{
 
 	        duracion = new JLabel();
 	        duracion.setFont(new Font("Tahoma", Font.BOLD, 11));
-	        duracion.setText("Duración:");
+	        duracion.setText("Descripción:");
 	        duracion.setBounds(50, 105, 100, 25);
 
 	        duracionTextField = new JTextField();
@@ -60,7 +60,7 @@ public class ModificacionArea extends JFrame{
 	        	}
 	        });
 	        modificarButton.setText("Modificar");
-	        modificarButton.setBounds(161, 154, 120, 25);
+	        modificarButton.setBounds(240, 149, 120, 25);
 
 	        // Agregar componentes a la ventana
 	        getContentPane().add(titulo);

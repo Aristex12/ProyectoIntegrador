@@ -9,7 +9,7 @@ public class AltaArea extends JFrame {
 	private JLabel nombre;
 	private JTextField inputNombre;
 	private JLabel duracion;
-	private JComboBox<Integer> duracionComboBox;
+	private JTextArea descripcion;
 	private JButton enviar;
 
 	public AltaArea() {
@@ -22,7 +22,7 @@ public class AltaArea extends JFrame {
 
 	private void inicializarComponentes() {
 		// Configuración de la ventana
-		setSize(328, 190);
+		setSize(440, 250);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
 
@@ -31,39 +31,38 @@ public class AltaArea extends JFrame {
 		titulo.setFont(new Font("Tahoma", Font.BOLD, 16));
 		titulo.setText("Alta Area");
 		titulo.setHorizontalAlignment(SwingConstants.CENTER);
-		titulo.setBounds(50, 10, 200, 25);
+		titulo.setBounds(110, 10, 200, 25);
 
 		// Creación y configuración del nombre del área
 		nombre = new JLabel();
 		nombre.setFont(new Font("Tahoma", Font.BOLD, 11));
 		nombre.setText("Nombre:");
-		nombre.setBounds(30, 50, 60, 25);
+		nombre.setBounds(30, 68, 60, 25);
 
 		inputNombre = new JTextField();
-		inputNombre.setBounds(90, 50, 180, 25);
+		inputNombre.setBounds(175, 68, 180, 25);
 
-		// Creación y configuración de la duración del área
+		// Creación y configuración del text area
 		duracion = new JLabel();
 		duracion.setFont(new Font("Tahoma", Font.BOLD, 11));
-		duracion.setText("Duración:");
-		duracion.setBounds(30, 80, 60, 25);
+		duracion.setText("Descripción:");
+		duracion.setBounds(30, 113, 102, 25);
 
-		Integer[] duraciones = { 1, 2, 3, 4, 5 };
-		DefaultComboBoxModel<Integer> model = new DefaultComboBoxModel<>(duraciones);
-		duracionComboBox = new JComboBox<>(model);
-		duracionComboBox.setBounds(90, 80, 180, 25);
+		descripcion = new JTextArea();
+		descripcion.setBounds(175, 113, 180, 25);
+		
 
 		// Creación y configuración del botón de enviar
 		enviar = new JButton();
 		enviar.setText("Enviar");
-		enviar.setBounds(110, 116, 80, 25);
+		enviar.setBounds(275, 162, 80, 25);
 
 		// Agregar componentes a la ventana
 		getContentPane().add(titulo);
 		getContentPane().add(nombre);
 		getContentPane().add(inputNombre);
 		getContentPane().add(duracion);
-		getContentPane().add(duracionComboBox);
+		getContentPane().add(descripcion);
 		getContentPane().add(enviar);
 	}
 

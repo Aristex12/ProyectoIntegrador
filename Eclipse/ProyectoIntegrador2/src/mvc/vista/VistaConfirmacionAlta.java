@@ -15,7 +15,7 @@ public class VistaConfirmacionAlta extends JFrame {
 
         // Creación de los componentes
         titulo = new JLabel("¡Se ha dado de alta exitosamente!");
-        titulo.setFont(new Font("Arial", Font.BOLD, 14));
+        titulo.setFont(new Font("Arial", Font.BOLD, 12));
         titulo.setHorizontalAlignment(SwingConstants.CENTER);
 
         botonVolver = new JButton("Volver al menú");
@@ -23,10 +23,10 @@ public class VistaConfirmacionAlta extends JFrame {
         // Configuración del layout
         getContentPane().setLayout(null);
 
-        titulo.setBounds(0, 30, 400, 30);
+        titulo.setBounds(40, 48, 303, 30);
         getContentPane().add(titulo);
 
-        botonVolver.setBounds(127, 79, 126, 30);
+        botonVolver.setBounds(129, 88, 126, 30);
         getContentPane().add(botonVolver);
     }
 }

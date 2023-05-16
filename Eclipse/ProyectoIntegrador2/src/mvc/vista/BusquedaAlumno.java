@@ -20,7 +20,7 @@ public class BusquedaAlumno extends JFrame {
 
     public void inicializarComponentes() {
     	// Configuración de la ventana
-        setSize(400, 300);
+        setSize(440, 250);
         setLocationRelativeTo(null);
         getContentPane().setLayout(null);
     	

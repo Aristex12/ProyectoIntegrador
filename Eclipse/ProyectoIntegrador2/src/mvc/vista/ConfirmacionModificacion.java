@@ -5,47 +5,43 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 
-public class ConfirmacionModificacion extends JFrame{
+public class ConfirmacionModificacion extends JDialog {
 
 	private JLabel mensaje;
-    private JButton volverButton;
+	private JButton volverButton;
 
-    public ConfirmacionModificacion() {
-        super("Confirmación");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        // Inicializar los componentes
-        inicializarComponentes();
-    }
+	public ConfirmacionModificacion() {
+		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		// Inicializar los componentes
+		inicializarComponentes();
+		// Hacer visible la ventana
+		hacerVisible();
+	}
 
-    private void inicializarComponentes() {
-    	// Configuración de la ventana
-        setSize(381, 120);
-        setLocationRelativeTo(null);
-        getContentPane().setLayout(null);
+	private void inicializarComponentes() {
+		// Configuración de la ventana
+		setSize(400, 200);
+		setLocationRelativeTo(null);
+		getContentPane().setLayout(null);
 
-        // Creación y configuración de los componentes
-        mensaje = new JLabel("¡Se han modificado los datos exitosamente!");
-        mensaje.setFont(new Font("Tahoma", Font.BOLD, 11));
-        mensaje.setHorizontalAlignment(SwingConstants.CENTER);
-        mensaje.setBounds(50, 10, 251, 25);
+		// Creación y configuración de los componentes
+		mensaje = new JLabel("¡Se han modificado los datos exitosamente!");
+		mensaje.setFont(new Font("Tahoma", Font.BOLD, 11));
+		mensaje.setHorizontalAlignment(SwingConstants.CENTER);
+		mensaje.setBounds(61, 38, 251, 25);
 
-        volverButton = new JButton();
-        volverButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        	}
-        });
-        volverButton.setText("Volver al Menú");
-        volverButton.setBounds(112, 46, 130, 25);
+		volverButton = new JButton();
+		
+		volverButton.setText("Volver al Menú");
+		volverButton.setBounds(119, 85, 130, 25);
 
-        // Agregar componentes a la ventana
-        getContentPane().add(mensaje);
-        getContentPane().add(volverButton);
+		// Agregar componentes a la ventana
+		getContentPane().add(mensaje);
+		getContentPane().add(volverButton);
+	}
 
-    }
-
-    private void hacerVisible() {
-        // Hacer visible la ventana
-        setVisible(true);
-    }
-	
+	private void hacerVisible() {
+		// Hacer visible la ventana
+		setVisible(true);
+	}
 }

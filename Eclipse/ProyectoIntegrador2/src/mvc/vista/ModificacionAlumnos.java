@@ -23,7 +23,7 @@ public class ModificacionAlumnos extends JFrame{
     	// Configuración de la ventana
         setTitle("Datos del Alumno");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(505, 287);
+        setSize(440, 250);
         setLocationRelativeTo(null);
         getContentPane().setLayout(null);
 
@@ -31,7 +31,7 @@ public class ModificacionAlumnos extends JFrame{
         
         titulo = new JLabel("Modificar Datos del Alumno");
         titulo.setFont(new Font("Tahoma", Font.BOLD, 16));
-        titulo.setBounds(128, 23, 230, 25);
+        titulo.setBounds(101, 25, 230, 25);
         
         nombre = new JLabel("Nombre");
         nombre.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -58,7 +58,7 @@ public class ModificacionAlumnos extends JFrame{
         areaComboBox = new JComboBox<>(areaComboBoxModel);
         areaComboBox.setBounds(160, 146, 200, 25);
 		modificarButton = new JButton("Modificar");
-		modificarButton.setBounds(188, 207, 120, 25);
+		modificarButton.setBounds(240, 178, 120, 25);
 
         // Agregar componentes a la ventana
         getContentPane().add(nombre);

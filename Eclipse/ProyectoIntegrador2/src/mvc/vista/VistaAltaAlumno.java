@@ -13,13 +13,13 @@ public class VistaAltaAlumno extends JFrame {
 
         // Configuración de la ventana
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(426, 259);
+        setSize(440, 250);
         setLocationRelativeTo(null);
 
         // Creación de los componentes
         JLabel labelTitulo = new JLabel("Alta alumno");
-        labelTitulo.setFont(new Font("Arial", Font.BOLD, 16));
-        labelTitulo.setBounds(140, 10, 120, 20);
+        labelTitulo.setFont(new Font("Tahoma", Font.BOLD, 16));
+        labelTitulo.setBounds(155, 21, 120, 20);
 
         labelNombre = new JLabel("Nombre:");
         labelNombre.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -27,19 +27,19 @@ public class VistaAltaAlumno extends JFrame {
         labelApellido.setFont(new Font("Tahoma", Font.BOLD, 11));
         labelNumero = new JLabel("Número de matrícula:");
         labelNumero.setFont(new Font("Tahoma", Font.BOLD, 11));
-        labelNombre.setBounds(20, 50, 120, 20);
-        labelApellido.setBounds(20, 80, 120, 20);
-        labelNumero.setBounds(20, 110, 150, 20);
+        labelNombre.setBounds(30, 61, 120, 20);
+        labelApellido.setBounds(30, 91, 120, 20);
+        labelNumero.setBounds(30, 121, 150, 20);
 
         txtNombre = new JTextField();
         txtApellido = new JTextField();
         txtNumero = new JTextField();
-        txtNombre.setBounds(150, 50, 180, 20);
-        txtApellido.setBounds(150, 80, 180, 20);
-        txtNumero.setBounds(150, 110, 180, 20);
+        txtNombre.setBounds(200, 62, 180, 20);
+        txtApellido.setBounds(200, 92, 180, 20);
+        txtNumero.setBounds(200, 122, 180, 20);
 
         btnEnviar = new JButton("Enviar");
-        btnEnviar.setBounds(150, 160, 100, 30);
+        btnEnviar.setBounds(280, 162, 100, 30);
 
         // Configuración del layout
         getContentPane().setLayout(null);

@@ -13,7 +13,7 @@ public class VistaConsulta extends JFrame {
         // Configuración de la ventana
         super("Consulta");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 269);
+        setSize(440, 250);
         setLocationRelativeTo(null);
 
         // Creación de los componentes
@@ -46,28 +46,28 @@ public class VistaConsulta extends JFrame {
         titulo.setBounds(0, 11, 400, 30);
         getContentPane().add(titulo);
 
-        labelTipo.setBounds(45, 46, 100, 30);
+        labelTipo.setBounds(66, 51, 100, 30);
         getContentPane().add(labelTipo);
 
-        radioAlumno.setBounds(134, 46, 80, 30);
+        radioAlumno.setBounds(172, 51, 80, 30);
         getContentPane().add(radioAlumno);
 
-        radioProyecto.setBounds(230, 46, 80, 30);
+        radioProyecto.setBounds(254, 51, 80, 30);
         getContentPane().add(radioProyecto);
 
-        labelNombre.setBounds(50, 90, 100, 30);
+        labelNombre.setBounds(66, 90, 100, 30);
         getContentPane().add(labelNombre);
 
-        campoNombre.setBounds(110, 90, 200, 30);
+        campoNombre.setBounds(176, 91, 200, 30);
         getContentPane().add(campoNombre);
 
-        labelAreas.setBounds(50, 130, 100, 30);
+        labelAreas.setBounds(66, 130, 100, 30);
         getContentPane().add(labelAreas);
 
-        campoAreas.setBounds(110, 130, 200, 30);
+        campoAreas.setBounds(176, 131, 200, 30);
         getContentPane().add(campoAreas);
 
-        botonBuscar.setBounds(160, 170, 80, 30);
+        botonBuscar.setBounds(296, 171, 80, 30);
         getContentPane().add(botonBuscar);
     }
 }

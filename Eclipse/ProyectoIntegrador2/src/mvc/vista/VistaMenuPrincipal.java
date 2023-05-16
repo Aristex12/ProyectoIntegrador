@@ -24,8 +24,8 @@ public class VistaMenuPrincipal extends JFrame {
 	
 	
 
-	public VistaMenuPrincipal(String titulo) {
-		super (titulo);
+	public VistaMenuPrincipal() {
+		super ("Menu");
 		setBackground(new Color(255, 255, 255));
 		inicializarComponentes();
 	}
@@ -44,7 +44,7 @@ public class VistaMenuPrincipal extends JFrame {
 				//TODO aquí iría la definición de componentes 
 				
 				//Asignamos tamaño y posicion en la pantalla
-				setSize(505,410);
+				setSize(500,410);
 				setLocationRelativeTo(null);
 		
 				

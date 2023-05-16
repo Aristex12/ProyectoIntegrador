@@ -23,7 +23,7 @@ public class Baja extends JFrame{
 
     public void inicializarComponentes() {
     	// Configuración de la ventana
-        setSize(360, 220);
+        setSize(440, 250);
         setLocationRelativeTo(null);
         getContentPane().setLayout(null);
     	
@@ -32,42 +32,42 @@ public class Baja extends JFrame{
         titulo.setFont(new Font("Tahoma", Font.BOLD, 16));
         titulo.setText("Dar de Baja");
         titulo.setHorizontalAlignment(SwingConstants.CENTER);
-        titulo.setBounds(70, 14, 200, 25);
+        titulo.setBounds(106, 26, 200, 25);
 
         // Creación y configuración del tipo de elemento a dar de baja
         tipoLabel = new JLabel();
         tipoLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
         tipoLabel.setText("Tipo:");
-        tipoLabel.setBounds(30, 50, 60, 25);
+        tipoLabel.setBounds(53, 76, 60, 25);
 
         ButtonGroup tipoButtonGroup = new ButtonGroup();
 
         alumnoRadioButton = new JRadioButton("Alumno");
         alumnoRadioButton.setSelected(true);
-        alumnoRadioButton.setBounds(90, 50, 80, 25);
+        alumnoRadioButton.setBounds(165, 76, 60, 25);
         tipoButtonGroup.add(alumnoRadioButton);
 
         proyectoRadioButton = new JRadioButton("Proyecto");
-        proyectoRadioButton.setBounds(170, 50, 80, 25);
+        proyectoRadioButton.setBounds(227, 76, 65, 25);
         tipoButtonGroup.add(proyectoRadioButton);
 
         areasRadioButton = new JRadioButton("Áreas");
-        areasRadioButton.setBounds(250, 50, 80, 25);
+        areasRadioButton.setBounds(294, 76, 51, 25);
         tipoButtonGroup.add(areasRadioButton);
 
         // Creación y configuración del nombre del elemento a dar de baja
         nombre = new JLabel();
         nombre.setFont(new Font("Tahoma", Font.BOLD, 11));
         nombre.setText("Nombre:");
-        nombre.setBounds(30, 80, 60, 25);
+        nombre.setBounds(53, 111, 60, 25);
 
         inputNombre = new JTextField();
-        inputNombre.setBounds(90, 80, 180, 25);
+        inputNombre.setBounds(165, 111, 180, 25);
 
         // Creación y configuración del botón de enviar
         enviar = new JButton();
         enviar.setText("Enviar");
-        enviar.setBounds(133, 116, 80, 25);
+        enviar.setBounds(265, 152, 80, 25);
 
         // Agregar componentes a la ventana
         getContentPane().add(titulo);
