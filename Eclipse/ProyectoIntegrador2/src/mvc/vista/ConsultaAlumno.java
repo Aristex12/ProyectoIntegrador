@@ -22,7 +22,7 @@ public class ConsultaAlumno extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    private void inicializarComponentes() {
+    public void inicializarComponentes() {
     	//Configuramos la ventana
     	
     	setSize(440, 250);
@@ -77,7 +77,71 @@ public class ConsultaAlumno extends JFrame{
         getContentPane().add(volverButton);
     }
 
-    private void hacerVisible() {
+    public JLabel getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(JLabel titulo) {
+		this.titulo = titulo;
+	}
+
+	public JLabel getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(JLabel nombre) {
+		this.nombre = nombre;
+	}
+
+	public JLabel getNombreLabel() {
+		return nombreLabel;
+	}
+
+	public void setNombreLabel(JLabel nombreLabel) {
+		this.nombreLabel = nombreLabel;
+	}
+
+	public JLabel getApellidos() {
+		return apellidos;
+	}
+
+	public void setApellidos(JLabel apellidos) {
+		this.apellidos = apellidos;
+	}
+
+	public JLabel getApellidosLabel() {
+		return apellidosLabel;
+	}
+
+	public void setApellidosLabel(JLabel apellidosLabel) {
+		this.apellidosLabel = apellidosLabel;
+	}
+
+	public JLabel getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(JLabel matricula) {
+		this.matricula = matricula;
+	}
+
+	public JLabel getMatriculaLabel() {
+		return matriculaLabel;
+	}
+
+	public void setMatriculaLabel(JLabel matriculaLabel) {
+		this.matriculaLabel = matriculaLabel;
+	}
+
+	public JButton getVolverButton() {
+		return volverButton;
+	}
+
+	public void setVolverButton(JButton volverButton) {
+		this.volverButton = volverButton;
+	}
+
+	public void hacerVisible() {
         setVisible(true);
     }
 	

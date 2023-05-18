@@ -93,7 +93,7 @@ public class VistaConsulta extends JFrame {
 		
 		atras.setBounds(172, 170, 80, 30);
 		getContentPane().add(atras);
-	} 
+	}
 	
 	public void hacerVisible() {
 		setVisible(true);

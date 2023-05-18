@@ -45,9 +45,9 @@ public class AccesoBD {
 	}
 
 	public ArrayList<Alumno> añadirAlumnoALista(String buscarPor) {
-		
+
 		ArrayList<Alumno> alumnos = new ArrayList<>();
-		
+
 		try {
 
 			AccesoBD acceso = new AccesoBD();
@@ -70,6 +70,35 @@ public class AccesoBD {
 		}
 
 		return alumnos;
+	}
+
+	public ArrayList<Proyectos> añadirProyectoALista(String buscarPor) {
+
+		ArrayList<Proyectos> proyectos = new ArrayList<>();
+
+		try {
+
+			AccesoBD acceso = new AccesoBD();
+			Statement statement = acceso.getConexion().createStatement();
+			String query = buscarPor;
+			ResultSet resultados = statement.executeQuery(query);
+
+			while (resultados.next()) {
+				String nombre = resultados.getString("nombreProyecto");
+				String idProyecto = resultados.getString("idProyecto");
+				String curso = resultados.getString("curso");
+				int nota = resultados.getInt("notaObtenida");
+				Proyectos proyecto = new Proyectos(nombre, idProyecto, nota, curso);
+				proyectos.add(proyecto);
+			}
+
+		} catch (SQLException a) {
+
+		} catch (Exception e) {
+
+		}
+
+		return proyectos;
 	}
 
 	public String getDriver() {

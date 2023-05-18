@@ -26,7 +26,7 @@ public class Alumno {
 	
 	public String toString() {
 		
-		return nombre + " " + apellidos + ": " + matricula;
+		return nombre + " " + apellidos + " : " + matricula;
 		
 	}
 	

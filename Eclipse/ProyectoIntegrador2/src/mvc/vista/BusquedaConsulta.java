@@ -14,7 +14,10 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
+import mvc.controlador.ListenerAtrasBusquedaConsulta;
+import mvc.controlador.ListenerSeleccionBusquedaConsulta;
 import mvc.modelo.Alumno;
+import mvc.modelo.Proyectos;
 
 public class BusquedaConsulta extends JFrame {
 
@@ -48,9 +51,9 @@ public class BusquedaConsulta extends JFrame {
 
 		// Creación del scrollpane
 
-		 listModel = new DefaultListModel<>();
+		listModel = new DefaultListModel<>();
 		
-		 resultList = new JList<>(listModel);
+		resultList = new JList<>(listModel);
 
 		scrollPane = new JScrollPane(resultList);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -58,9 +61,13 @@ public class BusquedaConsulta extends JFrame {
 
 		// Configuramos los botones de seleccionar y atras
 		seleccionar = new JButton("Seleccionar");
+		ListenerSeleccionBusquedaConsulta escuchador1 = new ListenerSeleccionBusquedaConsulta(this);
+		seleccionar.addActionListener(escuchador1);
 		seleccionar.setBounds(289, 216, 93, 25);
 
 		atras = new JButton("Atrás");
+		ListenerAtrasBusquedaConsulta escuchador2 = new ListenerAtrasBusquedaConsulta(this);
+		atras.addActionListener(escuchador2);
 		atras.setBounds(186, 216, 93, 25);
 
 		// Agregar componentes a la ventana
@@ -73,6 +80,26 @@ public class BusquedaConsulta extends JFrame {
 	public void hacerVisible() {
 		// Hacer visible la ventana
 		setVisible(true);
+	}
+	
+	public void rellenarListaAlumnos (ArrayList<Alumno> array) {
+		for(Alumno a : array) {
+			listModel.addElement(a.toString());
+		}
+	}
+	
+	public void rellenarListaProyectos (ArrayList<Proyectos> array) {
+		for(Proyectos a : array) {
+			listModel.addElement(a.toString());
+		}
+	}
+	
+	public JList<String> getResultList() {
+		return resultList;
+	}
+
+	public void setResultList(JList<String> resultList) {
+		this.resultList = resultList;
 	}
 	
 	public JLabel getTitulo() {
@@ -113,12 +140,6 @@ public class BusquedaConsulta extends JFrame {
 
 	public void setAtras(JButton atras) {
 		this.atras = atras;
-	}
-	
-	public void rellenarListaAlumnos (ArrayList<Alumno> array) {
-		for(Alumno a : array) {
-			listModel.addElement(a.toString());
-		}
 	}
 
 }

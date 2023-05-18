@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import mvc.modelo.AccesoBD;
 import mvc.modelo.Alumno;
+import mvc.modelo.Proyectos;
 import mvc.vista.*;
 
 public class ListenerConsulta implements ActionListener {
@@ -19,22 +20,27 @@ public class ListenerConsulta implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+
 		accesobd = new AccesoBD();
 		accesobd.getConexion();
+
 		if (v.getRadioAlumno().isSelected()) {
 			ArrayList<Alumno> a = opcionAlumno();
-			//pasamos este arraylist a la vista
-			//y lo mostramos en una lista que tiene que estar creada allí
 			BusquedaConsulta bc = new BusquedaConsulta();
 			bc.rellenarListaAlumnos(a);
 			bc.setVisible(true);
 		} else {
-			opcionProyecto();
+			ArrayList<Proyectos> b = opcionProyecto();
+			BusquedaConsulta bc = new BusquedaConsulta();
+			bc.rellenarListaProyectos(b);
+			bc.setVisible(true);
 		}
 
 	}
 
 	public ArrayList<Alumno> opcionAlumno() {
+
+		v.dispose();
 
 		AccesoBD acceso = new AccesoBD();
 
@@ -59,11 +65,31 @@ public class ListenerConsulta implements ActionListener {
 		return acceso.añadirAlumnoALista(query);
 	}
 
-	public void opcionProyecto() {
+	public ArrayList<Proyectos> opcionProyecto() {
 
 		v.dispose();
-		BusquedaConsulta busqueda = new BusquedaConsulta();
-		busqueda.hacerVisible();
+
+		AccesoBD acceso = new AccesoBD();
+
+		String query = "";
+		String idProyecto = v.getCampoIdProyecto().getText().trim();
+		String nombre = v.getCampoNombre().getText().trim();
+
+		if (nombre.equals("") && idProyecto.equals("")) {
+
+			query = "SELECT * FROM proyectos";
+
+		} else if (!(v.getCampoNombre().getText().equals(""))) {
+
+			query = "SELECT * FROM proyectos WHERE nombre='" + nombre + "';";
+
+		} else {
+
+			query = "SELECT * FROM proyectos WHERE idProyecto='" + idProyecto + "';";
+
+		}
+
+		return acceso.añadirProyectoALista(query);
 
 	}
 
