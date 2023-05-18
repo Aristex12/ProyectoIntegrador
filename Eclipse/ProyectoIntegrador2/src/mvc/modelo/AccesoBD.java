@@ -36,6 +36,7 @@ public class AccesoBD {
 		catch (Exception e) {
 
 			System.out.println("Problema que no se que verga es");
+			e.printStackTrace();
 
 		}
 
@@ -53,7 +54,6 @@ public class AccesoBD {
 			Statement statement = acceso.getConexion().createStatement();
 			String query = buscarPor;
 			ResultSet resultados = statement.executeQuery(query);
-
 
 			while (resultados.next()) {
 				String nombre = resultados.getString("nombre");

@@ -1,6 +1,7 @@
 package mvc.vista;
 
 import javax.swing.*;
+import mvc.controlador.ListenerConsulta;
 import java.awt.*;
 
 public class VistaConsulta extends JFrame {
@@ -9,7 +10,7 @@ public class VistaConsulta extends JFrame {
 	private JRadioButton radioAlumno, radioProyecto;
 	private JTextField campoNombre;
 	private JButton botonBuscar;
-	private JComboBox lista;
+	private JTextField campoIdProyecto;
 	private JButton atras;
 	
 	public VistaConsulta() {
@@ -31,6 +32,7 @@ public class VistaConsulta extends JFrame {
 		labelTipo = new JLabel("Tipo:");
 
 		radioAlumno = new JRadioButton("Alumno");
+		radioAlumno.setSelected(true);
 		radioProyecto = new JRadioButton("Proyecto");
 
 		ButtonGroup grupoRadio = new ButtonGroup();
@@ -41,16 +43,17 @@ public class VistaConsulta extends JFrame {
 
 		campoNombre = new JTextField();
 
-		labelAreas = new JLabel("Área:");
+		labelAreas = new JLabel("ID Proyecto:");
 
 		botonBuscar = new JButton("Buscar");
+		ListenerConsulta escuchador2 = new ListenerConsulta(this);
+		botonBuscar.addActionListener(escuchador2);
 		
+		campoIdProyecto = new JTextField();
 		
 		atras = new JButton("Atrás");
 		ListenerAtrasConsulta escuchador1 = new ListenerAtrasConsulta(this);
 		atras.addActionListener(escuchador1);
-		
-		lista = new JComboBox();
 		
 		error = new JLabel();
 		error.setForeground(new Color(255, 0, 0));
@@ -79,8 +82,8 @@ public class VistaConsulta extends JFrame {
 		campoNombre.setBounds(172, 91, 200, 30);
 		getContentPane().add(campoNombre);
 		
-		lista.setBounds(172, 130, 200, 30);
-		getContentPane().add(lista);
+		campoIdProyecto.setBounds(172, 130, 200, 30);
+		getContentPane().add(campoIdProyecto);
 
 		labelAreas.setBounds(66, 130, 100, 30);
 		getContentPane().add(labelAreas);
@@ -90,7 +93,7 @@ public class VistaConsulta extends JFrame {
 		
 		atras.setBounds(172, 170, 80, 30);
 		getContentPane().add(atras);
-	}
+	} 
 	
 	public void hacerVisible() {
 		setVisible(true);
@@ -104,12 +107,12 @@ public class VistaConsulta extends JFrame {
 		this.error = error;
 	}
 
-	public JComboBox getLista() {
-		return lista;
+	public JTextField getCampoIdProyecto() {
+		return campoIdProyecto;
 	}
 
-	public void setLista(JComboBox lista) {
-		this.lista = lista;
+	public void setCampoIdProyecto(JTextField campoIdProyecto) {
+		this.campoIdProyecto = campoIdProyecto;
 	}
 
 	public JLabel getTitulo() {

@@ -2,6 +2,7 @@ package mvc.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import mvc.modelo.AccesoBD;
 import mvc.modelo.Alumno;
@@ -10,6 +11,7 @@ import mvc.vista.*;
 public class ListenerConsulta implements ActionListener {
 
 	public VistaConsulta v;
+	public AccesoBD accesobd;
 
 	public ListenerConsulta(VistaConsulta vista) {
 		v = vista;
@@ -17,54 +19,44 @@ public class ListenerConsulta implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
-		int num = 0;
-
+		accesobd = new AccesoBD();
+		accesobd.getConexion();
 		if (v.getRadioAlumno().isSelected()) {
-			num = 1;
+			ArrayList<Alumno> a = opcionAlumno();
+			//pasamos este arraylist a la vista
+			//y lo mostramos en una lista que tiene que estar creada allí
+			BusquedaConsulta bc = new BusquedaConsulta();
+			bc.rellenarListaAlumnos(a);
+			bc.setVisible(true);
 		} else {
-			num = 0;
-		}
-
-		switch (num) {
-
-		case 1:
-
-			opcionAlumno();
-
-		case 2:
-
 			opcionProyecto();
-
 		}
 
 	}
 
-	public void opcionAlumno() {
+	public ArrayList<Alumno> opcionAlumno() {
 
 		AccesoBD acceso = new AccesoBD();
-		BusquedaConsulta busqueda = new BusquedaConsulta();
-		
+
 		String query = "";
-		String seleccion = (String) v.getLista().getSelectedItem();
-		
-		if(v.getCampoNombre().getText().equals("") && 
-				seleccion.equals("")) {
-			
-			v.getError().setText("Tienes que introducir algun dato!");
-			
-		} else if(v.getCampoNombre().getText().equals("")) {
-			
-			query = "SELECT * FROM proyectos WHERE proyectos='" + seleccion + "';";
-			
+		String idProyecto = v.getCampoIdProyecto().getText().trim();
+		String nombre = v.getCampoNombre().getText().trim();
+
+		if (nombre.equals("") && idProyecto.equals("")) {
+
+			query = "SELECT * FROM alumnos";
+
+		} else if (!(v.getCampoNombre().getText().equals(""))) {
+
+			query = "SELECT * FROM alumnos WHERE nombre='" + nombre + "';";
+
 		} else {
-			
-			query = "SELECT * FROM proyectos WHERE nombre='" + seleccion + "';";
-			
+
+			query = "SELECT * FROM alumnos WHERE idProyectoFK='" + idProyecto + "';";
+
 		}
-		
-		
-		
+
+		return acceso.añadirAlumnoALista(query);
 	}
 
 	public void opcionProyecto() {
@@ -72,7 +64,7 @@ public class ListenerConsulta implements ActionListener {
 		v.dispose();
 		BusquedaConsulta busqueda = new BusquedaConsulta();
 		busqueda.hacerVisible();
-		
+
 	}
 
 }
