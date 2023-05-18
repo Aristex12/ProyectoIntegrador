@@ -1,23 +1,27 @@
 package mvc.vista;
 
 import javax.swing.*;
+
+import mvc.controlador.ListenerAtrasAltaArea;
+import mvc.controlador.ListenerAtrasDarAlta;
+
 import java.awt.Font;
 
 public class AltaArea extends JFrame {
-	
+
 	private JLabel titulo;
 	private JLabel nombre;
 	private JTextField inputNombre;
 	private JLabel duracion;
 	private JTextArea descripcion;
 	private JButton enviar;
+	private JButton atras;
 
 	public AltaArea() {
 		super("Alta Area");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// Inicializar los componentes
 		inicializarComponentes();
-
 	}
 
 	private void inicializarComponentes() {
@@ -50,12 +54,17 @@ public class AltaArea extends JFrame {
 
 		descripcion = new JTextArea();
 		descripcion.setBounds(175, 113, 180, 25);
-		
 
 		// Creación y configuración del botón de enviar
 		enviar = new JButton();
 		enviar.setText("Enviar");
 		enviar.setBounds(275, 162, 80, 25);
+
+		//// Creación y configuración del botón de atrás
+		atras = new JButton("Atrás");
+		ListenerAtrasAltaArea escuchador1 = new ListenerAtrasAltaArea(this);
+		atras.addActionListener(escuchador1);
+		atras.setBounds(175, 162, 80, 25);
 
 		// Agregar componentes a la ventana
 		getContentPane().add(titulo);
@@ -64,9 +73,10 @@ public class AltaArea extends JFrame {
 		getContentPane().add(duracion);
 		getContentPane().add(descripcion);
 		getContentPane().add(enviar);
+		getContentPane().add(atras);
 	}
 
-	private void hacerVisible() {
+	public void hacerVisible() {
 		// Hacer visible la ventana
 		setVisible(true);
 	}

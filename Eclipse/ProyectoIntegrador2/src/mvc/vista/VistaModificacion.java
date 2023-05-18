@@ -1,6 +1,10 @@
 package mvc.vista;
 
 import javax.swing.*;
+
+import mvc.controlador.ListenerAtrasModificacion;
+import mvc.controlador.ListenerModificacionEnviar;
+
 import java.awt.*;
 
 public class VistaModificacion extends JFrame {
@@ -8,12 +12,17 @@ public class VistaModificacion extends JFrame {
     private JRadioButton radioAlumno, radioProyecto, radioAreas;
     private JTextField campoNombre;
     private JButton botonBuscar;
+    private JButton atras;
 
     public VistaModificacion() {
         // Configuración de la ventana
         super("Menu Modificación");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(440, 250);
+        inicializarComponentes();
+    }
+    
+    public void inicializarComponentes() {
+    	setSize(440, 250);
         setLocationRelativeTo(null);
 
         // Creación de los componentes
@@ -39,6 +48,13 @@ public class VistaModificacion extends JFrame {
         campoNombre = new JTextField();
 
         botonBuscar = new JButton("Buscar");
+        ListenerModificacionEnviar escuchador1 = new ListenerModificacionEnviar(this);
+        botonBuscar.addActionListener(escuchador1);
+        
+        
+        atras = new JButton("Atrás");
+        ListenerAtrasModificacion escuchador2 = new ListenerAtrasModificacion(this);
+        atras.addActionListener(escuchador2);
 
         // Configuración del layout
         getContentPane().setLayout(null);
@@ -66,5 +82,14 @@ public class VistaModificacion extends JFrame {
 
         botonBuscar.setBounds(290, 160, 80, 30);
         getContentPane().add(botonBuscar);
+        
+        atras.setBounds(170, 160, 80, 30);
+        getContentPane().add(atras);
+        
     }
+    
+    public void hacerVisible() {
+    	setVisible(true);
+    }
+    
 }

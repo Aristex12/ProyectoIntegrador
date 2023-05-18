@@ -5,17 +5,20 @@ import java.awt.event.ActionListener;
 
 import mvc.vista.*;
 
-public class ListenerVistaMenuPrincipal implements ActionListener {
+public class ListenerVistaMenuPrincipalDarAlta implements ActionListener {
 
 	public VistaMenuPrincipal v;
 	
-	public ListenerVistaMenuPrincipal(VistaMenuPrincipal vista) {
+	public ListenerVistaMenuPrincipalDarAlta(VistaMenuPrincipal vista) {
 		v = vista;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		
+		v.dispose();
+		VistaDarAlta ventana = new VistaDarAlta();
+		ventana.hacerVisible();
 		
 	}
 	

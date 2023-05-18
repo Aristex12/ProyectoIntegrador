@@ -1,6 +1,10 @@
 package mvc.vista;
 
 import javax.swing.*;
+
+import mvc.controlador.ListenerAtrasBaja;
+import mvc.controlador.ListenerBajaEnviar;
+
 import java.awt.Font;
 
 public class Baja extends JFrame{
@@ -13,6 +17,7 @@ public class Baja extends JFrame{
     private JLabel nombre;
     private JTextField inputNombre;
     private JButton enviar;
+    private JButton atras;
 
     public Baja() {
         super("Dar de Baja");
@@ -44,15 +49,15 @@ public class Baja extends JFrame{
 
         alumnoRadioButton = new JRadioButton("Alumno");
         alumnoRadioButton.setSelected(true);
-        alumnoRadioButton.setBounds(165, 76, 60, 25);
+        alumnoRadioButton.setBounds(165, 76, 80, 25);
         tipoButtonGroup.add(alumnoRadioButton);
 
         proyectoRadioButton = new JRadioButton("Proyecto");
-        proyectoRadioButton.setBounds(227, 76, 65, 25);
+        proyectoRadioButton.setBounds(247, 76, 80, 25);
         tipoButtonGroup.add(proyectoRadioButton);
 
         areasRadioButton = new JRadioButton("Áreas");
-        areasRadioButton.setBounds(294, 76, 51, 25);
+        areasRadioButton.setBounds(329, 76, 80, 25);
         tipoButtonGroup.add(areasRadioButton);
 
         // Creación y configuración del nombre del elemento a dar de baja
@@ -67,7 +72,15 @@ public class Baja extends JFrame{
         // Creación y configuración del botón de enviar
         enviar = new JButton();
         enviar.setText("Enviar");
+        ListenerBajaEnviar escuchador2 = new ListenerBajaEnviar(this);
+        enviar.addActionListener(escuchador2);
         enviar.setBounds(265, 152, 80, 25);
+        
+        //Creamos y le damos las caracteristicas al boton de atras
+        atras = new JButton("Atrás");
+        ListenerAtrasBaja escuchador1 = new ListenerAtrasBaja(this);
+        atras.addActionListener(escuchador1);
+		atras.setBounds(165, 152, 80, 25);
 
         // Agregar componentes a la ventana
         getContentPane().add(titulo);
@@ -78,9 +91,10 @@ public class Baja extends JFrame{
         getContentPane().add(nombre);
         getContentPane().add(inputNombre);
         getContentPane().add(enviar);
+        getContentPane().add(atras);
     }
 
-    private void hacerVisible() {
+    public void hacerVisible() {
         // Hacer visible la ventana
         setVisible(true);
     }

@@ -5,17 +5,20 @@ import java.awt.event.ActionListener;
 
 import mvc.vista.*;
 
-public class ListenerModificacion implements ActionListener {
+public class ListenerModificacionEnviar implements ActionListener {
 
 	public VistaModificacion v;
 	
-	public ListenerModificacion(VistaModificacion vista) {
+	public ListenerModificacionEnviar(VistaModificacion vista) {
 		v = vista;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		
+		v.dispose();
+		BusquedaModificacion ventana = new BusquedaModificacion();
+		ventana.hacerVisible();
 		
 	}
 	

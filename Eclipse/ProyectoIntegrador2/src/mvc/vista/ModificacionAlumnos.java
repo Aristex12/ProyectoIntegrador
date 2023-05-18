@@ -13,6 +13,7 @@ public class ModificacionAlumnos extends JFrame{
     private JLabel area;
     private JComboBox<String> areaComboBox;
     private JButton modificarButton;
+    private JButton atras;
     
     public ModificacionAlumnos() {
     	super("Modificar Datos del Alumno");
@@ -50,6 +51,9 @@ public class ModificacionAlumnos extends JFrame{
         area = new JLabel("Área");
         area.setFont(new Font("Tahoma", Font.BOLD, 11));
         area.setBounds(50, 146, 100, 25);
+        
+        atras = new JButton("Atrás");
+        atras.setBounds(160, 178, 85, 25);
 
         DefaultComboBoxModel<String> areaComboBoxModel = new DefaultComboBoxModel<>();
         areaComboBoxModel.addElement("Área 1");
@@ -58,7 +62,7 @@ public class ModificacionAlumnos extends JFrame{
         areaComboBox = new JComboBox<>(areaComboBoxModel);
         areaComboBox.setBounds(160, 146, 200, 25);
 		modificarButton = new JButton("Modificar");
-		modificarButton.setBounds(240, 178, 120, 25);
+		modificarButton.setBounds(275, 178, 85, 25);
 
         // Agregar componentes a la ventana
         getContentPane().add(nombre);
@@ -69,6 +73,7 @@ public class ModificacionAlumnos extends JFrame{
         getContentPane().add(areaComboBox);
         getContentPane().add(modificarButton);
         getContentPane().add(titulo);
+        getContentPane().add(atras);
 
         // Hacer visible la ventana
         setVisible(true);

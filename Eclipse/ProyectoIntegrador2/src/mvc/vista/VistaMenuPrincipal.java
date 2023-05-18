@@ -3,13 +3,13 @@ package mvc.vista;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import mvc.controlador.*;
 
 
 public class VistaMenuPrincipal extends JFrame {
@@ -49,19 +49,26 @@ public class VistaMenuPrincipal extends JFrame {
 		
 				
 				btnDarAlta = new JButton ("Dar de alta");
-				
+				ListenerVistaMenuPrincipalDarAlta escuchador1 = new ListenerVistaMenuPrincipalDarAlta(this);
+				btnDarAlta.addActionListener(escuchador1);
 				btnDarAlta.setBounds(170, 128, 146, 36);
 				getContentPane().add(btnDarAlta);
 				
 				btnDarBaja = new JButton ("Dar de baja");
+				ListenerMenuPrincipalDarBaja escuchador2 = new ListenerMenuPrincipalDarBaja(this);
+				btnDarBaja.addActionListener(escuchador2);
 				btnDarBaja.setBounds(170, 192, 146, 36);
 				getContentPane().add(btnDarBaja);
 				
 				btnModificacion = new JButton ("Modificacion");
+				ListenerMenuPrincipalModificacion escuchador3 = new ListenerMenuPrincipalModificacion(this);
+				btnModificacion.addActionListener(escuchador3);
 				btnModificacion.setBounds(170, 252, 146, 36);
 				getContentPane().add(btnModificacion);
 				
 				btnConsulta = new JButton ("Consulta");
+				ListenerMenuPrincipalConsulta escuchador4 = new ListenerMenuPrincipalConsulta(this);
+				btnConsulta.addActionListener(escuchador4);
 				btnConsulta.setBounds(170, 309, 150, 36);
 				getContentPane().add(btnConsulta);
 				

@@ -1,19 +1,26 @@
 package mvc.vista;
 
 import javax.swing.*;
+
+import mvc.controlador.ListenerAtrasAltaAlumno;
+
 import java.awt.*;
 
 public class VistaAltaAlumno extends JFrame {
     private JLabel labelNombre, labelApellido, labelNumero;
     private JTextField txtNombre, txtApellido, txtNumero;
-    private JButton btnEnviar;
+    private JButton btnEnviar, atras;
 
-    public VistaAltaAlumno(String titulo) {
-        super(titulo);
-
+    public VistaAltaAlumno() {
+        super("Alta Alumno");
         // Configuración de la ventana
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(440, 250);
+        inicializarComponentes();
+    }
+    
+    public void inicializarComponentes(){
+    	
+    	setSize(440, 250);
         setLocationRelativeTo(null);
 
         // Creación de los componentes
@@ -39,7 +46,12 @@ public class VistaAltaAlumno extends JFrame {
         txtNumero.setBounds(200, 122, 180, 20);
 
         btnEnviar = new JButton("Enviar");
-        btnEnviar.setBounds(280, 162, 100, 30);
+        btnEnviar.setBounds(294, 151, 86, 30);
+        
+        atras = new JButton("Atrás");
+        ListenerAtrasAltaAlumno escuchador1 = new ListenerAtrasAltaAlumno(this);
+        atras.addActionListener(escuchador1);
+        atras.setBounds(200, 151, 86, 30);
 
         // Configuración del layout
         getContentPane().setLayout(null);
@@ -52,5 +64,11 @@ public class VistaAltaAlumno extends JFrame {
         getContentPane().add(txtApellido);
         getContentPane().add(txtNumero);
         getContentPane().add(btnEnviar);
+        getContentPane().add(atras);
     }
+    
+    public void hacerVisible() {
+    	setVisible(true);
+    }
+    
 }

@@ -33,38 +33,38 @@ public class ConsultaProyecto extends JFrame{
         titulo = new JLabel();
         titulo.setFont(new Font("Tahoma", Font.BOLD, 16));
         titulo.setText("Datos del Proyecto");
-        titulo.setBounds(118, 18, 200, 25);
+        titulo.setBounds(28, 18, 200, 25);
 
         nombre = new JLabel();
         nombre.setFont(new Font("Tahoma", Font.BOLD, 11));
         nombre.setText("Nombre:");
-        nombre.setBounds(106, 53, 100, 25);
+        nombre.setBounds(28, 53, 51, 25);
 
         nombreLabel = new JLabel();
         nombreLabel.setText("Proyecto Mamado");
-        nombreLabel.setBounds(216, 53, 200, 25);
+        nombreLabel.setBounds(106, 53, 200, 25);
 
         apellidos = new JLabel();
         apellidos.setFont(new Font("Tahoma", Font.BOLD, 11));
         apellidos.setText("Grupo:");
-        apellidos.setBounds(106, 89, 100, 25);
+        apellidos.setBounds(28, 88, 51, 25);
 
         apellidosLabel = new JLabel();
         apellidosLabel.setText("Atom");
-        apellidosLabel.setBounds(216, 89, 200, 25);
+        apellidosLabel.setBounds(106, 88, 200, 25);
 
         matricula = new JLabel();
         matricula.setFont(new Font("Tahoma", Font.BOLD, 11));
         matricula.setText("Área:");
-        matricula.setBounds(106, 124, 100, 25);
+        matricula.setBounds(28, 123, 51, 25);
 
         matriculaLabel = new JLabel();
         matriculaLabel.setText("DAW");
-        matriculaLabel.setBounds(216, 124, 200, 25);
+        matriculaLabel.setBounds(106, 123, 200, 25);
 
         volverButton = new JButton();
         volverButton.setText("Volver al Menú");
-        volverButton.setBounds(116, 158, 140, 25);
+        volverButton.setBounds(28, 160, 140, 25);
 
         // Agregar componentes a la ventana
         getContentPane().add(titulo);
