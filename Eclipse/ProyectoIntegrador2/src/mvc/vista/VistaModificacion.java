@@ -34,6 +34,7 @@ public class VistaModificacion extends JFrame {
         labelTipo.setFont(new Font("Tahoma", Font.BOLD, 11));
 
         radioAlumno = new JRadioButton("Alumno");
+        radioAlumno.setSelected(true);
         radioProyecto = new JRadioButton("Proyecto");
         radioAreas = new JRadioButton("Áreas");
 
@@ -65,13 +66,13 @@ public class VistaModificacion extends JFrame {
         labelTipo.setBounds(56, 68, 50, 30);
         getContentPane().add(labelTipo);
 
-        radioAlumno.setBounds(170, 68, 61, 30);
+        radioAlumno.setBounds(170, 68, 73, 30);
         getContentPane().add(radioAlumno);
 
-        radioProyecto.setBounds(296, 68, 65, 30);
+        radioProyecto.setBounds(245, 68, 80, 30);
         getContentPane().add(radioProyecto);
 
-        radioAreas.setBounds(233, 68, 61, 30);
+        radioAreas.setBounds(337, 68, 73, 30);
         getContentPane().add(radioAreas);
 
         labelNombre.setBounds(56, 108, 61, 30);
@@ -88,7 +89,79 @@ public class VistaModificacion extends JFrame {
         
     }
     
-    public void hacerVisible() {
+    public JLabel getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(JLabel titulo) {
+		this.titulo = titulo;
+	}
+
+	public JLabel getLabelTipo() {
+		return labelTipo;
+	}
+
+	public void setLabelTipo(JLabel labelTipo) {
+		this.labelTipo = labelTipo;
+	}
+
+	public JLabel getLabelNombre() {
+		return labelNombre;
+	}
+
+	public void setLabelNombre(JLabel labelNombre) {
+		this.labelNombre = labelNombre;
+	}
+
+	public JRadioButton getRadioAlumno() {
+		return radioAlumno;
+	}
+
+	public void setRadioAlumno(JRadioButton radioAlumno) {
+		this.radioAlumno = radioAlumno;
+	}
+
+	public JRadioButton getRadioProyecto() {
+		return radioProyecto;
+	}
+
+	public void setRadioProyecto(JRadioButton radioProyecto) {
+		this.radioProyecto = radioProyecto;
+	}
+
+	public JRadioButton getRadioAreas() {
+		return radioAreas;
+	}
+
+	public void setRadioAreas(JRadioButton radioAreas) {
+		this.radioAreas = radioAreas;
+	}
+
+	public JTextField getCampoNombre() {
+		return campoNombre;
+	}
+
+	public void setCampoNombre(JTextField campoNombre) {
+		this.campoNombre = campoNombre;
+	}
+
+	public JButton getBotonBuscar() {
+		return botonBuscar;
+	}
+
+	public void setBotonBuscar(JButton botonBuscar) {
+		this.botonBuscar = botonBuscar;
+	}
+
+	public JButton getAtras() {
+		return atras;
+	}
+
+	public void setAtras(JButton atras) {
+		this.atras = atras;
+	}
+
+	public void hacerVisible() {
     	setVisible(true);
     }
     

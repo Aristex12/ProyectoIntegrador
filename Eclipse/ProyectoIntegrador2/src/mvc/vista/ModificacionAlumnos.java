@@ -10,8 +10,8 @@ public class ModificacionAlumnos extends JFrame{
     private JTextField nombreTextField;
     private JLabel apellidos;
     private JTextField apellidosTextField;
-    private JLabel area;
-    private JComboBox<String> areaComboBox;
+    private JLabel matricula;
+    private JTextField matriculaTextField;
     private JButton modificarButton;
     private JButton atras;
     
@@ -48,19 +48,16 @@ public class ModificacionAlumnos extends JFrame{
         apellidosTextField = new JTextField();
         apellidosTextField.setBounds(160, 110, 200, 25);
 
-        area = new JLabel("Área");
-        area.setFont(new Font("Tahoma", Font.BOLD, 11));
-        area.setBounds(50, 146, 100, 25);
+        matricula = new JLabel("Num. Matricula");
+        matricula.setFont(new Font("Tahoma", Font.BOLD, 11));
+        matricula.setBounds(50, 146, 100, 25);
         
         atras = new JButton("Atrás");
         atras.setBounds(160, 178, 85, 25);
 
-        DefaultComboBoxModel<String> areaComboBoxModel = new DefaultComboBoxModel<>();
-        areaComboBoxModel.addElement("Área 1");
-        areaComboBoxModel.addElement("Área 2");
-        areaComboBoxModel.addElement("Área 3");
-        areaComboBox = new JComboBox<>(areaComboBoxModel);
-        areaComboBox.setBounds(160, 146, 200, 25);
+        matriculaTextField = new JTextField();
+        matriculaTextField.setBounds(160, 146, 200, 25);
+        
 		modificarButton = new JButton("Modificar");
 		modificarButton.setBounds(275, 178, 85, 25);
 
@@ -69,14 +66,89 @@ public class ModificacionAlumnos extends JFrame{
         getContentPane().add(nombreTextField);
         getContentPane().add(apellidos);
         getContentPane().add(apellidosTextField);
-        getContentPane().add(area);
-        getContentPane().add(areaComboBox);
+        getContentPane().add(matricula);
+        getContentPane().add(matriculaTextField);
         getContentPane().add(modificarButton);
         getContentPane().add(titulo);
         getContentPane().add(atras);
 
-        // Hacer visible la ventana
+    }
+
+    public void hacerVisible() {
+    	// Hacer visible la ventana
         setVisible(true);
     }
-	
+
+	public JLabel getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(JLabel titulo) {
+		this.titulo = titulo;
+	}
+
+	public JLabel getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(JLabel nombre) {
+		this.nombre = nombre;
+	}
+
+	public JTextField getNombreTextField() {
+		return nombreTextField;
+	}
+
+	public void setNombreTextField(JTextField nombreTextField) {
+		this.nombreTextField = nombreTextField;
+	}
+
+	public JLabel getApellidos() {
+		return apellidos;
+	}
+
+	public void setApellidos(JLabel apellidos) {
+		this.apellidos = apellidos;
+	}
+
+	public JTextField getApellidosTextField() {
+		return apellidosTextField;
+	}
+
+	public void setApellidosTextField(JTextField apellidosTextField) {
+		this.apellidosTextField = apellidosTextField;
+	}
+
+	public JLabel getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(JLabel area) {
+		this.matricula = area;
+	}
+
+	public JTextField getMatriculaTextField() {
+		return matriculaTextField;
+	}
+
+	public void setMatriculaTextField(JTextField matriculaTextField) {
+		this.matriculaTextField = matriculaTextField;
+	}
+
+	public JButton getModificarButton() {
+		return modificarButton;
+	}
+
+	public void setModificarButton(JButton modificarButton) {
+		this.modificarButton = modificarButton;
+	}
+
+	public JButton getAtras() {
+		return atras;
+	}
+
+	public void setAtras(JButton atras) {
+		this.atras = atras;
+	}
+    
 }

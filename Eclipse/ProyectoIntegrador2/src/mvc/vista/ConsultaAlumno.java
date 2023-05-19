@@ -1,6 +1,9 @@
 package mvc.vista;
 
 import javax.swing.*;
+
+import mvc.controlador.ListenerVolverAlMenuAlumno;
+
 import java.awt.Font;
 
 public class ConsultaAlumno extends JFrame{
@@ -64,6 +67,8 @@ public class ConsultaAlumno extends JFrame{
 
         volverButton = new JButton();
         volverButton.setText("Volver al Menú");
+        ListenerVolverAlMenuAlumno escuchador1 = new ListenerVolverAlMenuAlumno(this);
+        volverButton.addActionListener(escuchador1);
         volverButton.setBounds(22, 159, 140, 25);
 
         // Agregar componentes a la ventana

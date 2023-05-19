@@ -17,6 +17,7 @@ import javax.swing.SwingConstants;
 import mvc.controlador.ListenerAtrasBusquedaConsulta;
 import mvc.controlador.ListenerSeleccionBusquedaConsulta;
 import mvc.modelo.Alumno;
+import mvc.modelo.Area;
 import mvc.modelo.Proyectos;
 
 public class BusquedaConsulta extends JFrame {
@@ -90,6 +91,12 @@ public class BusquedaConsulta extends JFrame {
 	
 	public void rellenarListaProyectos (ArrayList<Proyectos> array) {
 		for(Proyectos a : array) {
+			listModel.addElement(a.toString());
+		}
+	}
+	
+	public void rellenarListaArea(ArrayList<Area> array) {
+		for(Area a : array) {
 			listModel.addElement(a.toString());
 		}
 	}

@@ -100,6 +100,33 @@ public class AccesoBD {
 
 		return proyectos;
 	}
+	
+	public ArrayList<Area> añadirAreaALista(String buscarPor) {
+
+		ArrayList<Area> areas = new ArrayList<>();
+
+		try {
+
+			AccesoBD acceso = new AccesoBD();
+			Statement statement = acceso.getConexion().createStatement();
+			String query = buscarPor;
+			ResultSet resultados = statement.executeQuery(query);
+
+			while (resultados.next()) {
+				String nombre = resultados.getString("nombre");
+				String descripcion = resultados.getString("descripcion");
+				Area area = new Area(nombre, descripcion);
+				areas.add(area);
+			}
+
+		} catch (SQLException a) {
+
+		} catch (Exception e) {
+
+		}
+
+		return areas;
+	}
 
 	public String getDriver() {
 		return driver;
