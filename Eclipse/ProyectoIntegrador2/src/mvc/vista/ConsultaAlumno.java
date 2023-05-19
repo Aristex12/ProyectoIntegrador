@@ -41,7 +41,7 @@ public class ConsultaAlumno extends JFrame{
         nombre.setBounds(22, 58, 56, 25);
 
         nombreLabel = new JLabel();
-        nombreLabel.setText("Nombre Imaginario");
+        nombreLabel.setText("");
         nombreLabel.setBounds(108, 58, 200, 25);
 
         apellidos = new JLabel();
@@ -50,7 +50,7 @@ public class ConsultaAlumno extends JFrame{
         apellidos.setBounds(22, 89, 64, 25);
 
         apellidosLabel = new JLabel();
-        apellidosLabel.setText("Apellido Imaginario");
+        apellidosLabel.setText("");
         apellidosLabel.setBounds(108, 89, 200, 25);
 
         matricula = new JLabel();
@@ -59,7 +59,7 @@ public class ConsultaAlumno extends JFrame{
         matricula.setBounds(22, 124, 64, 25);
 
         matriculaLabel = new JLabel();
-        matriculaLabel.setText("1234567890");
+        matriculaLabel.setText("");
         matriculaLabel.setBounds(108, 124, 200, 25);
 
         volverButton = new JButton();
