@@ -3,18 +3,17 @@ package mvc.controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import mvc.vista.BusquedaDarBaja;
 import mvc.vista.VistaBaja;
-import mvc.vista.VistaMenuPrincipal;
 
-public class ListenerMenuPrincipalDarBaja implements ActionListener {
+public class ListenerAtrasBusquedaBaja implements ActionListener {
 
-	public VistaMenuPrincipal v;
+	BusquedaDarBaja v;
 	
-	public ListenerMenuPrincipalDarBaja(VistaMenuPrincipal vista) {
+	public ListenerAtrasBusquedaBaja(BusquedaDarBaja vista) {
 		v = vista;
 	}
 	
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		
 		v.dispose();

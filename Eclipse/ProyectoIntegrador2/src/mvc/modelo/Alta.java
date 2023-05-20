@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Modificacion {
+public class Alta {
 
 	private String driver = "com.mysql.cj.jdbc.Driver";
 	private String url = "jdbc:mysql://localhost/proyectointegrador";
@@ -16,15 +16,20 @@ public class Modificacion {
 	private String nombre;
 	private String apellidos;
 	private String matricula;
+	private String idProyectoAlumno;
 	
-	private String curso;
+	private String ano;
 	private String area;
+	private int numeroArea;
 	private String nombreProyecto;
 	private int nota;
+	private String github;
 	private int idProyecto;
 	
 	private String nombreArea;
 	private String descripcion;
+	
+	boolean flag;
 	
 	Connection con = null;
 
@@ -56,48 +61,131 @@ public class Modificacion {
 
 	}
 	
-	public void datosAlumno() {
+	public boolean comprobarMatriculaAlumno() {
+		
+		flag = false;
+		
+		try {
+		
+			con = DriverManager.getConnection(url, usuario, pw);
+			Statement statement = con.createStatement();
+			String query = "SELECT * FROM alumnos WHERE numExpediente='" + matricula.trim() + "';";
+			ResultSet resultados = statement.executeQuery(query);
+			
+			if(resultados.next()) {
+				
+			} else {
+				flag = true;
+			}
+			
+		}catch(SQLException a) {
+			
+		}catch(Exception e) {
+			
+		}
+		
+		return flag;
+	}
+	
+	public void insertarAlumno() {
 
 		try {
 
-			Modificacion acceso = new Modificacion();
-			Statement statement = acceso.getConexion().createStatement();
-			String query = "SELECT * FROM alumnos WHERE numExpediente='" + matricula.trim() + "';";
-			ResultSet resultados = statement.executeQuery(query);
-			resultados.next();
-
-			nombre = resultados.getString("nombre");
-			apellidos = resultados.getString("apellidos");
+			int res = 0;
+			
+			con = DriverManager.getConnection(url, usuario, pw);
+			String query = "INSERT INTO alumnos VALUES('" + matricula + "','" + nombre + "', '" +apellidos+"', '" + idProyectoAlumno +"')";
+			Statement stmt = con.createStatement();
+			res = stmt.executeUpdate(query);
 
 		} catch (SQLException a) {
+			System.out.println("No se ha podido insertar");
 			a.printStackTrace();
-		} catch (Exception b) {
-			b.printStackTrace();
+		} catch (Exception e) {
+			System.out.println("Error de aplicación");
+			e.printStackTrace();
+		}
+
+	}
+	
+	public boolean comprobarNombreProyecto() {
+		
+		flag = false;
+		
+		try {
+		
+			con = DriverManager.getConnection(url, usuario, pw);
+			Statement statement = con.createStatement();
+			String query = "SELECT * FROM proyectos WHERE nombreProyecto='" + nombreProyecto + "';";
+			ResultSet resultados = statement.executeQuery(query);
+			
+			if(resultados.next()) {
+				
+			} else {
+				flag = true;
+			}
+			
+		}catch(SQLException a) {
+			
+		}catch(Exception e) {
+			
+		}
+		
+		return flag;
+	}
+	
+	public void comprobarArea() {
+		
+		if(area.equals("BaseDeDatos")) {
+			numeroArea = 1;
+		} else if(area.equals("Programación")) {
+			numeroArea = 2;
+		} else if(area.equals("LenguajeDeMarcas")) {
+			numeroArea = 3;
+		} else if(area.equals("FOL")) {
+			numeroArea = 4;
+		} else if(area.equals("SistemasInformaticos")) {
+			numeroArea = 5;
+		}
+		
+	}
+	
+	public void insertarProyecto() {
+
+		try {
+
+			int res = 0;
+			comprobarArea();
+			
+			con = DriverManager.getConnection(url, usuario, pw);
+			String query = "INSERT INTO proyectos(ano, nombreProyecto, notaObtenida, codAreaFK, github) VALUES('" + ano + "','" + nombreProyecto + "', '" +nota+"', '" + numeroArea +"', '" + github +"');";
+			Statement stmt = con.createStatement();
+			res = stmt.executeUpdate(query);
+
+		} catch (SQLException a) {
+			System.out.println("No se ha podido insertar");
+			a.printStackTrace();
+		} catch (Exception e) {
+			System.out.println("Error de aplicación");
+			e.printStackTrace();
 		}
 
 	}
 
-	public void datosProyecto() {
+	public int getNumeroArea() {
+		return numeroArea;
+	}
 
-		try {
+	public void setNumeroArea(int numeroArea) {
+		this.numeroArea = numeroArea;
+	}
 
-			Modificacion acceso = new Modificacion();
-			Statement statement = acceso.getConexion().createStatement();
-			String query = "SELECT * FROM proyectos WHERE nombreProyecto='" + nombreProyecto.trim() + "';";
-			ResultSet resultados = statement.executeQuery(query);
-			resultados.next();
+	public String getGithub() {
+		return github;
+	}
 
-			curso = resultados.getString("curso");
-			area = resultados.getString("codAreaFK");
-			nota = resultados.getInt("notaObtenida");
-			idProyecto = resultados.getInt("idProyecto");
-			
-		} catch (SQLException a) {
-			a.printStackTrace();
-		} catch (Exception b) {
-			b.printStackTrace();
-		}
-
+	public void setGithub(String github) {
+		this.github = github;
 	}
 
 	public String getDriver() {
@@ -156,12 +244,12 @@ public class Modificacion {
 		this.matricula = matricula;
 	}
 
-	public String getCurso() {
-		return curso;
+	public String getAno() {
+		return ano;
 	}
 
-	public void setCurso(String curso) {
-		this.curso = curso;
+	public void setAno(String curso) {
+		this.ano = curso;
 	}
 
 	public String getArea() {
@@ -212,12 +300,28 @@ public class Modificacion {
 		this.descripcion = descripcion;
 	}
 
+	public boolean isFlag() {
+		return flag;
+	}
+
+	public void setFlag(boolean flag) {
+		this.flag = flag;
+	}
+
 	public Connection getCon() {
 		return con;
 	}
 
 	public void setCon(Connection con) {
 		this.con = con;
+	}
+
+	public String getIdProyectoAlumno() {
+		return idProyectoAlumno;
+	}
+
+	public void setIdProyectoAlumno(String idProyectoAlumno) {
+		this.idProyectoAlumno = idProyectoAlumno;
 	}
 	
 }

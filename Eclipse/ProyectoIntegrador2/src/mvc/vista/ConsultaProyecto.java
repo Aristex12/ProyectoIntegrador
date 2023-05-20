@@ -17,8 +17,10 @@ public class ConsultaProyecto extends JFrame{
     private JLabel areaLabel;
     private JLabel nota;
     private JLabel notaLabel;
-    private JLabel idProyecto;
-    private JLabel idProyectoLabel;
+    private JLabel github;
+    private JLabel githubLabel;
+    private JLabel integrantes;
+    private JLabel integrantesLabel;
     private JButton volverButton;
 
     public ConsultaProyecto() {
@@ -32,7 +34,7 @@ public class ConsultaProyecto extends JFrame{
     private void inicializarComponentes() {
     	//Configuramos la ventana
     	
-    	setSize(440, 250);
+    	setSize(440, 306);
         setLocationRelativeTo(null);
         getContentPane().setLayout(null);
     	
@@ -76,18 +78,25 @@ public class ConsultaProyecto extends JFrame{
         notaLabel = new JLabel("");
         notaLabel.setBounds(106, 143, 51, 25);
         
-        idProyecto = new JLabel("ID:");
-        idProyecto.setFont(new Font("Tahoma", Font.BOLD, 11));
-        idProyecto.setBounds(28, 173, 51, 25);
+        github = new JLabel("GitHub:");
+        github.setFont(new Font("Tahoma", Font.BOLD, 11));
+        github.setBounds(28, 173, 51, 25);
         
-        idProyectoLabel = new JLabel("");
-        idProyectoLabel.setBounds(106, 173, 51, 25);
+        githubLabel = new JLabel("");
+        githubLabel.setBounds(106, 173, 200, 25);
+        
+        integrantes = new JLabel("Integrantes:");
+        integrantes.setFont(new Font("Tahoma", Font.BOLD, 11));
+        integrantes.setBounds(28, 200, 99, 25);
+        
+        integrantesLabel = new JLabel("");
+        integrantesLabel.setBounds(106, 200, 200, 25);
 
         volverButton = new JButton();
         volverButton.setText("Volver al Menú");
         ListenerVolverAlMenuProyecto escuchador1 = new ListenerVolverAlMenuProyecto(this);
         volverButton.addActionListener(escuchador1);
-        volverButton.setBounds(276, 178, 140, 25);
+        volverButton.setBounds(276, 234, 140, 25);
 
         // Agregar componentes a la ventana
         getContentPane().add(titulo);
@@ -100,11 +109,45 @@ public class ConsultaProyecto extends JFrame{
         getContentPane().add(volverButton);
         getContentPane().add(nota);
         getContentPane().add(notaLabel);
-        getContentPane().add(idProyecto);
-        getContentPane().add(idProyectoLabel);
+        getContentPane().add(github);
+        getContentPane().add(githubLabel);
+        getContentPane().add(integrantes);
+        getContentPane().add(integrantesLabel);
     }
 
-    public JLabel getTitulo() {
+    public JLabel getGithub() {
+		return github;
+	}
+
+	public void setGithub(JLabel github) {
+		this.github = github;
+	}
+
+	public JLabel getGithubLabel() {
+		return githubLabel;
+	}
+
+	public void setGithubLabel(JLabel githubLabel) {
+		this.githubLabel = githubLabel;
+	}
+
+	public JLabel getIntegrantes() {
+		return integrantes;
+	}
+
+	public void setIntegrantes(JLabel integrantes) {
+		this.integrantes = integrantes;
+	}
+
+	public JLabel getIntegrantesLabel() {
+		return integrantesLabel;
+	}
+
+	public void setIntegrantesLabel(JLabel integrantesLabel) {
+		this.integrantesLabel = integrantesLabel;
+	}
+
+	public JLabel getTitulo() {
 		return titulo;
 	}
 
@@ -189,19 +232,19 @@ public class ConsultaProyecto extends JFrame{
     }
 
 	public JLabel getIdProyecto() {
-		return idProyecto;
+		return github;
 	}
 
 	public void setIdProyecto(JLabel idProyecto) {
-		this.idProyecto = idProyecto;
+		this.github = idProyecto;
 	}
 
 	public JLabel getIdProyectoLabel() {
-		return idProyectoLabel;
+		return githubLabel;
 	}
 
 	public void setIdProyectoLabel(JLabel idProyectoLabel) {
-		this.idProyectoLabel = idProyectoLabel;
+		this.githubLabel = idProyectoLabel;
 	}
 	
 }

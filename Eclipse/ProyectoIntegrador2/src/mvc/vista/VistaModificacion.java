@@ -8,88 +8,82 @@ import mvc.controlador.ListenerModificacionEnviar;
 import java.awt.*;
 
 public class VistaModificacion extends JFrame {
-    private JLabel titulo, labelTipo, labelNombre;
-    private JRadioButton radioAlumno, radioProyecto, radioAreas;
-    private JTextField campoNombre;
-    private JButton botonBuscar;
-    private JButton atras;
+	private JLabel titulo, labelTipo, labelNombre;
+	private JRadioButton radioAlumno, radioProyecto;
+	private JTextField campoNombre;
+	private JButton botonBuscar;
+	private JButton atras;
 
-    public VistaModificacion() {
-        // Configuración de la ventana
-        super("Menu Modificación");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        inicializarComponentes();
-    }
-    
-    public void inicializarComponentes() {
-    	setSize(440, 250);
-        setLocationRelativeTo(null);
+	public VistaModificacion() {
+		// Configuración de la ventana
+		super("Menu Modificación");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		inicializarComponentes();
+	}
 
-        // Creación de los componentes
-        titulo = new JLabel("Modificar");
-        titulo.setFont(new Font("Tahoma", Font.BOLD, 20));
-        titulo.setHorizontalAlignment(SwingConstants.CENTER);
+	public void inicializarComponentes() {
+		setSize(440, 250);
+		setLocationRelativeTo(null);
 
-        labelTipo = new JLabel("Tipos:");
-        labelTipo.setFont(new Font("Tahoma", Font.BOLD, 11));
+		// Creación de los componentes
+		titulo = new JLabel("Modificar");
+		titulo.setFont(new Font("Tahoma", Font.BOLD, 20));
+		titulo.setHorizontalAlignment(SwingConstants.CENTER);
 
-        radioAlumno = new JRadioButton("Alumno");
-        radioAlumno.setSelected(true);
-        radioProyecto = new JRadioButton("Proyecto");
-        radioAreas = new JRadioButton("Áreas");
+		labelTipo = new JLabel("Tipos:");
+		labelTipo.setFont(new Font("Tahoma", Font.BOLD, 11));
 
-        ButtonGroup grupoTipos = new ButtonGroup();
-        grupoTipos.add(radioAlumno);
-        grupoTipos.add(radioProyecto);
-        grupoTipos.add(radioAreas);
+		radioAlumno = new JRadioButton("Alumno");
+		radioAlumno.setSelected(true);
+		radioProyecto = new JRadioButton("Proyecto");
 
-        labelNombre = new JLabel("Nombre:");
-        labelNombre.setFont(new Font("Tahoma", Font.BOLD, 11));
+		ButtonGroup grupoTipos = new ButtonGroup();
+		grupoTipos.add(radioAlumno);
+		grupoTipos.add(radioProyecto);
 
-        campoNombre = new JTextField();
+		labelNombre = new JLabel("Nombre:");
+		labelNombre.setFont(new Font("Tahoma", Font.BOLD, 11));
 
-        botonBuscar = new JButton("Buscar");
-        ListenerModificacionEnviar escuchador1 = new ListenerModificacionEnviar(this);
-        botonBuscar.addActionListener(escuchador1);
-        
-        
-        atras = new JButton("Atrás");
-        ListenerAtrasModificacion escuchador2 = new ListenerAtrasModificacion(this);
-        atras.addActionListener(escuchador2);
+		campoNombre = new JTextField();
 
-        // Configuración del layout
-        getContentPane().setLayout(null);
+		botonBuscar = new JButton("Buscar");
+		ListenerModificacionEnviar escuchador1 = new ListenerModificacionEnviar(this);
+		botonBuscar.addActionListener(escuchador1);
 
-        titulo.setBounds(10, 28, 400, 30);
-        getContentPane().add(titulo);
+		atras = new JButton("Atrás");
+		ListenerAtrasModificacion escuchador2 = new ListenerAtrasModificacion(this);
+		atras.addActionListener(escuchador2);
 
-        labelTipo.setBounds(56, 68, 50, 30);
-        getContentPane().add(labelTipo);
+		// Configuración del layout
+		getContentPane().setLayout(null);
 
-        radioAlumno.setBounds(170, 68, 73, 30);
-        getContentPane().add(radioAlumno);
+		titulo.setBounds(10, 28, 400, 30);
+		getContentPane().add(titulo);
 
-        radioProyecto.setBounds(245, 68, 80, 30);
-        getContentPane().add(radioProyecto);
+		labelTipo.setBounds(56, 68, 50, 30);
+		getContentPane().add(labelTipo);
 
-        radioAreas.setBounds(337, 68, 73, 30);
-        getContentPane().add(radioAreas);
+		radioAlumno.setBounds(170, 68, 73, 30);
+		getContentPane().add(radioAlumno);
 
-        labelNombre.setBounds(56, 108, 61, 30);
-        getContentPane().add(labelNombre);
+		radioProyecto.setBounds(245, 68, 80, 30);
+		getContentPane().add(radioProyecto);
 
-        campoNombre.setBounds(170, 109, 200, 30);
-        getContentPane().add(campoNombre);
+		labelNombre.setBounds(56, 108, 61, 30);
+		getContentPane().add(labelNombre);
 
-        botonBuscar.setBounds(290, 160, 80, 30);
-        getContentPane().add(botonBuscar);
-        
-        atras.setBounds(170, 160, 80, 30);
-        getContentPane().add(atras);
-        
-    }
-    
-    public JLabel getTitulo() {
+		campoNombre.setBounds(170, 109, 200, 30);
+		getContentPane().add(campoNombre);
+
+		botonBuscar.setBounds(290, 160, 80, 30);
+		getContentPane().add(botonBuscar);
+
+		atras.setBounds(170, 160, 80, 30);
+		getContentPane().add(atras);
+
+	}
+
+	public JLabel getTitulo() {
 		return titulo;
 	}
 
@@ -129,14 +123,6 @@ public class VistaModificacion extends JFrame {
 		this.radioProyecto = radioProyecto;
 	}
 
-	public JRadioButton getRadioAreas() {
-		return radioAreas;
-	}
-
-	public void setRadioAreas(JRadioButton radioAreas) {
-		this.radioAreas = radioAreas;
-	}
-
 	public JTextField getCampoNombre() {
 		return campoNombre;
 	}
@@ -162,7 +148,7 @@ public class VistaModificacion extends JFrame {
 	}
 
 	public void hacerVisible() {
-    	setVisible(true);
-    }
-    
+		setVisible(true);
+	}
+
 }

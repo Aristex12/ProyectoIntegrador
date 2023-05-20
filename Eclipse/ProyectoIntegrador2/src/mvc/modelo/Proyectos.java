@@ -5,13 +5,15 @@ public class Proyectos {
 	private String nombre;
 	private String idProyecto;
 	private String curso;
+	private String url;
 	private int nota;
 
-	public Proyectos(String nombre, String idProyecto, int nota, String curso) {
+	public Proyectos(String nombre, String idProyecto, int nota, String curso, String url) {
 		this.nombre = nombre;
 		this.idProyecto = idProyecto;
 		this.nota = nota;
 		this.curso = curso;
+		this.url = url;
 	}
 
 	public Proyectos() {
@@ -54,6 +56,14 @@ public class Proyectos {
 
 	public void setNota(int nota) {
 		this.nota = nota;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 	
 }

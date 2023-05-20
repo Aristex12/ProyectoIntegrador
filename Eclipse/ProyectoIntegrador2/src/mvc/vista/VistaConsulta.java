@@ -1,13 +1,15 @@
 package mvc.vista;
 
 import javax.swing.*;
+
+import mvc.controlador.ListenerAtrasConsulta;
 import mvc.controlador.ListenerConsulta;
 import java.awt.*;
 
 public class VistaConsulta extends JFrame {
 
 	private JLabel titulo, labelTipo, labelNombre, labelAreas, error;
-	private JRadioButton radioAlumno, radioProyecto;
+	private JRadioButton radioAlumno, radioProyecto, radioArea;
 	private JTextField campoNombre;
 	private JButton botonBuscar;
 	private JTextField campoIdProyecto;
@@ -34,10 +36,12 @@ public class VistaConsulta extends JFrame {
 		radioAlumno = new JRadioButton("Alumno");
 		radioAlumno.setSelected(true);
 		radioProyecto = new JRadioButton("Proyecto");
+		radioArea = new JRadioButton("Area");
 
 		ButtonGroup grupoRadio = new ButtonGroup();
 		grupoRadio.add(radioAlumno);
 		grupoRadio.add(radioProyecto);
+		grupoRadio.add(radioArea);
 
 		labelNombre = new JLabel("Nombre:");
 
@@ -75,6 +79,9 @@ public class VistaConsulta extends JFrame {
 
 		radioProyecto.setBounds(254, 51, 80, 30);
 		getContentPane().add(radioProyecto);
+		
+		radioArea.setBounds(340, 51, 80, 30);
+		getContentPane().add(radioArea);
 
 		labelNombre.setBounds(66, 90, 100, 30);
 		getContentPane().add(labelNombre);

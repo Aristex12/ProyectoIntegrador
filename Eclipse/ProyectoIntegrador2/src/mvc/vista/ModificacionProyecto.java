@@ -15,17 +15,17 @@ public class ModificacionProyecto extends JFrame {
 	private JLabel area;
 	JComboBox<String> areaCombo;
 	private JLabel nota;
-	private JComboBox<Integer> notasCombo;
+	private JSpinner notasSpinner;
+	private JButton atras;
 	private JButton modificarButton;
 
 	public ModificacionProyecto() {
-		super("Modificar Datos del Proyecto");
+		super("Modificar");
 		inicializarComponentes();
 	}
 
 	public void inicializarComponentes() {
 		// Configuración de la ventana
-		setTitle("Datos del Alumno");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(440, 270);
 		setLocationRelativeTo(null);
@@ -34,7 +34,7 @@ public class ModificacionProyecto extends JFrame {
 		// Creación y configuración de los componentes
 		titulo = new JLabel();
 		titulo.setFont(new Font("Tahoma", Font.BOLD, 16));
-		titulo.setText("Modificar Datos del Alumno");
+		titulo.setText("Modificar Datos del Proyecto");
 		titulo.setBounds(90, 22, 237, 25);
 
 		nombre = new JLabel();
@@ -51,30 +51,35 @@ public class ModificacionProyecto extends JFrame {
 		curso.setBounds(50, 95, 100, 25);
 
 		String[] opciones = { "Primero", "Segundo" };
-		comboCurso = new JComboBox<String>();
-		comboCurso.setBounds(160, 130, 200, 25);
+		DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>(opciones);
+		comboCurso = new JComboBox<String>(modelo);
+		comboCurso.setBounds(160, 95, 200, 25);
 
 		area = new JLabel();
 		area.setFont(new Font("Tahoma", Font.BOLD, 11));
 		area.setText("Área:");
 		area.setBounds(50, 130, 100, 25);
-
-		String[] opciones2 = { "Opción 1", "Opción 2", "Opción 3" };
-		DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>(opciones);
-		areaCombo = new JComboBox<>(modelo);
-		areaCombo.setBounds(160, 95, 200, 24);
+		
+		String[] opciones2 = {"BaseDeDatos", "Programación", "LenguajeDeMarcas", "FOL", "SistemasInformaticos"};
+		DefaultComboBoxModel<String> modelo2 = new DefaultComboBoxModel<>(opciones2);
+		areaCombo = new JComboBox<>(modelo2);
+		areaCombo.setBounds(160, 130, 200, 24);
 
 		nota = new JLabel("Nota:");
 		nota.setFont(new Font("Tahoma", Font.BOLD, 11));
 		nota.setBounds(50, 160, 100, 24);
 
-		notasCombo = new JComboBox<Integer>();
-		notasCombo.setBounds(160, 165, 200, 24);
+		SpinnerNumberModel spinnerModel = new SpinnerNumberModel(1, 1, 10, 1);
+		notasSpinner = new JSpinner(spinnerModel);
+		notasSpinner.setBounds(160, 165, 47, 24);
 
 		modificarButton = new JButton();
-
+		
+		atras = new JButton("Atrás");
+		atras.setBounds(160, 199, 87, 25);
+		
 		modificarButton.setText("Modificar");
-		modificarButton.setBounds(260, 199, 100, 25);
+		modificarButton.setBounds(273, 199, 87, 25);
 
 		// Agregar componentes a la ventana
 		getContentPane().add(titulo);
@@ -85,8 +90,9 @@ public class ModificacionProyecto extends JFrame {
 		getContentPane().add(area);
 		getContentPane().add(areaCombo);
 		getContentPane().add(nota);
-		getContentPane().add(notasCombo);
+		getContentPane().add(notasSpinner);
 		getContentPane().add(modificarButton);
+		getContentPane().add(atras);
 	}
 
 	public JLabel getTitulo() {
@@ -153,12 +159,20 @@ public class ModificacionProyecto extends JFrame {
 		this.nota = nota;
 	}
 
-	public JComboBox<Integer> getNotasCombo() {
-		return notasCombo;
+	public JSpinner getNotasSpinner() {
+		return notasSpinner;
 	}
 
-	public void setNotasCombo(JComboBox<Integer> notasCombo) {
-		this.notasCombo = notasCombo;
+	public void setNotasSpinner(JSpinner notasSpinner) {
+		this.notasSpinner = notasSpinner;
+	}
+
+	public JButton getAtras() {
+		return atras;
+	}
+
+	public void setAtras(JButton atras) {
+		this.atras = atras;
 	}
 
 	public JButton getModificarButton() {

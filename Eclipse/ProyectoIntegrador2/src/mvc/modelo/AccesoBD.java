@@ -59,7 +59,8 @@ public class AccesoBD {
 				String nombre = resultados.getString("nombre");
 				String apellidos = resultados.getString("apellidos");
 				String matricula = resultados.getString("numExpediente");
-				Alumno alumno = new Alumno(nombre, apellidos, matricula);
+				String idProyecto = resultados.getString("idProyectoFK");
+				Alumno alumno = new Alumno(nombre, apellidos, matricula, idProyecto);
 				alumnos.add(alumno);
 			}
 
@@ -86,9 +87,10 @@ public class AccesoBD {
 			while (resultados.next()) {
 				String nombre = resultados.getString("nombreProyecto");
 				String idProyecto = resultados.getString("idProyecto");
-				String curso = resultados.getString("curso");
+				String ano = resultados.getString("ano");
+				String url = resultados.getString("github");
 				int nota = resultados.getInt("notaObtenida");
-				Proyectos proyecto = new Proyectos(nombre, idProyecto, nota, curso);
+				Proyectos proyecto = new Proyectos(nombre, idProyecto, nota, ano, url);
 				proyectos.add(proyecto);
 			}
 

@@ -21,10 +21,7 @@ public class ListenerVistaDarAltaEnviar implements ActionListener {
 		if(v.getOpcionAlumno().isSelected()) {
 			VistaAltaAlumno ventana = new VistaAltaAlumno();
 			ventana.hacerVisible();
-		} else if(v.getOpcionAreas().isSelected()) {
-			AltaArea ventana = new AltaArea();
-			ventana.hacerVisible();
-		} else if(v.getOpcionProyecto().isSelected()) {
+		} else if(v.getOpcionProyecto().isSelected()){
 			AltaProyecto ventana = new AltaProyecto();
 			ventana.hacerVisible();
 		}

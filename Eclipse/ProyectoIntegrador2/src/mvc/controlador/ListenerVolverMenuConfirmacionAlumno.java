@@ -3,14 +3,15 @@ package mvc.controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import mvc.vista.*;
+import mvc.vista.VistaConfirmacionAlta;
+import mvc.vista.VistaMenuPrincipal;
 
-public class ListenerAtrasDarAlta implements ActionListener {
+public class ListenerVolverMenuConfirmacionAlumno implements ActionListener {
 
-	VistaDarAlta v;
+	VistaConfirmacionAlta v;
 	
-	public ListenerAtrasDarAlta(VistaDarAlta vistaDarAlta) {
-		v = vistaDarAlta;
+	public ListenerVolverMenuConfirmacionAlumno(VistaConfirmacionAlta vista) {
+		v = vista;
 	}
 	
 	@Override

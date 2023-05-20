@@ -18,10 +18,14 @@ public class Consulta {
 	private String matricula;
 
 	private String nombreProyecto;
-	private String curso;
+	private String año;
 	private String area;
 	private int nota;
 	private int idProyecto;
+	private String github;
+	
+	private String nombreArea;
+	private String descripcion;
 
 	Connection con = null;
 
@@ -84,10 +88,11 @@ public class Consulta {
 			ResultSet resultados = statement.executeQuery(query);
 			resultados.next();
 
-			curso = resultados.getString("curso");
+			setAño(resultados.getString("ano"));
 			area = resultados.getString("codAreaFK");
 			nota = resultados.getInt("notaObtenida");
 			idProyecto = resultados.getInt("idProyecto");
+			github = resultados.getString("github");
 			
 		} catch (SQLException a) {
 			a.printStackTrace();
@@ -95,6 +100,34 @@ public class Consulta {
 			b.printStackTrace();
 		}
 
+	}
+	
+	public String getGithub() {
+		return github;
+	}
+
+	public void setGithub(String github) {
+		this.github = github;
+	}
+
+	public void datosArea() {
+		
+		try {
+
+			Consulta acceso = new Consulta();
+			Statement statement = acceso.getConexion().createStatement();
+			String query = "SELECT * FROM areas WHERE nombre='" + nombreArea.trim() + "';";
+			ResultSet resultados = statement.executeQuery(query);
+			resultados.next();
+
+			descripcion = resultados.getString("descripcion");
+			
+		} catch (SQLException a) {
+			a.printStackTrace();
+		} catch (Exception b) {
+			b.printStackTrace();
+		}
+		
 	}
 
 	public String getDriver() {
@@ -153,14 +186,6 @@ public class Consulta {
 		this.matricula = matricula;
 	}
 
-	public String getCurso() {
-		return curso;
-	}
-
-	public void setCurso(String curso) {
-		this.curso = curso;
-	}
-
 	public String getArea() {
 		return area;
 	}
@@ -199,6 +224,30 @@ public class Consulta {
 
 	public void setIdProyecto(int idProyecto) {
 		this.idProyecto = idProyecto;
+	}
+
+	public String getNombreArea() {
+		return nombreArea;
+	}
+
+	public void setNombreArea(String nombreArea) {
+		this.nombreArea = nombreArea;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public String getAño() {
+		return año;
+	}
+
+	public void setAño(String año) {
+		this.año = año;
 	}
 
 }

@@ -15,6 +15,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
 import mvc.controlador.ListenerAtrasBusquedaMod;
+import mvc.controlador.ListenerSeleccionBusquedaMod;
 import mvc.modelo.Alumno;
 import mvc.modelo.Area;
 import mvc.modelo.Proyectos;
@@ -67,6 +68,8 @@ public class BusquedaModificacion extends JFrame {
 
 		// Configuramos los botones de seleccionar y atras
 		seleccionar = new JButton("Seleccionar");
+		ListenerSeleccionBusquedaMod escuchador2 = new ListenerSeleccionBusquedaMod(this);
+		seleccionar.addActionListener(escuchador2);
 		seleccionar.setBounds(289, 216, 93, 25);
 
 		atras = new JButton("Atras");

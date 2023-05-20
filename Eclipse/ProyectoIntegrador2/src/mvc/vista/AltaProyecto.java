@@ -2,6 +2,7 @@ package mvc.vista;
 
 import javax.swing.*;
 
+import mvc.controlador.ListenerAltaProyecto;
 import mvc.controlador.ListenerAtrasAltaProyecto;
 
 import java.awt.Font;
@@ -12,13 +13,16 @@ public class AltaProyecto extends JFrame {
 	private JLabel nombre;
 	private JTextField inputNombre;
 	private JLabel grupoLabel;
-	private JComboBox<Integer> cursoComboBox;
+	private JComboBox<String> cursoComboBox;
 	private JLabel areaLabel;
 	private JComboBox<String> areaComboBox;
-	private JComboBox<Integer> notaComboBox;
+	private JSpinner notasSpinner;
+	private JLabel labelURL;
+	private JTextField inputUrl;
 	private JButton enviar;
 	private JButton atras;
 	private JLabel labelNota;
+	private JLabel labelError;
 
 	public AltaProyecto() {
 		super("Alta Proyecto");
@@ -54,8 +58,11 @@ public class AltaProyecto extends JFrame {
 		grupoLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
 		grupoLabel.setText("Curso:");
 		grupoLabel.setBounds(60, 90, 60, 25);
-
-		cursoComboBox = new JComboBox<Integer>();
+		
+		DefaultComboBoxModel<String> cursos = new DefaultComboBoxModel<>();
+		cursos.addElement("Primero");
+		cursos.addElement("Segundo");
+		cursoComboBox = new JComboBox<String>(cursos);
 		cursoComboBox.setBounds(189, 90, 180, 25);
 
 		// Creación y configuración del área del proyecto
@@ -64,28 +71,46 @@ public class AltaProyecto extends JFrame {
 		areaLabel.setText("Área:");
 		areaLabel.setBounds(60, 125, 60, 25);
 
-        areaComboBox = new JComboBox<>();
+		DefaultComboBoxModel<String> areas = new DefaultComboBoxModel<>();
+		areas.addElement("BasesDeDatos");
+		areas.addElement("Programación");
+		areas.addElement("LenguajeDeMarcas");
+		areas.addElement("FOL");
+		areas.addElement("SistemasInformaticos");
+        areaComboBox = new JComboBox<>(areas);
         areaComboBox.setBounds(189, 125, 180, 25);
 
+        labelURL = new JLabel("Github:");
+        labelURL.setFont(new Font("Tahoma", Font.BOLD, 11));
+        labelURL.setBounds(60, 195, 60, 25);
+        
+        inputUrl = new JTextField();
+        inputUrl.setBounds(189, 195, 180, 25);
+        
+        labelError = new JLabel("");
+        labelError.setBounds(10, 230, 180, 25);
+        
 		// Creación y configuración del botón de enviar
 		enviar = new JButton();
 		enviar.setText("Enviar");
-		enviar.setBounds(289, 207, 80, 25);
+		ListenerAltaProyecto escuchador2 = new ListenerAltaProyecto(this);
+		enviar.addActionListener(escuchador2);
+		enviar.setBounds(289, 234, 80, 25);
 
 		//Creamos el boton atras
 		atras = new JButton("Atrás");
 		ListenerAtrasAltaProyecto escuchador1 = new ListenerAtrasAltaProyecto(this);
 		atras.addActionListener(escuchador1);
-		atras.setBounds(189, 207, 80, 25);
+		atras.setBounds(189, 234, 80, 25);
 		
 		//Configuramos el jLabel de notas
 		labelNota = new JLabel("Nota:");
 		labelNota.setFont(new Font("Tahoma", Font.BOLD, 11));
 		labelNota.setBounds(60, 160, 80, 25);
 		
-		//Creamos la lista
-		notaComboBox = new JComboBox<>();
-		notaComboBox.setBounds(189, 160, 80, 25);
+		SpinnerModel spinnerModel = new SpinnerNumberModel(1, 1, 10, 1);
+		notasSpinner = new JSpinner(spinnerModel);
+		notasSpinner.setBounds(189, 160, 80, 25);
 		
 		// Agregar componentes a la ventana
 		getContentPane().add(titulo);
@@ -97,8 +122,123 @@ public class AltaProyecto extends JFrame {
 		getContentPane().add(areaComboBox);
 		getContentPane().add(enviar);
 		getContentPane().add(atras);
-		getContentPane().add(notaComboBox);
 		getContentPane().add(labelNota);
+		getContentPane().add(notasSpinner);
+		getContentPane().add(labelURL);
+		getContentPane().add(inputUrl);
+		getContentPane().add(labelError);
+	}
+
+	public JLabel getLabelError() {
+		return labelError;
+	}
+
+	public void setLabelError(JLabel labelError) {
+		this.labelError = labelError;
+	}
+
+	public JLabel getLabelURL() {
+		return labelURL;
+	}
+
+	public void setLabelURL(JLabel labelURL) {
+		this.labelURL = labelURL;
+	}
+
+	public JTextField getInputUrl() {
+		return inputUrl;
+	}
+
+	public void setInputUrl(JTextField inputUrl) {
+		this.inputUrl = inputUrl;
+	}
+
+	public JLabel getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(JLabel titulo) {
+		this.titulo = titulo;
+	}
+
+	public JLabel getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(JLabel nombre) {
+		this.nombre = nombre;
+	}
+
+	public JTextField getInputNombre() {
+		return inputNombre;
+	}
+
+	public void setInputNombre(JTextField inputNombre) {
+		this.inputNombre = inputNombre;
+	}
+
+	public JLabel getGrupoLabel() {
+		return grupoLabel;
+	}
+
+	public void setGrupoLabel(JLabel grupoLabel) {
+		this.grupoLabel = grupoLabel;
+	}
+
+	public JComboBox<String> getCursoComboBox() {
+		return cursoComboBox;
+	}
+
+	public void setCursoComboBox(JComboBox<String> cursoComboBox) {
+		this.cursoComboBox = cursoComboBox;
+	}
+
+	public JLabel getAreaLabel() {
+		return areaLabel;
+	}
+
+	public void setAreaLabel(JLabel areaLabel) {
+		this.areaLabel = areaLabel;
+	}
+
+	public JComboBox<String> getAreaComboBox() {
+		return areaComboBox;
+	}
+
+	public void setAreaComboBox(JComboBox<String> areaComboBox) {
+		this.areaComboBox = areaComboBox;
+	}
+
+	public JSpinner getNotasSpinner() {
+		return notasSpinner;
+	}
+
+	public void setNotasSpinner(JSpinner notasSpinner) {
+		this.notasSpinner = notasSpinner;
+	}
+
+	public JButton getEnviar() {
+		return enviar;
+	}
+
+	public void setEnviar(JButton enviar) {
+		this.enviar = enviar;
+	}
+
+	public JButton getAtras() {
+		return atras;
+	}
+
+	public void setAtras(JButton atras) {
+		this.atras = atras;
+	}
+
+	public JLabel getLabelNota() {
+		return labelNota;
+	}
+
+	public void setLabelNota(JLabel labelNota) {
+		this.labelNota = labelNota;
 	}
 
 	public void hacerVisible() {

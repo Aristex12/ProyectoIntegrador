@@ -7,19 +7,18 @@ import mvc.controlador.ListenerBajaEnviar;
 
 import java.awt.Font;
 
-public class Baja extends JFrame{
+public class VistaBaja extends JFrame{
 
 	private JLabel titulo;
     private JLabel tipoLabel;
     private JRadioButton alumnoRadioButton;
     private JRadioButton proyectoRadioButton;
-    private JRadioButton areasRadioButton;
     private JLabel nombre;
     private JTextField inputNombre;
     private JButton enviar;
     private JButton atras;
 
-    public Baja() {
+    public VistaBaja() {
         super("Dar de Baja");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // Inicializar los componentes
@@ -56,10 +55,6 @@ public class Baja extends JFrame{
         proyectoRadioButton.setBounds(247, 76, 80, 25);
         tipoButtonGroup.add(proyectoRadioButton);
 
-        areasRadioButton = new JRadioButton("Áreas");
-        areasRadioButton.setBounds(329, 76, 80, 25);
-        tipoButtonGroup.add(areasRadioButton);
-
         // Creación y configuración del nombre del elemento a dar de baja
         nombre = new JLabel();
         nombre.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -87,14 +82,77 @@ public class Baja extends JFrame{
         getContentPane().add(tipoLabel);
         getContentPane().add(alumnoRadioButton);
         getContentPane().add(proyectoRadioButton);
-        getContentPane().add(areasRadioButton);
         getContentPane().add(nombre);
         getContentPane().add(inputNombre);
         getContentPane().add(enviar);
         getContentPane().add(atras);
     }
 
-    public void hacerVisible() {
+    public JLabel getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(JLabel titulo) {
+		this.titulo = titulo;
+	}
+
+	public JLabel getTipoLabel() {
+		return tipoLabel;
+	}
+
+	public void setTipoLabel(JLabel tipoLabel) {
+		this.tipoLabel = tipoLabel;
+	}
+
+	public JRadioButton getAlumnoRadioButton() {
+		return alumnoRadioButton;
+	}
+
+	public void setAlumnoRadioButton(JRadioButton alumnoRadioButton) {
+		this.alumnoRadioButton = alumnoRadioButton;
+	}
+
+	public JRadioButton getProyectoRadioButton() {
+		return proyectoRadioButton;
+	}
+
+	public void setProyectoRadioButton(JRadioButton proyectoRadioButton) {
+		this.proyectoRadioButton = proyectoRadioButton;
+	}
+
+	public JLabel getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(JLabel nombre) {
+		this.nombre = nombre;
+	}
+
+	public JTextField getInputNombre() {
+		return inputNombre;
+	}
+
+	public void setInputNombre(JTextField inputNombre) {
+		this.inputNombre = inputNombre;
+	}
+
+	public JButton getEnviar() {
+		return enviar;
+	}
+
+	public void setEnviar(JButton enviar) {
+		this.enviar = enviar;
+	}
+
+	public JButton getAtras() {
+		return atras;
+	}
+
+	public void setAtras(JButton atras) {
+		this.atras = atras;
+	}
+
+	public void hacerVisible() {
         // Hacer visible la ventana
         setVisible(true);
     }

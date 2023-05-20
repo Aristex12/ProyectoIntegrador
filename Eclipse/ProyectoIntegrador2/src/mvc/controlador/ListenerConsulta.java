@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import mvc.modelo.AccesoBD;
 import mvc.modelo.Alumno;
+import mvc.modelo.Area;
 import mvc.modelo.Proyectos;
 import mvc.vista.*;
 
@@ -29,10 +30,15 @@ public class ListenerConsulta implements ActionListener {
 			BusquedaConsulta bc = new BusquedaConsulta();
 			bc.rellenarListaAlumnos(a);
 			bc.setVisible(true);
-		} else {
+		} else if(v.getRadioProyecto().isSelected()){
 			ArrayList<Proyectos> b = opcionProyecto();
 			BusquedaConsulta bc = new BusquedaConsulta();
 			bc.rellenarListaProyectos(b);
+			bc.setVisible(true);
+		} else {
+			ArrayList<Area> c = opcionArea();
+			BusquedaConsulta bc = new BusquedaConsulta();
+			bc.rellenarListaArea(c);
 			bc.setVisible(true);
 		}
 
@@ -81,7 +87,7 @@ public class ListenerConsulta implements ActionListener {
 
 		} else if (!(v.getCampoNombre().getText().equals(""))) {
 
-			query = "SELECT * FROM proyectos WHERE nombre='" + nombre + "';";
+			query = "SELECT * FROM proyectos WHERE nombreProyecto='" + nombre + "';";
 
 		} else {
 
@@ -90,6 +96,30 @@ public class ListenerConsulta implements ActionListener {
 		}
 
 		return acceso.añadirProyectoALista(query);
+
+	}
+	
+	public ArrayList<Area> opcionArea() {
+
+		v.dispose();
+
+		AccesoBD acceso = new AccesoBD();
+
+		String query = "";
+		String idProyecto = v.getCampoIdProyecto().getText().trim();
+		String nombre = v.getCampoNombre().getText().trim();
+
+		if (nombre.equals("") && idProyecto.equals("")) {
+
+			query = "SELECT * FROM areas";
+
+		} else {
+
+			query = "SELECT * FROM areas WHERE nombre='" + nombre + "';";
+
+		};
+
+		return acceso.añadirAreaALista(query);
 
 	}
 

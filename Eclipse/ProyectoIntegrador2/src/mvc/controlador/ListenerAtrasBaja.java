@@ -6,9 +6,9 @@ import java.awt.event.ActionListener;
 
 public class ListenerAtrasBaja implements ActionListener {
 
-	public Baja v;
+	public VistaBaja v;
 	
-	public ListenerAtrasBaja(Baja vista) {
+	public ListenerAtrasBaja(VistaBaja vista) {
 		v = vista;
 	}
 	

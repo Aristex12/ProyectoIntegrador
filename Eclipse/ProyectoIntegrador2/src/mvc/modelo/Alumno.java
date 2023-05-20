@@ -12,11 +12,13 @@ public class Alumno {
 	private String nombre;
 	private String apellidos;
 	private String matricula;
+	private String idProyecto;
 	
-	public Alumno(String nombre, String apellidos, String matricula) {
+	public Alumno(String nombre, String apellidos, String matricula, String idProyecto) {
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.matricula = matricula;
+		this.setIdProyecto(idProyecto);
 	}
 	
 	public Alumno() {
@@ -52,6 +54,14 @@ public class Alumno {
 
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
+	}
+
+	public String getIdProyecto() {
+		return idProyecto;
+	}
+
+	public void setIdProyecto(String idProyecto) {
+		this.idProyecto = idProyecto;
 	}
 
 	

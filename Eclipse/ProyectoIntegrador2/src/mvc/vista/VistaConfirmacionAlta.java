@@ -1,5 +1,9 @@
 package mvc.vista;
 import javax.swing.*;
+
+import mvc.controlador.ListenerVolverAlMenuAlumno;
+import mvc.controlador.ListenerVolverMenuConfirmacionAlumno;
+
 import java.awt.*;
 
 public class VistaConfirmacionAlta extends JFrame {
@@ -10,7 +14,11 @@ public class VistaConfirmacionAlta extends JFrame {
         // Configuración de la ventana
         super("Confirmación de alta");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 200);
+        inicializarComponentes();
+    }
+    
+    public void inicializarComponentes() {
+    	setSize(400, 200);
         setLocationRelativeTo(null);
 
         // Creación de los componentes
@@ -19,6 +27,8 @@ public class VistaConfirmacionAlta extends JFrame {
         titulo.setHorizontalAlignment(SwingConstants.CENTER);
 
         botonVolver = new JButton("Volver al menú");
+        ListenerVolverMenuConfirmacionAlumno escuchador1 = new ListenerVolverMenuConfirmacionAlumno(this);
+        botonVolver.addActionListener(escuchador1);
 
         // Configuración del layout
         getContentPane().setLayout(null);
@@ -28,5 +38,9 @@ public class VistaConfirmacionAlta extends JFrame {
 
         botonVolver.setBounds(129, 88, 126, 30);
         getContentPane().add(botonVolver);
+    }
+    
+    public void hacerVisible() {
+    	setVisible(true);
     }
 }

@@ -1,6 +1,9 @@
 package mvc.vista;
 
 import javax.swing.*;
+
+import mvc.controlador.*;
+
 import java.awt.Font;
 
 public class ModificacionAlumnos extends JFrame{
@@ -11,7 +14,7 @@ public class ModificacionAlumnos extends JFrame{
     private JLabel apellidos;
     private JTextField apellidosTextField;
     private JLabel matricula;
-    private JTextField matriculaTextField;
+    private JLabel matriculaTextField;
     private JButton modificarButton;
     private JButton atras;
     
@@ -53,13 +56,19 @@ public class ModificacionAlumnos extends JFrame{
         matricula.setBounds(50, 146, 100, 25);
         
         atras = new JButton("Atrás");
+        ListenerAtrasModificarAlumnos escuchador1 = new ListenerAtrasModificarAlumnos(this);
+        atras.addActionListener(escuchador1);
         atras.setBounds(160, 178, 85, 25);
 
-        matriculaTextField = new JTextField();
+        matriculaTextField = new JLabel("");
         matriculaTextField.setBounds(160, 146, 200, 25);
         
 		modificarButton = new JButton("Modificar");
 		modificarButton.setBounds(275, 178, 85, 25);
+		
+		ListenerModificarAlumno listener = new ListenerModificarAlumno(this);
+		nombreTextField.getDocument().addDocumentListener(listener);
+		apellidosTextField.getDocument().addDocumentListener(listener);
 
         // Agregar componentes a la ventana
         getContentPane().add(nombre);
@@ -74,7 +83,7 @@ public class ModificacionAlumnos extends JFrame{
 
     }
 
-    public void hacerVisible() {
+	public void hacerVisible() {
     	// Hacer visible la ventana
         setVisible(true);
     }
@@ -127,11 +136,11 @@ public class ModificacionAlumnos extends JFrame{
 		this.matricula = area;
 	}
 
-	public JTextField getMatriculaTextField() {
+	public JLabel getMatriculaTextField() {
 		return matriculaTextField;
 	}
 
-	public void setMatriculaTextField(JTextField matriculaTextField) {
+	public void setMatriculaTextField(JLabel matriculaTextField) {
 		this.matriculaTextField = matriculaTextField;
 	}
 

@@ -23,11 +23,6 @@ public class ListenerModificacionEnviar implements ActionListener {
 			BusquedaModificacion bc = new BusquedaModificacion();
 			bc.rellenarListaAlumnos(a);
 			bc.setVisible(true);
-		} else if (v.getRadioAreas().isSelected()) {
-			ArrayList<Area> b = opcionArea();
-			BusquedaModificacion bc = new BusquedaModificacion();
-			bc.rellenarListaArea(b);
-			bc.setVisible(true);
 		} else {
 			ArrayList<Proyectos> c = opcionProyecto();
 			BusquedaModificacion bc = new BusquedaModificacion();
@@ -57,29 +52,6 @@ public class ListenerModificacionEnviar implements ActionListener {
 		}
 
 		return acceso.añadirAlumnoALista(query);
-	}
-
-	public ArrayList<Area> opcionArea() {
-
-		v.dispose();
-
-		AccesoBD acceso = new AccesoBD();
-
-		String query = "";
-		String nombre = v.getCampoNombre().getText().trim();
-
-		if (nombre.equals("")) {
-
-			query = "SELECT * FROM areas";
-
-		} else {
-
-			query = "SELECT * FROM areas WHERE nombre='" + nombre + "';";
-
-		}
-
-		return acceso.añadirAreaALista(query);
-
 	}
 
 	public ArrayList<Proyectos> opcionProyecto() {

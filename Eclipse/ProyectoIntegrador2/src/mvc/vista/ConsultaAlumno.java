@@ -15,6 +15,8 @@ public class ConsultaAlumno extends JFrame{
     private JLabel apellidosLabel;
     private JLabel matricula;
     private JLabel matriculaLabel;
+    private JLabel idProyecto;
+    private JLabel idProyectoLabel;
     private JButton volverButton;
 
     public ConsultaAlumno() {
@@ -63,13 +65,20 @@ public class ConsultaAlumno extends JFrame{
 
         matriculaLabel = new JLabel();
         matriculaLabel.setText("");
-        matriculaLabel.setBounds(108, 124, 200, 25);
+        matriculaLabel.setBounds(108, 124, 158, 25);
+        
+        idProyecto = new JLabel("id Proyecto");
+        idProyecto.setFont(new Font("Tahoma", Font.BOLD, 11));
+        idProyecto.setBounds(22, 159, 85, 25);
+        
+        idProyectoLabel = new JLabel();
+        idProyectoLabel.setBounds(108, 159, 158, 25);
 
         volverButton = new JButton();
         volverButton.setText("Volver al Menú");
         ListenerVolverAlMenuAlumno escuchador1 = new ListenerVolverAlMenuAlumno(this);
         volverButton.addActionListener(escuchador1);
-        volverButton.setBounds(22, 159, 140, 25);
+        volverButton.setBounds(276, 178, 140, 25);
 
         // Agregar componentes a la ventana
         getContentPane().add(titulo);
@@ -80,6 +89,8 @@ public class ConsultaAlumno extends JFrame{
         getContentPane().add(matricula);
         getContentPane().add(matriculaLabel);
         getContentPane().add(volverButton);
+        getContentPane().add(idProyecto);
+        getContentPane().add(idProyectoLabel);
     }
 
     public JLabel getTitulo() {
