@@ -40,7 +40,7 @@ public class ConfirmacionModificacion extends JDialog {
 		getContentPane().add(volverButton);
 	}
 
-	private void hacerVisible() {
+	public void hacerVisible() {
 		// Hacer visible la ventana
 		setVisible(true);
 	}

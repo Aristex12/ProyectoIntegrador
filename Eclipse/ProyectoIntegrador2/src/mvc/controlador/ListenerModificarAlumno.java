@@ -7,7 +7,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import mvc.modelo.Modificacion;
-import mvc.vista.ModificacionAlumnos;
+import mvc.vista.*;
 
 public class ListenerModificarAlumno implements ActionListener {
 
@@ -29,7 +29,7 @@ public class ListenerModificarAlumno implements ActionListener {
 			
 		} else {
 			
-			
+			v.getLabelError().setText("No hay modificaciones!");
 			
 		}
 		
@@ -57,6 +57,10 @@ public class ListenerModificarAlumno implements ActionListener {
 		acceso.setMatricula(v.getMatriculaTextField().getText());
 		acceso.setNombre(v.getNombreTextField().getText());
 		acceso.setApellidos(v.getApellidosTextField().getText());
+		acceso.insertarNuevosDatosAlumno();
+		
+		ConfirmacionModificacion ventana = new ConfirmacionModificacion();
+		ventana.hacerVisible();
 		
 	}
 	

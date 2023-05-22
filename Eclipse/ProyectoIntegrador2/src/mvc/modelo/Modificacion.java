@@ -15,7 +15,7 @@ public class Modificacion {
 
 	private String nombre;
 	private String apellidos;
-	private String matricula;
+	private String matricula = "";
 
 	private String curso;
 	private String area;
@@ -127,8 +127,11 @@ public class Modificacion {
 			
 			Modificacion acceso = new Modificacion();
 			Statement statement = acceso.getConexion().createStatement();
-			String query = "UPDATE SET nombre='"+ nombre +"' WHERE numExpediente='" + matricula.trim() + "';";
+			String query = "UPDATE alumnos SET nombre='"+ nombre.trim() +"' WHERE numExpediente='" + matricula.trim() + "';";
 			int resultados = statement.executeUpdate(query);
+			
+			String query2 = "UPDATE alumnos SET apellidos='"+ apellidos.trim() +"' WHERE numExpediente='" + matricula.trim() + "';";
+			int resultados2 = statement.executeUpdate(query2);
 			
 		}catch(SQLException a) {
 			

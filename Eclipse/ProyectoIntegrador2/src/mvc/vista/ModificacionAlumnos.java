@@ -5,6 +5,7 @@ import javax.swing.*;
 import mvc.controlador.*;
 
 import java.awt.Font;
+import java.awt.Color;
 
 public class ModificacionAlumnos extends JFrame{
 	
@@ -17,6 +18,7 @@ public class ModificacionAlumnos extends JFrame{
     private JLabel matriculaTextField;
     private JButton modificarButton;
     private JButton atras;
+    private JLabel labelError;
     
     public ModificacionAlumnos() {
     	super("Modificar Datos del Alumno");
@@ -55,6 +57,10 @@ public class ModificacionAlumnos extends JFrame{
         matricula.setFont(new Font("Tahoma", Font.BOLD, 11));
         matricula.setBounds(50, 146, 100, 25);
         
+        labelError = new JLabel("");
+        labelError.setForeground(new Color(255, 0, 0));
+        labelError.setBounds(10, 178, 140, 25);
+        
         atras = new JButton("Atrás");
         ListenerAtrasModificarAlumnos escuchador1 = new ListenerAtrasModificarAlumnos(this);
         atras.addActionListener(escuchador1);
@@ -67,6 +73,7 @@ public class ModificacionAlumnos extends JFrame{
 		modificarButton.setBounds(275, 178, 85, 25);
 		
 		ListenerModificarAlumno listener = new ListenerModificarAlumno(this);
+		modificarButton.addActionListener(listener);
 
         // Agregar componentes a la ventana
         getContentPane().add(nombre);
@@ -78,6 +85,7 @@ public class ModificacionAlumnos extends JFrame{
         getContentPane().add(modificarButton);
         getContentPane().add(titulo);
         getContentPane().add(atras);
+        getContentPane().add(labelError);
 
     }
 
@@ -156,6 +164,14 @@ public class ModificacionAlumnos extends JFrame{
 
 	public void setAtras(JButton atras) {
 		this.atras = atras;
+	}
+
+	public JLabel getLabelError() {
+		return labelError;
+	}
+
+	public void setLabelError(JLabel labelError) {
+		this.labelError = labelError;
 	}
     
 }
