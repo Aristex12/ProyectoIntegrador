@@ -12,20 +12,20 @@ public class Modificacion {
 	private String url = "jdbc:mysql://localhost/proyectointegrador";
 	private String usuario = "root";
 	private String pw = "root";
-	
+
 	private String nombre;
 	private String apellidos;
 	private String matricula;
-	
+
 	private String curso;
 	private String area;
 	private String nombreProyecto;
 	private int nota;
 	private int idProyecto;
-	
+
 	private String nombreArea;
 	private String descripcion;
-	
+
 	Connection con = null;
 
 	public Connection getConexion() {
@@ -55,7 +55,7 @@ public class Modificacion {
 		return con;
 
 	}
-	
+
 	public void datosAlumno() {
 
 		try {
@@ -87,17 +87,55 @@ public class Modificacion {
 			ResultSet resultados = statement.executeQuery(query);
 			resultados.next();
 
-			curso = resultados.getString("curso");
+			curso = resultados.getString("ano");
 			area = resultados.getString("codAreaFK");
 			nota = resultados.getInt("notaObtenida");
 			idProyecto = resultados.getInt("idProyecto");
-			
+
 		} catch (SQLException a) {
 			a.printStackTrace();
 		} catch (Exception b) {
 			b.printStackTrace();
 		}
 
+	}
+
+	public void comprobarCambiosAlumno() {
+
+		try {
+
+			Modificacion acceso = new Modificacion();
+			Statement statement = acceso.getConexion().createStatement();
+			String query = "SELECT * FROM alumnos WHERE numExpediente='" + matricula.trim() + "';";
+			ResultSet resultados = statement.executeQuery(query);
+			resultados.next();
+
+			nombre = resultados.getString("nombre");
+			apellidos = resultados.getString("apellidos");
+
+		} catch (SQLException a) {
+			a.printStackTrace();
+		} catch (Exception b) {
+			b.printStackTrace();
+		}
+
+	}
+	
+	public void insertarNuevosDatosAlumno() {
+		
+		try {
+			
+			Modificacion acceso = new Modificacion();
+			Statement statement = acceso.getConexion().createStatement();
+			String query = "UPDATE SET nombre='"+ nombre +"' WHERE numExpediente='" + matricula.trim() + "';";
+			int resultados = statement.executeUpdate(query);
+			
+		}catch(SQLException a) {
+			
+		}catch(Exception b) {
+			
+		}
+		
 	}
 
 	public String getDriver() {
@@ -219,5 +257,5 @@ public class Modificacion {
 	public void setCon(Connection con) {
 		this.con = con;
 	}
-	
+
 }

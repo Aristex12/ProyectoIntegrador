@@ -70,7 +70,7 @@ public class VistaMenuPrincipal extends JFrame {
 		getContentPane().add(lblGestinDeProyectos);
 
 		label2 = new JLabel("Elige una opción:");
-		label2.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		label2.setFont(new Font("Tahoma", Font.BOLD, 11));
 
 		label2.setBounds(43, 83, 204, 48);
 		getContentPane().add(label2);

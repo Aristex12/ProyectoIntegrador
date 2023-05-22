@@ -67,8 +67,6 @@ public class ModificacionAlumnos extends JFrame{
 		modificarButton.setBounds(275, 178, 85, 25);
 		
 		ListenerModificarAlumno listener = new ListenerModificarAlumno(this);
-		nombreTextField.getDocument().addDocumentListener(listener);
-		apellidosTextField.getDocument().addDocumentListener(listener);
 
         // Agregar componentes a la ventana
         getContentPane().add(nombre);

@@ -6,12 +6,13 @@ import java.awt.event.ActionListener;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import mvc.modelo.Modificacion;
 import mvc.vista.ModificacionAlumnos;
 
-public class ListenerModificarAlumno implements DocumentListener {
+public class ListenerModificarAlumno implements ActionListener {
 
 	ModificacionAlumnos v;
-	private boolean flag = false;
+	Modificacion acceso = new Modificacion();
 	
 	public ListenerModificarAlumno(ModificacionAlumnos vista) {
 		
@@ -20,52 +21,43 @@ public class ListenerModificarAlumno implements DocumentListener {
 	}
 
 	@Override
-	public void insertUpdate(DocumentEvent e) {
+	public void actionPerformed(ActionEvent e) {
 		
-		setFlag(true);
+		if(comprobarCampos()) {
+			
+			cambiarValoresAlumno();
+			
+		} else {
+			
+			
+			
+		}
 		
-	}
-
-	@Override
-	public void removeUpdate(DocumentEvent e) {
-		
-		setFlag(true);
-		
-	}
-
-	@Override
-	public void changedUpdate(DocumentEvent e) {
-		
-		setFlag(true);
-		
-	}
-
-	public boolean isFlag() {
-		return flag;
-	}
-
-	public void setFlag(boolean flag) {
-		this.flag = flag;
 	}
 	
-	public class ListenerModificacionAlumnoEnviar implements ActionListener {
-
-		ModificacionAlumnos v;
+	public boolean comprobarCampos() {
 		
-		public ListenerModificacionAlumnoEnviar(ModificacionAlumnos vista) {
-			v = vista;
+		boolean flag = false;
+		
+
+		acceso.comprobarCambiosAlumno();
+		
+		if(acceso.getNombre() != v.getNombreTextField().getText()) {
+			flag = true;
+		} else if(acceso.getApellidos() != v.getApellidosTextField().getText()) {
+			flag = true;
 		}
 		
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			
-			
-
-		}
+		return flag;
 		
+	}
+	
+	public void cambiarValoresAlumno() {
 		
+		acceso.setMatricula(v.getMatriculaTextField().getText());
+		acceso.setNombre(v.getNombreTextField().getText());
+		acceso.setApellidos(v.getApellidosTextField().getText());
 		
-
 	}
 	
 }
