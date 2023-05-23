@@ -1,9 +1,14 @@
 package mvc.vista;
 
 import javax.swing.*;
+
+import mvc.controlador.ListenerAtrasModificacionProyecto;
+import mvc.controlador.ListenerEnviarModificacionProyecto;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.Color;
 
 public class ModificacionProyecto extends JFrame {
 
@@ -16,6 +21,7 @@ public class ModificacionProyecto extends JFrame {
 	JComboBox<String> areaCombo;
 	private JLabel nota;
 	private JSpinner notasSpinner;
+	private JLabel labelError;
 	private JButton atras;
 	private JButton modificarButton;
 
@@ -76,9 +82,17 @@ public class ModificacionProyecto extends JFrame {
 		modificarButton = new JButton();
 		
 		atras = new JButton("Atrás");
+		ListenerAtrasModificacionProyecto escuchador1 = new ListenerAtrasModificacionProyecto(this);
+		atras.addActionListener(escuchador1);
 		atras.setBounds(160, 199, 87, 25);
 		
+		labelError = new JLabel("");
+		labelError.setForeground(new Color(255, 0, 0));
+		labelError.setBounds(50, 194, 100, 25);
+		
 		modificarButton.setText("Modificar");
+		ListenerEnviarModificacionProyecto escuchador2 = new ListenerEnviarModificacionProyecto(this);
+		modificarButton.addActionListener(escuchador2);
 		modificarButton.setBounds(273, 199, 87, 25);
 
 		// Agregar componentes a la ventana
@@ -91,6 +105,7 @@ public class ModificacionProyecto extends JFrame {
 		getContentPane().add(areaCombo);
 		getContentPane().add(nota);
 		getContentPane().add(notasSpinner);
+		getContentPane().add(labelError);
 		getContentPane().add(modificarButton);
 		getContentPane().add(atras);
 	}
@@ -186,6 +201,14 @@ public class ModificacionProyecto extends JFrame {
 	public void hacerVisible() {
 		// Hacer visible la ventana
 		setVisible(true);
+	}
+
+	public JLabel getLabelError() {
+		return labelError;
+	}
+
+	public void setLabelError(JLabel labelError) {
+		this.labelError = labelError;
 	}
 
 }

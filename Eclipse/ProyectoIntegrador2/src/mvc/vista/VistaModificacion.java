@@ -8,7 +8,7 @@ import mvc.controlador.ListenerModificacionEnviar;
 import java.awt.*;
 
 public class VistaModificacion extends JFrame {
-	private JLabel titulo, labelTipo, labelNombre;
+	private JLabel titulo, labelTipo, labelNombre, error;
 	private JRadioButton radioAlumno, radioProyecto;
 	private JTextField campoNombre;
 	private JButton botonBuscar;
@@ -50,6 +50,11 @@ public class VistaModificacion extends JFrame {
 		ListenerModificacionEnviar escuchador1 = new ListenerModificacionEnviar(this);
 		botonBuscar.addActionListener(escuchador1);
 
+		error = new JLabel("");
+		error.setForeground(new Color(255, 0, 0));
+		error.setBounds(56, 160, 104, 30);
+		getContentPane().add(error);
+		
 		atras = new JButton("Atrás");
 		ListenerAtrasModificacion escuchador2 = new ListenerAtrasModificacion(this);
 		atras.addActionListener(escuchador2);
@@ -149,6 +154,14 @@ public class VistaModificacion extends JFrame {
 
 	public void hacerVisible() {
 		setVisible(true);
+	}
+
+	public JLabel getError() {
+		return error;
+	}
+
+	public void setError(JLabel error) {
+		this.error = error;
 	}
 
 }

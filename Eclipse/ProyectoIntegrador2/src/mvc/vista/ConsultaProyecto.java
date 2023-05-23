@@ -21,6 +21,8 @@ public class ConsultaProyecto extends JFrame{
     private JLabel githubLabel;
     private JLabel integrantes;
     private JLabel integrantesLabel;
+    private JLabel idProyecto;
+    private JLabel idProyectoLabel;
     private JButton volverButton;
 
     public ConsultaProyecto() {
@@ -91,6 +93,13 @@ public class ConsultaProyecto extends JFrame{
         
         integrantesLabel = new JLabel("");
         integrantesLabel.setBounds(106, 200, 200, 25);
+        
+        idProyecto = new JLabel("ID:");
+        idProyecto.setFont(new Font("Tahoma", Font.BOLD, 11));
+        idProyecto.setBounds(28, 223, 51, 25);
+        
+        idProyectoLabel = new JLabel("");
+        idProyectoLabel.setBounds(106, 223, 99, 25);
 
         volverButton = new JButton();
         volverButton.setText("Volver al Menú");
@@ -113,15 +122,11 @@ public class ConsultaProyecto extends JFrame{
         getContentPane().add(githubLabel);
         getContentPane().add(integrantes);
         getContentPane().add(integrantesLabel);
+        getContentPane().add(idProyecto);
+        getContentPane().add(idProyectoLabel);
     }
 
-    public JLabel getGithub() {
-		return github;
-	}
 
-	public void setGithub(JLabel github) {
-		this.github = github;
-	}
 
 	public JLabel getGithubLabel() {
 		return githubLabel;
@@ -131,13 +136,6 @@ public class ConsultaProyecto extends JFrame{
 		this.githubLabel = githubLabel;
 	}
 
-	public JLabel getIntegrantes() {
-		return integrantes;
-	}
-
-	public void setIntegrantes(JLabel integrantes) {
-		this.integrantes = integrantes;
-	}
 
 	public JLabel getIntegrantesLabel() {
 		return integrantesLabel;
@@ -231,20 +229,12 @@ public class ConsultaProyecto extends JFrame{
         setVisible(true);
     }
 
-	public JLabel getIdProyecto() {
-		return github;
-	}
-
-	public void setIdProyecto(JLabel idProyecto) {
-		this.github = idProyecto;
-	}
-
 	public JLabel getIdProyectoLabel() {
-		return githubLabel;
+		return idProyectoLabel;
 	}
 
 	public void setIdProyectoLabel(JLabel idProyectoLabel) {
-		this.githubLabel = idProyectoLabel;
+		this.idProyectoLabel = idProyectoLabel;
 	}
 	
 }

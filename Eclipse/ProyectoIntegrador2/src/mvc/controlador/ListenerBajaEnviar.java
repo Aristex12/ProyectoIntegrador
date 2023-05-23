@@ -11,32 +11,36 @@ public class ListenerBajaEnviar implements ActionListener {
 
 	VistaBaja v;
 	public AccesoBD accesobd;
-	
+
 	public ListenerBajaEnviar(VistaBaja vista) {
-		
+
 		v = vista;
-		
+
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-		v.dispose();
-		
-		if(v.getAlumnoRadioButton().isSelected()) {
-			ArrayList<Alumno> a = opcionAlumno();
-			BusquedaDarBaja bc = new BusquedaDarBaja();
-			bc.rellenarListaAlumnos(a);
-			bc.setVisible(true);
-		} else if(v.getProyectoRadioButton().isSelected()){
-			ArrayList<Proyectos> b = opcionProyecto();
-			BusquedaDarBaja bc = new BusquedaDarBaja();
-			bc.rellenarListaProyectos(b);
-			bc.setVisible(true);
+
+		if (comprobarInputs()) {
+
+			v.dispose();
+
+			if (v.getAlumnoRadioButton().isSelected()) {
+				ArrayList<Alumno> a = opcionAlumno();
+				BusquedaDarBaja bc = new BusquedaDarBaja();
+				bc.rellenarListaAlumnos(a);
+				bc.setVisible(true);
+			} else if (v.getProyectoRadioButton().isSelected()) {
+				ArrayList<Proyectos> b = opcionProyecto();
+				BusquedaDarBaja bc = new BusquedaDarBaja();
+				bc.rellenarListaProyectos(b);
+				bc.setVisible(true);
+			}
+
 		}
 
 	}
-	
+
 	public ArrayList<Alumno> opcionAlumno() {
 
 		AccesoBD acceso = new AccesoBD();
@@ -56,7 +60,7 @@ public class ListenerBajaEnviar implements ActionListener {
 
 		return acceso.añadirAlumnoALista(query);
 	}
-	
+
 	public ArrayList<Proyectos> opcionProyecto() {
 
 		AccesoBD acceso = new AccesoBD();
@@ -77,4 +81,18 @@ public class ListenerBajaEnviar implements ActionListener {
 		return acceso.añadirProyectoALista(query);
 
 	}
+
+	public boolean comprobarInputs() {
+
+		boolean flag = true;
+
+		if (v.getInputNombre().getText().matches(".*\\d+.*") || v.getInputNombre().getText().equals("")) {
+			v.getLabelError().setText("Error nombre!");
+			flag = false;
+		}
+
+		return flag;
+
+	}
+
 }

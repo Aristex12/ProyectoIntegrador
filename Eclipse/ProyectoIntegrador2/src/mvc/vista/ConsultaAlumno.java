@@ -93,7 +93,23 @@ public class ConsultaAlumno extends JFrame{
         getContentPane().add(idProyectoLabel);
     }
 
-    public JLabel getTitulo() {
+    public JLabel getIdProyecto() {
+		return idProyecto;
+	}
+
+	public void setIdProyecto(JLabel idProyecto) {
+		this.idProyecto = idProyecto;
+	}
+
+	public JLabel getIdProyectoLabel() {
+		return idProyectoLabel;
+	}
+
+	public void setIdProyectoLabel(JLabel idProyectoLabel) {
+		this.idProyectoLabel = idProyectoLabel;
+	}
+
+	public JLabel getTitulo() {
 		return titulo;
 	}
 

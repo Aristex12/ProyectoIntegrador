@@ -57,6 +57,7 @@ public class ConsultaArea extends JFrame {
 		descripcionLabel = new JTextArea("");
 		descripcionLabel.setLineWrap(true);
         descripcionLabel.setWrapStyleWord(true);
+        descripcionLabel.setEditable(false);
 		descripcionLabel.setBounds(117, 102, 268, 66);
 		
 		volverButton = new JButton();

@@ -27,9 +27,9 @@ public class ListenerSeguroBaja implements ActionListener {
 
 		String seleccion = vistaBaja.getResultList().getSelectedValue();
 		String texto = seleccion.substring(seleccion.length() - 8);
-		String texto2 = seleccion.substring(0, seleccion.indexOf(" "));
+		String texto2 = seleccion.substring(0, seleccion.indexOf('/')).trim();
 		Baja acceso = new Baja();
-
+		
 		if (seleccion.contains(":")) {
 			acceso.setMatricula(texto);
 			acceso.borrarAlumno();

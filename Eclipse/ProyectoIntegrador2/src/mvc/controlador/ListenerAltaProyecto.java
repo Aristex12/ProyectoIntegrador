@@ -17,30 +17,50 @@ public class ListenerAltaProyecto implements ActionListener {
 		
 		Alta acceso = new Alta();
 		acceso.getConexion();
-		
-		String nombre = v.getInputNombre().getText();
-		acceso.setNombreProyecto(nombre);
-		
-		if(acceso.comprobarNombreProyecto()) {
+
+		if(comprobarInputs(acceso)) {
 			
-			v.dispose();
+			String nombre = v.getInputNombre().getText();
+			acceso.setNombreProyecto(nombre);
 			
-			acceso.setNombreProyecto(v.getInputNombre().getText());
-			acceso.setAno((String) v.getCursoComboBox().getSelectedItem());
-			acceso.setArea((String) v.getAreaComboBox().getSelectedItem());
-			acceso.setNota((int) v.getNotasSpinner().getValue());
-			acceso.setGithub(v.getInputUrl().getText());
-			acceso.insertarProyecto();
-			
-			VistaConfirmacionAlta ventana = new VistaConfirmacionAlta();
-			ventana.hacerVisible();
-			
-		} else {
-			
-			v.getLabelError().setText("Proyecto ya existe!");
+			if(acceso.comprobarNombreProyecto()) {
+				
+				v.dispose();
+				
+				acceso.setNombreProyecto(v.getInputNombre().getText());
+				acceso.setAno((String) v.getCursoComboBox().getSelectedItem());
+				acceso.setArea((String) v.getAreaComboBox().getSelectedItem());
+				acceso.setNota((int) v.getNotasSpinner().getValue());
+				acceso.setGithub(v.getInputUrl().getText());
+				acceso.insertarProyecto();
+				
+				VistaConfirmacionAlta ventana = new VistaConfirmacionAlta();
+				ventana.hacerVisible();
+				
+			} else {
+				
+				v.getLabelError().setText("Proyecto ya existe!");
+				
+			}
 			
 		}
 		
+	}
+	
+	public boolean comprobarInputs(Alta acceso) {
+
+		boolean flag = true;
+
+		if (v.getInputNombre().getText().matches(".*\\d+.*") || v.getInputNombre().getText().equals("")) {
+			v.getLabelError().setText("Error nombre!");
+			flag = false;
+		} else if(v.getInputUrl().getText().equals("")) {
+			v.getLabelError().setText("Error github!");
+			flag = false;
+		}
+
+		return flag;
+
 	}
 	
 }

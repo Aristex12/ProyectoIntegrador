@@ -6,6 +6,7 @@ import mvc.controlador.ListenerAltaProyecto;
 import mvc.controlador.ListenerAtrasAltaProyecto;
 
 import java.awt.Font;
+import java.awt.Color;
 
 public class AltaProyecto extends JFrame {
 
@@ -88,7 +89,8 @@ public class AltaProyecto extends JFrame {
         inputUrl.setBounds(189, 195, 180, 25);
         
         labelError = new JLabel("");
-        labelError.setBounds(10, 230, 180, 25);
+        labelError.setForeground(new Color(255, 0, 0));
+        labelError.setBounds(22, 230, 141, 25);
         
 		// Creación y configuración del botón de enviar
 		enviar = new JButton();

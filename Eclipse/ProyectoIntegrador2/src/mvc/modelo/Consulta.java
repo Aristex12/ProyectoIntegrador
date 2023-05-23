@@ -16,6 +16,7 @@ public class Consulta {
 	private String nombre;
 	private String apellidos;
 	private String matricula;
+	private String idProyectoAlumno;
 
 	private String nombreProyecto;
 	private String año;
@@ -23,6 +24,7 @@ public class Consulta {
 	private int nota;
 	private int idProyecto;
 	private String github;
+	private String integrantes = "";
 	
 	private String nombreArea;
 	private String descripcion;
@@ -48,8 +50,8 @@ public class Consulta {
 
 		catch (Exception e) {
 
-			System.out.println("Problema que no se que verga es");
-			e.printStackTrace();
+			System.out.println("Problema que no se que es");
+			
 
 		}
 
@@ -69,15 +71,40 @@ public class Consulta {
 
 			nombre = resultados.getString("nombre");
 			apellidos = resultados.getString("apellidos");
+			idProyectoAlumno = resultados.getString("idProyectoFK");
+			
 
 		} catch (SQLException a) {
-			a.printStackTrace();
+		
 		} catch (Exception b) {
-			b.printStackTrace();
+		
 		}
 
 	}
 
+	public void buscarIntegrantes() {
+		
+		try {
+
+			Consulta acceso = new Consulta();
+			Statement statement = acceso.getConexion().createStatement();
+			String query = "SELECT * FROM alumnos WHERE idProyectoFK='" + idProyecto + "';";
+			ResultSet resultados = statement.executeQuery(query);
+
+			while(resultados.next()) {
+				
+				integrantes += resultados.getString("nombre") + " / ";
+				
+			}
+			
+		} catch (SQLException a) {
+			
+		} catch (Exception b) {
+			
+		}
+		
+	}
+	
 	public void datosProyecto() {
 
 		try {
@@ -88,16 +115,16 @@ public class Consulta {
 			ResultSet resultados = statement.executeQuery(query);
 			resultados.next();
 
-			setAño(resultados.getString("ano"));
+			año = resultados.getString("ano");
 			area = resultados.getString("codAreaFK");
 			nota = resultados.getInt("notaObtenida");
 			idProyecto = resultados.getInt("idProyecto");
 			github = resultados.getString("github");
 			
 		} catch (SQLException a) {
-			a.printStackTrace();
+			
 		} catch (Exception b) {
-			b.printStackTrace();
+			
 		}
 
 	}
@@ -123,44 +150,13 @@ public class Consulta {
 			descripcion = resultados.getString("descripcion");
 			
 		} catch (SQLException a) {
-			a.printStackTrace();
+			
 		} catch (Exception b) {
-			b.printStackTrace();
+			
 		}
 		
 	}
 
-	public String getDriver() {
-		return driver;
-	}
-
-	public void setDriver(String driver) {
-		this.driver = driver;
-	}
-
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
-	}
-
-	public String getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-
-	public String getPw() {
-		return pw;
-	}
-
-	public void setPw(String pw) {
-		this.pw = pw;
-	}
 
 	public String getNombre() {
 		return nombre;
@@ -248,6 +244,22 @@ public class Consulta {
 
 	public void setAño(String año) {
 		this.año = año;
+	}
+
+	public String getIdProyectoAlumno() {
+		return idProyectoAlumno;
+	}
+
+	public void setIdProyectoAlumno(String idProyectoAlumno) {
+		this.idProyectoAlumno = idProyectoAlumno;
+	}
+
+	public String getIntegrantes() {
+		return integrantes;
+	}
+
+	public void setIntegrantes(String integrantes) {
+		this.integrantes = integrantes;
 	}
 
 }

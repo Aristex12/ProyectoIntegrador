@@ -18,16 +18,18 @@ public class ListenerModificacionEnviar implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		if (v.getRadioAlumno().isSelected()) {
-			ArrayList<Alumno> a = opcionAlumno();
-			BusquedaModificacion bc = new BusquedaModificacion();
-			bc.rellenarListaAlumnos(a);
-			bc.setVisible(true);
-		} else {
-			ArrayList<Proyectos> c = opcionProyecto();
-			BusquedaModificacion bc = new BusquedaModificacion();
-			bc.rellenarListaProyectos(c);
-			bc.setVisible(true);
+		if (comprobarInputs()) {
+			if (v.getRadioAlumno().isSelected()) {
+				ArrayList<Alumno> a = opcionAlumno();
+				BusquedaModificacion bc = new BusquedaModificacion();
+				bc.rellenarListaAlumnos(a);
+				bc.setVisible(true);
+			} else {
+				ArrayList<Proyectos> c = opcionProyecto();
+				BusquedaModificacion bc = new BusquedaModificacion();
+				bc.rellenarListaProyectos(c);
+				bc.setVisible(true);
+			}
 		}
 
 	}
@@ -74,6 +76,19 @@ public class ListenerModificacionEnviar implements ActionListener {
 		}
 
 		return acceso.añadirProyectoALista(query);
+
+	}
+
+	public boolean comprobarInputs() {
+
+		boolean flag = true;
+
+		if (v.getCampoNombre().getText().matches(".*\\d+.*") || v.getCampoNombre().getText().equals("")) {
+			v.getError().setText("Error nombre!");
+			flag = false;
+		}
+
+		return flag;
 
 	}
 

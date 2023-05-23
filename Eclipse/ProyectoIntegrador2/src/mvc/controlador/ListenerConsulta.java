@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import mvc.modelo.AccesoBD;
+import mvc.modelo.Alta;
 import mvc.modelo.Alumno;
 import mvc.modelo.Area;
 import mvc.modelo.Proyectos;
@@ -22,26 +23,31 @@ public class ListenerConsulta implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
+		
+		
 		accesobd = new AccesoBD();
-		accesobd.getConexion();
+		
+		if(comprobarInputs(accesobd)) {
+			accesobd.getConexion();
 
-		if (v.getRadioAlumno().isSelected()) {
-			ArrayList<Alumno> a = opcionAlumno();
-			BusquedaConsulta bc = new BusquedaConsulta();
-			bc.rellenarListaAlumnos(a);
-			bc.setVisible(true);
-		} else if(v.getRadioProyecto().isSelected()){
-			ArrayList<Proyectos> b = opcionProyecto();
-			BusquedaConsulta bc = new BusquedaConsulta();
-			bc.rellenarListaProyectos(b);
-			bc.setVisible(true);
-		} else {
-			ArrayList<Area> c = opcionArea();
-			BusquedaConsulta bc = new BusquedaConsulta();
-			bc.rellenarListaArea(c);
-			bc.setVisible(true);
+			if (v.getRadioAlumno().isSelected()) {
+				ArrayList<Alumno> a = opcionAlumno();
+				BusquedaConsulta bc = new BusquedaConsulta();
+				bc.rellenarListaAlumnos(a);
+				bc.setVisible(true);
+			} else if(v.getRadioProyecto().isSelected()){
+				ArrayList<Proyectos> b = opcionProyecto();
+				BusquedaConsulta bc = new BusquedaConsulta();
+				bc.rellenarListaProyectos(b);
+				bc.setVisible(true);
+			} else {
+				ArrayList<Area> c = opcionArea();
+				BusquedaConsulta bc = new BusquedaConsulta();
+				bc.rellenarListaArea(c);
+				bc.setVisible(true);
+			}
+
 		}
-
 	}
 
 	public ArrayList<Alumno> opcionAlumno() {
@@ -100,7 +106,7 @@ public class ListenerConsulta implements ActionListener {
 	}
 	
 	public ArrayList<Area> opcionArea() {
-
+		
 		v.dispose();
 
 		AccesoBD acceso = new AccesoBD();
@@ -120,6 +126,22 @@ public class ListenerConsulta implements ActionListener {
 		};
 
 		return acceso.añadirAreaALista(query);
+
+	}
+	
+	public boolean comprobarInputs(AccesoBD acceso) {
+
+		boolean flag = true;
+
+		if (v.getCampoNombre().getText().matches(".*\\d+.*") || v.getCampoNombre().getText().equals("")) {
+			v.getError().setText("Error nombre!");
+			flag = false;
+		} else if(v.getCampoIdProyecto().getText().matches(".*[a-zA-Z].*") || v.getCampoIdProyecto().getText().equals("") || v.getCampoIdProyecto().getText().length() > 8 || v.getCampoIdProyecto().getText().length() < 8){
+			v.getError().setText("Error ID!");
+			flag = false;
+		}
+
+		return flag;
 
 	}
 

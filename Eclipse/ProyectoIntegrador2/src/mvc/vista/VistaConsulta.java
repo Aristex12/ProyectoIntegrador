@@ -65,7 +65,7 @@ public class VistaConsulta extends JFrame {
 		// Configuración del layout
 		getContentPane().setLayout(null);
 		
-		error.setBounds(66, 170, 200, 25);
+		error.setBounds(66, 170, 100, 25);
 		getContentPane().add(error);
 
 		titulo.setBounds(0, 11, 400, 30);

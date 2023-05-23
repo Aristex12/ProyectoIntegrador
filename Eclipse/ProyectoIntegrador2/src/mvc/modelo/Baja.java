@@ -79,6 +79,31 @@ public class Baja {
 		}
 		
 	}
+	
+	public String devuelveNombreProyecto() {
+		
+		String nombre = "";
+		
+		try {
+			
+			con = DriverManager.getConnection(url, usuario, pw);
+			Statement statement = con.createStatement();
+			String query = "SELECT * FROM proyectos WHERE nombreProyecto='" + nombreProyecto.trim() + "';";
+			ResultSet resultados = statement.executeQuery(query);
+			
+			if(resultados.next()) {
+				nombre = resultados.getString("nombreProyecto");
+			}
+			
+		}catch(SQLException a) {
+			
+		} catch (Exception b) {
+			
+		}
+		
+		return nombre;
+		
+	}
 
 	public String getDriver() {
 		return driver;

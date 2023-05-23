@@ -12,12 +12,12 @@ public class Alta {
 	private String url = "jdbc:mysql://localhost/proyectointegrador";
 	private String usuario = "root";
 	private String pw = "root";
-	
+
 	private String nombre;
 	private String apellidos;
 	private String matricula;
 	private String idProyectoAlumno;
-	
+
 	private String ano;
 	private String area;
 	private int numeroArea;
@@ -25,12 +25,12 @@ public class Alta {
 	private int nota;
 	private String github;
 	private int idProyecto;
-	
+
 	private String nombreArea;
 	private String descripcion;
-	
+
 	boolean flag;
-	
+
 	Connection con = null;
 
 	public Connection getConexion() {
@@ -60,41 +60,42 @@ public class Alta {
 		return con;
 
 	}
-	
+
 	public boolean comprobarMatriculaAlumno() {
-		
+
 		flag = false;
-		
+
 		try {
-		
+
 			con = DriverManager.getConnection(url, usuario, pw);
 			Statement statement = con.createStatement();
 			String query = "SELECT * FROM alumnos WHERE numExpediente='" + matricula.trim() + "';";
 			ResultSet resultados = statement.executeQuery(query);
-			
-			if(resultados.next()) {
-				
+
+			if (resultados.next()) {
+
 			} else {
 				flag = true;
 			}
-			
-		}catch(SQLException a) {
-			
-		}catch(Exception e) {
-			
+
+		} catch (SQLException a) {
+
+		} catch (Exception e) {
+
 		}
-		
+
 		return flag;
 	}
-	
+
 	public void insertarAlumno() {
 
 		try {
 
 			int res = 0;
-			
+
 			con = DriverManager.getConnection(url, usuario, pw);
-			String query = "INSERT INTO alumnos VALUES('" + matricula + "','" + nombre + "', '" +apellidos+"', '" + idProyectoAlumno +"')";
+			String query = "INSERT INTO alumnos VALUES('" + matricula + "','" + nombre + "', '" + apellidos + "', '"
+					+ idProyectoAlumno + "')";
 			Statement stmt = con.createStatement();
 			res = stmt.executeUpdate(query);
 
@@ -107,58 +108,59 @@ public class Alta {
 		}
 
 	}
-	
+
 	public boolean comprobarNombreProyecto() {
-		
+
 		flag = false;
-		
+
 		try {
-		
+
 			con = DriverManager.getConnection(url, usuario, pw);
 			Statement statement = con.createStatement();
 			String query = "SELECT * FROM proyectos WHERE nombreProyecto='" + nombreProyecto + "';";
 			ResultSet resultados = statement.executeQuery(query);
-			
-			if(resultados.next()) {
-				
+
+			if (resultados.next()) {
+
 			} else {
 				flag = true;
 			}
-			
-		}catch(SQLException a) {
-			
-		}catch(Exception e) {
-			
+
+		} catch (SQLException a) {
+
+		} catch (Exception e) {
+
 		}
-		
+
 		return flag;
 	}
-	
+
 	public void comprobarArea() {
-		
-		if(area.equals("BaseDeDatos")) {
+
+		if (area.equals("BasesDeDatos")) {
 			numeroArea = 1;
-		} else if(area.equals("Programación")) {
+		} else if (area.equals("Programación")) {
 			numeroArea = 2;
-		} else if(area.equals("LenguajeDeMarcas")) {
+		} else if (area.equals("LenguajeDeMarcas")) {
 			numeroArea = 3;
-		} else if(area.equals("FOL")) {
+		} else if (area.equals("FOL")) {
 			numeroArea = 4;
-		} else if(area.equals("SistemasInformaticos")) {
+		} else if (area.equals("SistemasInformaticos")) {
 			numeroArea = 5;
 		}
-		
+
 	}
-	
+
 	public void insertarProyecto() {
 
 		try {
 
 			int res = 0;
 			comprobarArea();
-			
+
 			con = DriverManager.getConnection(url, usuario, pw);
-			String query = "INSERT INTO proyectos(ano, nombreProyecto, notaObtenida, codAreaFK, github) VALUES('" + ano + "','" + nombreProyecto + "', '" +nota+"', '" + numeroArea +"', '" + github +"');";
+			String query = "INSERT INTO proyectos(ano, nombreProyecto, notaObtenida, codAreaFK, github) VALUES('" + ano
+					+ "','" + nombreProyecto + "', '" + nota + "', '" + numeroArea + "', '" + github + "');";
 			Statement stmt = con.createStatement();
 			res = stmt.executeUpdate(query);
 
@@ -170,6 +172,32 @@ public class Alta {
 			e.printStackTrace();
 		}
 
+	}
+
+	public boolean comprobarIdProyecto() {
+
+		boolean flag = false;
+
+		try {
+
+			con = DriverManager.getConnection(url, usuario, pw);
+			Statement statement = con.createStatement();
+			String query = "SELECT * FROM proyectos WHERE idProyecto='" + idProyectoAlumno + "';";
+			ResultSet resultados = statement.executeQuery(query);
+
+			if (resultados.next()) {
+				flag = true;
+			}
+
+		} catch (SQLException a) {
+			System.out.println("No se ha podido insertar");
+			a.printStackTrace();
+		} catch (Exception e) {
+			System.out.println("Error de aplicación");
+			e.printStackTrace();
+		}
+
+		return flag;
 	}
 
 	public int getNumeroArea() {
@@ -323,5 +351,5 @@ public class Alta {
 	public void setIdProyectoAlumno(String idProyectoAlumno) {
 		this.idProyectoAlumno = idProyectoAlumno;
 	}
-	
+
 }

@@ -6,6 +6,7 @@ import mvc.controlador.ListenerAtrasBaja;
 import mvc.controlador.ListenerBajaEnviar;
 
 import java.awt.Font;
+import java.awt.Color;
 
 public class VistaBaja extends JFrame{
 
@@ -15,6 +16,7 @@ public class VistaBaja extends JFrame{
     private JRadioButton proyectoRadioButton;
     private JLabel nombre;
     private JTextField inputNombre;
+    private JLabel labelError;
     private JButton enviar;
     private JButton atras;
 
@@ -63,6 +65,10 @@ public class VistaBaja extends JFrame{
 
         inputNombre = new JTextField();
         inputNombre.setBounds(165, 111, 180, 25);
+        
+        labelError = new JLabel("");
+        labelError.setForeground(new Color(255, 0, 0));
+        labelError.setBounds(53, 152, 102, 25);
 
         // Creación y configuración del botón de enviar
         enviar = new JButton();
@@ -84,11 +90,20 @@ public class VistaBaja extends JFrame{
         getContentPane().add(proyectoRadioButton);
         getContentPane().add(nombre);
         getContentPane().add(inputNombre);
+        getContentPane().add(labelError);
         getContentPane().add(enviar);
         getContentPane().add(atras);
     }
 
-    public JLabel getTitulo() {
+    public JLabel getLabelError() {
+		return labelError;
+	}
+
+	public void setLabelError(JLabel labelError) {
+		this.labelError = labelError;
+	}
+
+	public JLabel getTitulo() {
 		return titulo;
 	}
 

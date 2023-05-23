@@ -114,9 +114,9 @@ public class Modificacion {
 			apellidos = resultados.getString("apellidos");
 
 		} catch (SQLException a) {
-			a.printStackTrace();
+
 		} catch (Exception b) {
-			b.printStackTrace();
+	
 		}
 
 	}
@@ -140,7 +140,96 @@ public class Modificacion {
 		}
 		
 	}
+	
+	public void comprobarCambiosProyecto() {
 
+		try {
+
+			Modificacion acceso = new Modificacion();
+			Statement statement = acceso.getConexion().createStatement();
+			String query = "SELECT * FROM proyectos WHERE idProyecto='" + conseguirIdProyecto() + "';";
+			ResultSet resultados = statement.executeQuery(query);
+			resultados.next();
+
+			nombreProyecto = resultados.getString("nombreProyecto");
+			area = resultados.getString("areaFK");
+			
+
+		} catch (SQLException a) {
+
+		} catch (Exception b) {
+	
+		}
+
+	}
+	
+	public void insertarNuevosDatosProyecto() {
+		
+		try {
+			
+			Modificacion acceso = new Modificacion();
+			Statement statement = acceso.getConexion().createStatement();
+			String query = "UPDATE proyectos SET nombreProyecto='"+ nombreProyecto.trim() +"' WHERE idProyecto='" + conseguirIdProyecto() + "';";
+			statement.executeUpdate(query);
+			
+			String query2 = "UPDATE proyectos SET ano='"+ curso.trim() +"' WHERE idProyecto='" + conseguirIdProyecto() + "';";
+			statement.executeUpdate(query2);
+			
+			String query3 = "UPDATE proyectos SET notaObtenida='"+ nota +"' WHERE idProyecto='" + conseguirIdProyecto() + "';";
+			statement.executeUpdate(query3);
+			
+		}catch(SQLException a) {
+			
+		}catch(Exception b) {
+			
+		}
+		
+	}
+	
+	public int conseguirIdProyecto() {
+		
+		int num = 0;
+		
+		try {
+			
+			Modificacion acceso = new Modificacion();
+			Statement statement = acceso.getConexion().createStatement();
+			String query = "SELECT * FROM proyectos WHERE nombreProyecto='"+ nombreProyecto.trim() +"';";
+			System.out.println(nombreProyecto);
+			ResultSet resultados = statement.executeQuery(query);
+			
+			if(resultados.next()) {
+				num = resultados.getInt("idProyecto");
+			}
+			
+			
+		}catch(SQLException a) {
+			
+		}catch(Exception b) {
+			
+		}
+		
+		return num;
+		
+	}
+
+	public void cerrarConexion(Connection conn, Statement stmt) {
+	    if (stmt != null) {
+	        try {
+	            stmt.close();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+	    if (conn != null) {
+	        try {
+	            conn.close();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+	}
+	
 	public String getDriver() {
 		return driver;
 	}
