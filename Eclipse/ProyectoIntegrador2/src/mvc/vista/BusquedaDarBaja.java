@@ -10,16 +10,39 @@ import mvc.modelo.Proyectos;
 import java.awt.Font;
 import java.util.ArrayList;
 
+/**
+ * <p>La clase BusquedaDarBaja permite al usuario buscar y dar de baja información en la base de datos. Muestra los resultados de la búsqueda en una lista y permite al usuario seleccionar un resultado para darlo de baja.</p>
+ *
+ * <p>El usuario también puede volver a la pantalla anterior utilizando un botón de "Atrás".</p>
+ *
+ * @author Aris, Miguel, Josep y Dani
+ * @version 1.0
+ * @since 2023-05-24
+ */
+
 public class BusquedaDarBaja extends JFrame {
 
-	private JLabel titulo;
+	// Etiqueta de título
+    private JLabel titulo;
+    
+    // Panel principal
     private JPanel panel;
+
+    // ScrollPane para la lista de resultados de la búsqueda
     private JScrollPane scrollPane;
+
+    // Botones para seleccionar un resultado y para volver a la pantalla anterior
     private JButton seleccionar;
     private JButton atras;
-    JList<String> resultList = new JList<>();
-    DefaultListModel<String> listModel = new DefaultListModel<>();
 
+    // Lista de resultados de la búsqueda
+    JList<String> resultList;
+    DefaultListModel<String> listModel;
+
+    /**
+     * <p>Constructor para la clase BusquedaDarBaja. Inicializa la ventana y sus componentes.</p>
+     */
+    
     public BusquedaDarBaja() {
         super("Búsqueda Dar Baja");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -28,6 +51,11 @@ public class BusquedaDarBaja extends JFrame {
 
     }
 
+    /**
+     * <p>Método para inicializar todos los componentes de la ventana de BusquedaDarBaja.</p>
+     * <p>Incluye la configuración de etiquetas, botones, listas, scrollpane y otros elementos de la interfaz de usuario.</p>
+     */
+    
     public void inicializarComponentes() {
     	// Configuración de la ventana
         setSize(442, 299);
@@ -73,6 +101,10 @@ public class BusquedaDarBaja extends JFrame {
         getContentPane().add(atras);
     }
     
+    /**
+     * <p>Los métodos rellenarListaAlumnos y rellenarListaProyectos son utilizados para llenar la lista de resultados de búsqueda con los objetos apropiados.</p>
+     */
+    
     public void rellenarListaAlumnos (ArrayList<Alumno> array) {
 		for(Alumno a : array) {
 			listModel.addElement(a.toString());
@@ -85,6 +117,11 @@ public class BusquedaDarBaja extends JFrame {
 		}
 	}
     
+	/**
+	 * El resto de getters y setters
+	 * 
+	 */
+	
     public JLabel getTitulo() {
 		return titulo;
 	}
@@ -141,9 +178,12 @@ public class BusquedaDarBaja extends JFrame {
 		this.listModel = listModel;
 	}
 
+	/**
+     * <p>Método para hacer visible la ventana de BusquedaDarBaja.</p>
+     */
+	
 	public void hacerVisible() {
     	// Hacer visible la ventana
         setVisible(true);
     }
-	
 }

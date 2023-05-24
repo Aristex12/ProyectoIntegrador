@@ -7,13 +7,31 @@ import mvc.controlador.ListenerModificacionEnviar;
 
 import java.awt.*;
 
+/**
+ * <p>
+ * Esta la vista en donde el usuario puede modificar
+ * los datos de proyectos y alumnos
+ * </p>
+ *
+ * @author Aris, Josep, Miguel y Dani
+ * @version 1.0
+ * @since 2023-05-24
+ */
+
 public class VistaModificacion extends JFrame {
+	
+	//los componentes de la vista
+	
 	private JLabel titulo, labelTipo, labelNombre, error;
 	private JRadioButton radioAlumno, radioProyecto;
 	private JTextField campoNombre;
 	private JButton botonBuscar;
 	private JButton atras;
 
+	/**
+	 * El constructor de la clase
+	 */
+	
 	public VistaModificacion() {
 		// Configuración de la ventana
 		super("Menu Modificación");
@@ -21,6 +39,10 @@ public class VistaModificacion extends JFrame {
 		inicializarComponentes();
 	}
 
+	/**
+	 * Inicializamos todos los componentes y le damos formato
+	 */
+	
 	public void inicializarComponentes() {
 		setSize(440, 250);
 		setLocationRelativeTo(null);
@@ -88,6 +110,10 @@ public class VistaModificacion extends JFrame {
 
 	}
 
+	/**
+	 * El resto de getters 
+	 */
+	
 	public JLabel getTitulo() {
 		return titulo;
 	}
@@ -152,6 +178,10 @@ public class VistaModificacion extends JFrame {
 		this.atras = atras;
 	}
 
+	/**
+	 * Hace visible la ventana
+	 */
+	
 	public void hacerVisible() {
 		setVisible(true);
 	}

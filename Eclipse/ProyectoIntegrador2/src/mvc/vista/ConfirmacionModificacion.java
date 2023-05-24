@@ -1,6 +1,10 @@
 package mvc.vista;
 
 import javax.swing.*;
+
+import mvc.controlador.ListenerAltaAlumno;
+import mvc.controlador.ListenerVolverAlMenuConfirmacionMod;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
@@ -33,6 +37,8 @@ public class ConfirmacionModificacion extends JDialog {
 		volverButton = new JButton();
 		
 		volverButton.setText("Volver al Menú");
+		ListenerVolverAlMenuConfirmacionMod escuchador1 = new ListenerVolverAlMenuConfirmacionMod(this);
+		volverButton.addActionListener(escuchador1);
 		volverButton.setBounds(119, 85, 130, 25);
 
 		// Agregar componentes a la ventana

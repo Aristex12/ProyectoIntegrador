@@ -6,6 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * <p>La clase <b>Modificacion</b> se encarga de la manipulación de la base de datos para los objetos de tipo Alumno y Proyecto.</p>
+ * <p>Se encarga de establecer la conexión con la base de datos, recuperar, insertar y modificar datos.</p>
+ */
+
 public class Modificacion {
 
 	private String driver = "com.mysql.cj.jdbc.Driver";
@@ -28,6 +33,12 @@ public class Modificacion {
 
 	Connection con = null;
 
+	/**
+     * <p>Este método establece la conexión con la base de datos MySQL.</p>
+     *
+     * @return <b>Connection</b> La conexión establecida con la base de datos.
+     * */
+	
 	public Connection getConexion() {
 
 		try {
@@ -56,12 +67,20 @@ public class Modificacion {
 
 	}
 
+	/**
+     * <p>Este método recupera los datos del alumno de la base de datos.</p>
+     *
+     * @throws SQLException Si ocurre un error al recuperar los datos de la base de datos.
+     */
+	
 	public void datosAlumno() {
 
+		Statement statement = null;
+		
 		try {
 
 			Modificacion acceso = new Modificacion();
-			Statement statement = acceso.getConexion().createStatement();
+			statement = acceso.getConexion().createStatement();
 			String query = "SELECT * FROM alumnos WHERE numExpediente='" + matricula.trim() + "';";
 			ResultSet resultados = statement.executeQuery(query);
 			resultados.next();
@@ -73,16 +92,58 @@ public class Modificacion {
 			a.printStackTrace();
 		} catch (Exception b) {
 			b.printStackTrace();
+		}finally {
+			try {
+	            cerrarTodo(statement);
+	        } catch (SQLException e) {
+	            
+	        }
 		}
 
 	}
 
+	/**
+	 * <p>Este método cierra la conexión con la base de datos y las instancias de Statement.</p>
+	 *
+	 * @param stmt El objeto Statement que se desea cerrar. Puede ser null si no hay un objeto Statement para cerrar.
+	 * @throws SQLException Si ocurre un error al cerrar los recursos de la base de datos.
+	 */
+	public void cerrarTodo(Statement stmt) throws SQLException {
+	    if (stmt != null) {
+	        try {
+	            stmt.close();
+	        } catch (SQLException e) {
+	            System.out.println("Error al cerrar Statement");
+	            e.printStackTrace();
+	        }
+	    }
+	    if (con != null) {
+	        try {
+	            con.close();
+	        } catch (SQLException e) {
+	            System.out.println("Error al cerrar la conexión");
+	            e.printStackTrace();
+	        }
+	    }
+	}
+	
+	/**
+	 * <p>
+	 * Obtiene los datos de un proyecto específico de la base de datos.
+	 * </p>
+	 * <p>
+	 * Utiliza el nombre del proyecto para obtener los detalles, incluyendo el curso, área, nota y ID.
+	 * </p>
+	 */
+	
 	public void datosProyecto() {
 
+		Statement statement = null;
+		
 		try {
 
 			Modificacion acceso = new Modificacion();
-			Statement statement = acceso.getConexion().createStatement();
+			statement = acceso.getConexion().createStatement();
 			String query = "SELECT * FROM proyectos WHERE nombreProyecto='" + nombreProyecto.trim() + "';";
 			ResultSet resultados = statement.executeQuery(query);
 			resultados.next();
@@ -96,16 +157,31 @@ public class Modificacion {
 			a.printStackTrace();
 		} catch (Exception b) {
 			b.printStackTrace();
-		}
+		} try {
+            cerrarTodo(statement);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
 	}
 
+	/**
+	 * <p>
+	 * Comprueba los cambios realizados en los datos de un alumno en la base de datos.
+	 * </p>
+	 * <p>
+	 * Utiliza el número de expediente para obtener el nombre y apellidos del alumno.
+	 * </p>
+	 */
+	
 	public void comprobarCambiosAlumno() {
 
+		Statement statement = null;
+		
 		try {
 
 			Modificacion acceso = new Modificacion();
-			Statement statement = acceso.getConexion().createStatement();
+			statement = acceso.getConexion().createStatement();
 			String query = "SELECT * FROM alumnos WHERE numExpediente='" + matricula.trim() + "';";
 			ResultSet resultados = statement.executeQuery(query);
 			resultados.next();
@@ -117,16 +193,35 @@ public class Modificacion {
 
 		} catch (Exception b) {
 	
+		}finally {
+			
+			try {
+	            cerrarTodo(statement);
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+			
 		}
 
 	}
 	
+	/**
+	 * <p>
+	 * Inserta nuevos datos de un alumno en la base de datos.
+	 * </p>
+	 * <p>
+	 * Actualiza el nombre y los apellidos del alumno en la base de datos usando el número de expediente.
+	 * </p>
+	 */
+	
 	public void insertarNuevosDatosAlumno() {
+		
+		Statement statement = null;
 		
 		try {
 			
 			Modificacion acceso = new Modificacion();
-			Statement statement = acceso.getConexion().createStatement();
+			statement = acceso.getConexion().createStatement();
 			String query = "UPDATE alumnos SET nombre='"+ nombre.trim() +"' WHERE numExpediente='" + matricula.trim() + "';";
 			int resultados = statement.executeUpdate(query);
 			
@@ -137,16 +232,31 @@ public class Modificacion {
 			
 		}catch(Exception b) {
 			
-		}
+		} try {
+            cerrarTodo(statement);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 		
 	}
 	
+	/**
+	 * <p>
+	 * Comprueba los cambios realizados en los datos de un proyecto en la base de datos.
+	 * </p>
+	 * <p>
+	 * Utiliza el ID del proyecto para obtener el nombre y área del proyecto.
+	 * </p>
+	 */
+	
 	public void comprobarCambiosProyecto() {
 
+		Statement statement = null;
+		
 		try {
 
 			Modificacion acceso = new Modificacion();
-			Statement statement = acceso.getConexion().createStatement();
+			statement = acceso.getConexion().createStatement();
 			String query = "SELECT * FROM proyectos WHERE idProyecto='" + conseguirIdProyecto() + "';";
 			ResultSet resultados = statement.executeQuery(query);
 			resultados.next();
@@ -159,16 +269,33 @@ public class Modificacion {
 
 		} catch (Exception b) {
 	
-		}
+		}finally {
+	        try {
+	            cerrarTodo(statement);
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
 
 	}
 	
+	/**
+	 * <p>
+	 * Inserta nuevos datos de un proyecto en la base de datos.
+	 * </p>
+	 * <p>
+	 * Actualiza el nombre del proyecto, el curso y la nota obtenida en la base de datos usando el ID del proyecto.
+	 * </p>
+	 */
+	
 	public void insertarNuevosDatosProyecto() {
+		
+		Statement statement = null;
 		
 		try {
 			
 			Modificacion acceso = new Modificacion();
-			Statement statement = acceso.getConexion().createStatement();
+			statement = acceso.getConexion().createStatement();
 			String query = "UPDATE proyectos SET nombreProyecto='"+ nombreProyecto.trim() +"' WHERE idProyecto='" + conseguirIdProyecto() + "';";
 			statement.executeUpdate(query);
 			
@@ -182,18 +309,37 @@ public class Modificacion {
 			
 		}catch(Exception b) {
 			
-		}
+		}finally {
+	        try {
+	            cerrarTodo(statement);
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
 		
 	}
+	
+	/**
+	 * <p>
+	 * Obtiene el ID de un proyecto de la base de datos.
+	 * </p>
+	 * <p>
+	 * Utiliza el nombre del proyecto para buscar en la base de datos y obtener su ID.
+	 * </p>
+	 * 
+	 * @return El ID del proyecto. Retorna 0 si no se encuentra el proyecto.
+	 */
 	
 	public int conseguirIdProyecto() {
 		
 		int num = 0;
 		
+		Statement statement = null;
+		
 		try {
 			
 			Modificacion acceso = new Modificacion();
-			Statement statement = acceso.getConexion().createStatement();
+			statement = acceso.getConexion().createStatement();
 			String query = "SELECT * FROM proyectos WHERE nombreProyecto='"+ nombreProyecto.trim() +"';";
 			System.out.println(nombreProyecto);
 			ResultSet resultados = statement.executeQuery(query);
@@ -207,28 +353,22 @@ public class Modificacion {
 			
 		}catch(Exception b) {
 			
-		}
+		}finally {
+	        try {
+	            cerrarTodo(statement);
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
 		
 		return num;
 		
 	}
-
-	public void cerrarConexion(Connection conn, Statement stmt) {
-	    if (stmt != null) {
-	        try {
-	            stmt.close();
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	        }
-	    }
-	    if (conn != null) {
-	        try {
-	            conn.close();
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	        }
-	    }
-	}
+	
+	/**
+	 * Aqui estan todos los getters y setters
+	 * @return
+	 */
 	
 	public String getDriver() {
 		return driver;

@@ -7,17 +7,36 @@ import mvc.controlador.ListenerAtrasAltaAlumno;
 
 import java.awt.*;
 
+/**
+ * <p>
+ * La clase VistAltaAlumno permite al usuario dar de alta los datos de un
+ * alumno específico en la base de datos.
+ * </p>
+ *
+ * @author Aris, Josep, Miguel y Dani
+ * @version 1.0
+ * @since 2023-05-24
+ */
+
 public class VistaAltaAlumno extends JFrame {
     private JLabel labelNombre, labelApellido, labelNumero, labelId, labelError;
     private JTextField txtNombre, txtApellido, txtNumero, txtId;
     private JButton btnEnviar, atras;
 
+    /**
+	 * Tenemos el constructor de la clase
+	 */
+    
     public VistaAltaAlumno() {
         super("Alta Alumno");
         // Configuración de la ventana
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         inicializarComponentes();
     }
+    
+    /**
+	 * Inicilizamos todos los componentes de la vista
+	 */
     
     public void inicializarComponentes(){
     	
@@ -83,6 +102,10 @@ public class VistaAltaAlumno extends JFrame {
         getContentPane().add(txtId);
         getContentPane().add(labelError);
     }
+    
+    /**
+     * El resto de getters y settters
+     */
     
     public JLabel getLabelError() {
 		return labelError;
@@ -172,6 +195,10 @@ public class VistaAltaAlumno extends JFrame {
 		this.atras = atras;
 	}
 
+	/**
+	 * Hace visible la ventana
+	 */
+	
 	public void hacerVisible() {
     	setVisible(true);
     }

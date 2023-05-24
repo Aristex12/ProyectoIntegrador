@@ -6,17 +6,30 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * La clase Alta se encarga de realizar operaciones de alta en una base de
+ * datos, como inserción de alumnos y proyectos.
+ * 
+ * @author Aris, Josep, Miguel y Dani
+ */
+
 public class Alta {
+
+	// Todas los atributos que vamos a utilizar en la clase
 
 	private String driver = "com.mysql.cj.jdbc.Driver";
 	private String url = "jdbc:mysql://localhost/proyectointegrador";
 	private String usuario = "root";
 	private String pw = "root";
 
+	// Los atributos de alumnos
+
 	private String nombre;
 	private String apellidos;
 	private String matricula;
 	private String idProyectoAlumno;
+
+	// Los atributos de proyectos
 
 	private String ano;
 	private String area;
@@ -26,12 +39,20 @@ public class Alta {
 	private String github;
 	private int idProyecto;
 
+	// Los atributos de area
+
 	private String nombreArea;
 	private String descripcion;
 
 	boolean flag;
 
 	Connection con = null;
+
+	/**
+	 * Obtiene la conexión a la base de datos.
+	 *
+	 * @return La conexión a la base de datos.
+	 */
 
 	public Connection getConexion() {
 
@@ -61,14 +82,21 @@ public class Alta {
 
 	}
 
+	/**
+	 * Comprueba si la matrícula del alumno ya existe en la base de datos.
+	 *
+	 * @return true si la matrícula no existe, false si ya existe.
+	 */
+
 	public boolean comprobarMatriculaAlumno() {
 
+		Statement statement = null;
 		flag = false;
 
 		try {
 
 			con = DriverManager.getConnection(url, usuario, pw);
-			Statement statement = con.createStatement();
+			statement = con.createStatement();
 			String query = "SELECT * FROM alumnos WHERE numExpediente='" + matricula.trim() + "';";
 			ResultSet resultados = statement.executeQuery(query);
 
@@ -82,21 +110,35 @@ public class Alta {
 
 		} catch (Exception e) {
 
-		}
+		}finally {
+
+            try {
+                cerrarTodo(statement);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
 
 		return flag;
 	}
 
+	/**
+	 * Inserta un alumno en la base de datos.
+	 */
+
 	public void insertarAlumno() {
 
+		Statement stmt = null;
+		
 		try {
-
+	
 			int res = 0;
 
 			con = DriverManager.getConnection(url, usuario, pw);
 			String query = "INSERT INTO alumnos VALUES('" + matricula + "','" + nombre + "', '" + apellidos + "', '"
 					+ idProyectoAlumno + "')";
-			Statement stmt = con.createStatement();
+			stmt = con.createStatement();
 			res = stmt.executeUpdate(query);
 
 		} catch (SQLException a) {
@@ -105,18 +147,33 @@ public class Alta {
 		} catch (Exception e) {
 			System.out.println("Error de aplicación");
 			e.printStackTrace();
-		}
+		}finally {
+
+            try {
+                cerrarTodo(stmt);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
 
 	}
 
+	/**
+	 * Comprueba si el nombre del proyecto ya existe en la base de datos.
+	 *
+	 * @return true si el nombre no existe, false si ya existe.
+	 */
+
 	public boolean comprobarNombreProyecto() {
 
+		Statement statement = null;
 		flag = false;
 
 		try {
-
+			
 			con = DriverManager.getConnection(url, usuario, pw);
-			Statement statement = con.createStatement();
+			statement = con.createStatement();
 			String query = "SELECT * FROM proyectos WHERE nombreProyecto='" + nombreProyecto + "';";
 			ResultSet resultados = statement.executeQuery(query);
 
@@ -130,13 +187,23 @@ public class Alta {
 
 		} catch (Exception e) {
 
-		}
+		}finally {
+
+            try {
+                cerrarTodo(statement);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
 
 		return flag;
 	}
 
+	/**
+	 * Comprueba el área del proyecto y asigna el número correspondiente.
+	 */
 	public void comprobarArea() {
-
 		if (area.equals("BasesDeDatos")) {
 			numeroArea = 1;
 		} else if (area.equals("Programación")) {
@@ -148,56 +215,101 @@ public class Alta {
 		} else if (area.equals("SistemasInformaticos")) {
 			numeroArea = 5;
 		}
-
 	}
 
+	/**
+	 * Inserta un proyecto en la base de datos.
+	 */
 	public void insertarProyecto() {
-
+		
+		Statement stmt = null;
+		
 		try {
-
 			int res = 0;
 			comprobarArea();
-
 			con = DriverManager.getConnection(url, usuario, pw);
 			String query = "INSERT INTO proyectos(ano, nombreProyecto, notaObtenida, codAreaFK, github) VALUES('" + ano
 					+ "','" + nombreProyecto + "', '" + nota + "', '" + numeroArea + "', '" + github + "');";
-			Statement stmt = con.createStatement();
+			stmt = con.createStatement();
 			res = stmt.executeUpdate(query);
-
 		} catch (SQLException a) {
 			System.out.println("No se ha podido insertar");
 			a.printStackTrace();
 		} catch (Exception e) {
 			System.out.println("Error de aplicación");
 			e.printStackTrace();
-		}
+		}finally {
 
+            try {
+                cerrarTodo(stmt);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
 	}
 
+	/**
+	 * Comprueba si un proyecto con el ID especificado ya existe en la base de
+	 * datos.
+	 *
+	 * @return true si el proyecto existe, false si no existe.
+	 */
 	public boolean comprobarIdProyecto() {
-
+		
+		Statement statement = null;
+		
 		boolean flag = false;
-
 		try {
-
 			con = DriverManager.getConnection(url, usuario, pw);
-			Statement statement = con.createStatement();
+			statement = con.createStatement();
 			String query = "SELECT * FROM proyectos WHERE idProyecto='" + idProyectoAlumno + "';";
 			ResultSet resultados = statement.executeQuery(query);
-
 			if (resultados.next()) {
 				flag = true;
 			}
-
 		} catch (SQLException a) {
 			System.out.println("No se ha podido insertar");
 			a.printStackTrace();
 		} catch (Exception e) {
 			System.out.println("Error de aplicación");
 			e.printStackTrace();
-		}
+		}finally {
 
+            try {
+                cerrarTodo(statement);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
 		return flag;
+	}
+
+	/**
+	 * Este metodo se encarga de cerrar todas las conexiones con la BBDD
+	 * 
+	 * @param stmt para cerrar el statement
+	 * @throws SQLException lanza un SQLException
+	 */
+
+	public void cerrarTodo(Statement stmt) throws SQLException {
+		if (stmt != null) {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+				System.out.println("Error al cerrar Statement");
+				e.printStackTrace();
+			}
+		}
+		if (con != null) {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				System.out.println("Error al cerrar la conexión");
+				e.printStackTrace();
+			}
+		}
 	}
 
 	public int getNumeroArea() {

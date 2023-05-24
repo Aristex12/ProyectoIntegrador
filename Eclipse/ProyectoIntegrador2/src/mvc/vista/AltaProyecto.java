@@ -8,23 +8,52 @@ import mvc.controlador.ListenerAtrasAltaProyecto;
 import java.awt.Font;
 import java.awt.Color;
 
+/**
+ * <p>Esta clase permite al usuario dar de alta un nuevo proyecto. El usuario puede proporcionar varios detalles del proyecto, como su nombre, curso, área, nota y URL del repositorio de Github.</p>
+ * <p>Los detalles se ingresan a través de una interfaz de usuario gráfica basada en Swing.</p>
+ * <p>Cada proyecto puede tener un nombre, asociado a un curso, a un área específica, una nota y la URL de Github correspondiente.</p>
+ *
+ * @author Aris, Josep, Miguel y Dani
+ * @version 5.0
+ * @since 2023-05-24
+ */
+
 public class AltaProyecto extends JFrame {
 
-	private JLabel titulo;
-	private JLabel nombre;
-	private JTextField inputNombre;
-	private JLabel grupoLabel;
-	private JComboBox<String> cursoComboBox;
-	private JLabel areaLabel;
-	private JComboBox<String> areaComboBox;
-	private JSpinner notasSpinner;
-	private JLabel labelURL;
-	private JTextField inputUrl;
-	private JButton enviar;
-	private JButton atras;
-	private JLabel labelNota;
-	private JLabel labelError;
+	//Etiqueta de título
+    private JLabel titulo;
 
+    //Etiqueta y entrada para el nombre del proyecto
+    private JLabel nombre;
+    private JTextField inputNombre;
+
+    //Etiqueta y selección del curso del proyecto
+    private JLabel grupoLabel;
+    private JComboBox<String> cursoComboBox;
+
+    //Etiqueta y selección del área del proyecto
+    private JLabel areaLabel;
+    private JComboBox<String> areaComboBox;
+
+    //Selector de nota del proyecto
+    private JSpinner notasSpinner;
+
+    //Etiqueta y entrada para la URL de Github
+    private JLabel labelURL;
+    private JTextField inputUrl;
+
+    //Botones para enviar y retroceder
+    private JButton enviar;
+    private JButton atras;
+
+    //Etiquetas de nota y error
+    private JLabel labelNota;
+    private JLabel labelError;
+
+	/**
+     * <p>Constructor para la clase AltaProyecto. Inicializa la ventana y sus componentes.</p>
+     */
+	
 	public AltaProyecto() {
 		super("Alta Proyecto");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -32,6 +61,11 @@ public class AltaProyecto extends JFrame {
 		inicializarComponentes();
 	}
 
+	/**
+     * <p>Método privado para inicializar todos los componentes de la ventana de AltaProyecto.</p>
+     * <p>Incluye la configuración de etiquetas, campos de texto, botones, cajas de selección y otros elementos de la interfaz de usuario.</p>
+     */
+	
 	private void inicializarComponentes() {
 		// Configuración de la ventana
 		setSize(440, 306);
@@ -72,6 +106,7 @@ public class AltaProyecto extends JFrame {
 		areaLabel.setText("Área:");
 		areaLabel.setBounds(60, 125, 60, 25);
 
+		//Creamos un combo-box y le damos sus respectivas caracteristicas y le añadimos valores
 		DefaultComboBoxModel<String> areas = new DefaultComboBoxModel<>();
 		areas.addElement("BasesDeDatos");
 		areas.addElement("Programación");
@@ -81,6 +116,7 @@ public class AltaProyecto extends JFrame {
         areaComboBox = new JComboBox<>(areas);
         areaComboBox.setBounds(189, 125, 180, 25);
 
+        //Creamos y le damos la caracteristicas al label de Github
         labelURL = new JLabel("Github:");
         labelURL.setFont(new Font("Tahoma", Font.BOLD, 11));
         labelURL.setBounds(60, 195, 60, 25);
@@ -131,6 +167,10 @@ public class AltaProyecto extends JFrame {
 		getContentPane().add(labelError);
 	}
 
+	/**
+	 * Aqui se encuentran todos los getters y setters
+	 */
+	
 	public JLabel getLabelError() {
 		return labelError;
 	}

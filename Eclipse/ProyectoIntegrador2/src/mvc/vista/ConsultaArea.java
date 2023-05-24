@@ -10,13 +10,34 @@ import javax.swing.JTextArea;
 import mvc.controlador.ListenerAtrasConsultaArea;
 import mvc.controlador.ListenerVolverAlMenuProyecto;
 
+/**
+ * <p>
+ * La clase ConsultaArea permite al usuario consultar los datos de un área
+ * específica en la base de datos.
+ * </p>
+ *
+ * <p>
+ * El usuario puede ver los datos del área, como nombre y descripción. También
+ * se incluye un botón para volver al menú principal.
+ * </p>
+ *
+ * @author Aris, Josep, Miguel y Dani
+ * @version 1.0
+ * @since 2023-05-24
+ */
+
 public class ConsultaArea extends JFrame {
 
+	// Etiquetas para el título y los datos del área
 	private JLabel titulo;
 	private JLabel nombre;
 	private JLabel nombreLabel;
 	private JLabel descripcion;
+
+	// Área de texto para la descripción del área
 	private JTextArea descripcionLabel;
+
+	// Botón para volver al menú principal
 	private JButton volverButton;
 
 	public ConsultaArea() {
@@ -27,6 +48,11 @@ public class ConsultaArea extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
+	/**
+     * <p>Método para inicializar todos los componentes de la ventana de ConsultaArea.</p>
+     * <p>Incluye la configuración de etiquetas, área de texto y botón, y otros elementos de la interfaz de usuario.</p>
+     */
+	
 	private void inicializarComponentes() {
 		// Configuramos la ventana
 
@@ -56,16 +82,15 @@ public class ConsultaArea extends JFrame {
 
 		descripcionLabel = new JTextArea("");
 		descripcionLabel.setLineWrap(true);
-        descripcionLabel.setWrapStyleWord(true);
-        descripcionLabel.setEditable(false);
+		descripcionLabel.setWrapStyleWord(true);
+		descripcionLabel.setEditable(false);
 		descripcionLabel.setBounds(117, 102, 268, 66);
-		
+
 		volverButton = new JButton();
 		ListenerAtrasConsultaArea escuchador1 = new ListenerAtrasConsultaArea(this);
 		volverButton.addActionListener(escuchador1);
 		volverButton.setText("Volver al Menú");
-		
-	
+
 		volverButton.setBounds(243, 178, 140, 25);
 
 		// Agregar componentes a la ventana
@@ -78,6 +103,10 @@ public class ConsultaArea extends JFrame {
 
 	}
 
+	/**
+	 * El resto de getters y setters
+	 */
+	
 	public JLabel getTitulo() {
 		return titulo;
 	}
@@ -126,6 +155,10 @@ public class ConsultaArea extends JFrame {
 		this.volverButton = volverButton;
 	}
 
+	/**
+     * <p>Método para hacer visible la ventana de ConsultaArea.</p>
+     */
+	
 	public void hacerVisible() {
 		setVisible(true);
 	}

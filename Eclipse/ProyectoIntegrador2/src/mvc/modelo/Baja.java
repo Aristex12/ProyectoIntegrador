@@ -6,6 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * <h1>Baja</h1>
+ * <p>La clase Baja se encarga de las operaciones de eliminación en la base de datos. Esta clase tiene métodos para eliminar alumnos y proyectos, así como para obtener información de la base de datos.</p>
+ *	@author Aris, Josep, Miguel y Dani
+ */
+
 public class Baja {
 
 	private String driver = "com.mysql.cj.jdbc.Driver";
@@ -19,6 +25,13 @@ public class Baja {
 
 	Connection con = null;
 
+	/**
+     * <p>El método getConexion() se utiliza para establecer la conexión con la base de datos.</p>
+     * 
+     * @return Una conexión a la base de datos.
+     * @throws SQLException Si ocurre un error al conectar a la base de datos.
+     */
+	
 	public Connection getConexion() {
 
 		try {
@@ -47,12 +60,19 @@ public class Baja {
 
 	}
 
+	/**
+     * <p>El método borrarAlumno() se utiliza para eliminar un alumno específico de la base de datos.</p>
+     * <p>El número de expediente se utiliza para identificar al alumno que se quiere eliminar.</p>
+     */
+	
 	public void borrarAlumno() {
 
+		Statement statement = null;
+		
 		try {
 
 			con = DriverManager.getConnection(url, usuario, pw);
-			Statement statement = con.createStatement();
+			statement = con.createStatement();
 			String query = "DELETE FROM alumnos WHERE numExpediente='" + matricula.trim() + "';";
 			resultados = statement.executeUpdate(query);
 
@@ -60,15 +80,30 @@ public class Baja {
 
 		} catch (Exception b) {
 
-		}
+		}finally {
+
+            try {
+                cerrarTodo(statement);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
 	}
 	
+	/**
+     * <p>El método borrarProyecto() se utiliza para eliminar un proyecto específico de la base de datos.</p>
+     * <p>El nombre del proyecto se utiliza para identificar el proyecto que se quiere eliminar.</p>
+     */
+	
 	public void borrarProyecto() {
+		
+		Statement statement = null;
 		
 		try {
 			
 			con = DriverManager.getConnection(url, usuario, pw);
-			Statement statement = con.createStatement();
+			statement = con.createStatement();
 			String query = "DELETE FROM proyectos WHERE nombreProyecto='" + nombreProyecto.trim() + "';";
 			resultados = statement.executeUpdate(query);
 			
@@ -76,18 +111,35 @@ public class Baja {
 			
 		} catch (Exception b) {
 			
-		}
+		}finally {
+
+            try {
+                cerrarTodo(statement);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
 		
 	}
+	
+	/**
+     * <p>El método devuelveNombreProyecto() se utiliza para obtener el nombre de un proyecto específico de la base de datos.</p>
+     * <p>El nombre del proyecto se utiliza para identificar el proyecto cuyo nombre se quiere obtener.</p>
+     *
+     * @return El nombre del proyecto. Retorna una cadena vacía si no se encuentra el proyecto.
+     */
 	
 	public String devuelveNombreProyecto() {
 		
 		String nombre = "";
 		
+		Statement statement = null;
+		
 		try {
 			
 			con = DriverManager.getConnection(url, usuario, pw);
-			Statement statement = con.createStatement();
+			statement = con.createStatement();
 			String query = "SELECT * FROM proyectos WHERE nombreProyecto='" + nombreProyecto.trim() + "';";
 			ResultSet resultados = statement.executeQuery(query);
 			
@@ -99,12 +151,49 @@ public class Baja {
 			
 		} catch (Exception b) {
 			
-		}
+		}finally {
+
+            try {
+                cerrarTodo(statement);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
 		
 		return nombre;
 		
 	}
 
+	/**
+	 * <p>Este método cierra la conexión con la base de datos y las instancias de Statement.</p>
+	 * @param stmt El objeto Statement que se desea cerrar. Puede ser null si no hay un objeto Statement para cerrar.
+	 * @throws SQLException Si ocurre un error al cerrar los recursos de la base de datos.
+	 */
+	
+	public void cerrarTodo(Statement stmt) throws SQLException {
+        if (stmt != null) {
+            try {
+                stmt.close();
+            } catch (SQLException e) {
+                System.out.println("Error al cerrar Statement");
+                e.printStackTrace();
+            }
+        }
+        if (con != null) {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                System.out.println("Error al cerrar la conexión");
+                e.printStackTrace();
+            }
+        }
+    }
+	
+	/**
+	 * Aqui se encuentrna todos los getters y los setters
+	 */
+	
 	public String getDriver() {
 		return driver;
 	}

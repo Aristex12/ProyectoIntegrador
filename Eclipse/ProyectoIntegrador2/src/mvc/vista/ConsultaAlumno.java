@@ -6,9 +6,20 @@ import mvc.controlador.ListenerVolverAlMenuAlumno;
 
 import java.awt.Font;
 
+/**
+ * <p>La clase ConsultaAlumno permite al usuario consultar los datos de un estudiante específico en la base de datos.</p>
+ *
+ * <p>El usuario puede ver los datos del estudiante, como nombre, apellidos, matrícula y el id del proyecto asociado. También se incluye un botón para volver al menú principal.</p>
+ *
+ * @author Aris, Miguel, Josep y Dani
+ * @version 1.0
+ * @since 2023-05-24
+ */
+
 public class ConsultaAlumno extends JFrame{
 
-	private JLabel titulo;
+	// Etiquetas para el título y los datos del estudiante
+    private JLabel titulo;
     private JLabel nombre;
     private JLabel nombreLabel;
     private JLabel apellidos;
@@ -17,8 +28,14 @@ public class ConsultaAlumno extends JFrame{
     private JLabel matriculaLabel;
     private JLabel idProyecto;
     private JLabel idProyectoLabel;
+
+    // Botón para volver al menú principal
     private JButton volverButton;
 
+    /**
+     * <p>Constructor para la clase ConsultaAlumno. Inicializa la ventana y sus componentes.</p>
+     */
+    
     public ConsultaAlumno() {
         // Configuración de la ventana
         super("Consulta de Alumno");
@@ -27,6 +44,11 @@ public class ConsultaAlumno extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    /**
+     * <p>Método para inicializar todos los componentes de la ventana de ConsultaAlumno.</p>
+     * <p>Incluye la configuración de etiquetas y botones, y otros elementos de la interfaz de usuario.</p>
+     */
+    
     public void inicializarComponentes() {
     	//Configuramos la ventana
     	
@@ -93,6 +115,10 @@ public class ConsultaAlumno extends JFrame{
         getContentPane().add(idProyectoLabel);
     }
 
+    /**
+     * El resto de getters y setters
+     */
+    
     public JLabel getIdProyecto() {
 		return idProyecto;
 	}
@@ -173,6 +199,10 @@ public class ConsultaAlumno extends JFrame{
 		this.volverButton = volverButton;
 	}
 
+	/**
+     * <p>Método para hacer visible la ventana de ConsultaAlumno.</p>
+     */
+	
 	public void hacerVisible() {
         setVisible(true);
     }

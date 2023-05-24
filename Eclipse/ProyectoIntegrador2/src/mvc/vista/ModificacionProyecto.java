@@ -10,6 +10,17 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
 
+/**
+ * <p>
+ * La clase ModificacionProyecto permite al usuario modificar los datos de un
+ * proyecto específico en la base de datos.
+ * </p>
+ *
+ * @author Aris, Josep, Miguel y Dani
+ * @version 1.0
+ * @since 2023-05-24
+ */
+
 public class ModificacionProyecto extends JFrame {
 
 	private JLabel titulo;
@@ -25,6 +36,10 @@ public class ModificacionProyecto extends JFrame {
 	private JButton atras;
 	private JButton modificarButton;
 
+	/**
+	 * Constructor de la clase
+	 */
+	
 	public ModificacionProyecto() {
 		super("Modificar");
 		inicializarComponentes();
@@ -198,6 +213,10 @@ public class ModificacionProyecto extends JFrame {
 		this.modificarButton = modificarButton;
 	}
 
+	/**
+	 * Hacemos visiblela ventana
+	 */
+	
 	public void hacerVisible() {
 		// Hacer visible la ventana
 		setVisible(true);

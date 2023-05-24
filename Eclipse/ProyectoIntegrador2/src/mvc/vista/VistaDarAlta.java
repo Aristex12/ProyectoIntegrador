@@ -7,19 +7,41 @@ import mvc.controlador.ListenerVistaDarAltaEnviar;
 
 import java.awt.*;
 
+/**
+ * <p>
+ * Esta la vista en donde el usuario puede dar de alta proyectos y alumnos
+ * </p>
+ *
+ * @author Aris, Josep, Miguel y Dani
+ * @version 1.0
+ * @since 2023-05-24
+ */
+
+
 public class VistaDarAlta extends JFrame {
+	
+	//Todos los componentes de la vista
+	
 	private JLabel titulo;
 	private JLabel enunciado;
 	private JRadioButton opcionAlumno, opcionProyecto;
 	private JButton enviar;
 	private JButton atras;
 
+	/**
+	 * El constructor de la clase
+	 */
+	
 	public VistaDarAlta() {
 		super("Dar de Alta");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		inicializarComponentes();
 	}
 
+	/**
+	 * Inicilizamos todos los componentes de la vista
+	 */
+	
 	public void inicializarComponentes() {
 
 		setSize(440, 250);
@@ -66,6 +88,10 @@ public class VistaDarAlta extends JFrame {
 
 	}
 
+	/**
+	 * El resto de getters y setters
+	 */
+	
 	public JLabel getTitulo() {
 		return titulo;
 	}
@@ -114,6 +140,10 @@ public class VistaDarAlta extends JFrame {
 		this.atras = atras;
 	}
 
+	/**
+	 * Hacemos que la ventana sea visible
+	 */
+	
 	public void hacerVisible() {
 		setVisible(true);
 	}

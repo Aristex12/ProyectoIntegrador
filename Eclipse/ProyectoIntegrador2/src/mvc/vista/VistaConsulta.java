@@ -6,8 +6,21 @@ import mvc.controlador.ListenerAtrasConsulta;
 import mvc.controlador.ListenerConsulta;
 import java.awt.*;
 
+/**
+ * <p>
+ * Esta la vista de la consulta en donde el usuario puede elegir si consultar
+ * proyectos, alumnos o areas
+ * </p>
+ *
+ * @author Aris, Josep, Miguel y Dani
+ * @version 1.0
+ * @since 2023-05-24
+ */
+
 public class VistaConsulta extends JFrame {
 
+	//Los componentes de la vista
+	
 	private JLabel titulo, labelTipo, labelNombre, labelAreas, error;
 	private JRadioButton radioAlumno, radioProyecto, radioArea;
 	private JTextField campoNombre;
@@ -15,12 +28,20 @@ public class VistaConsulta extends JFrame {
 	private JTextField campoIdProyecto;
 	private JButton atras;
 	
+	/**
+	 * Tenemos el constructor de la clase
+	 */
+	
 	public VistaConsulta() {
 		// Configuración de la ventana
 		super("Consulta");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		inicializarComponentes();
 	}
+	
+	/**
+	 * Inicilizamos todos los componentes de la vista
+	 */
 	
 	public void inicializarComponentes() {
 		setSize(440, 250);
@@ -102,10 +123,18 @@ public class VistaConsulta extends JFrame {
 		getContentPane().add(atras);
 	}
 	
+	/**
+	 * Hace visible la ventana
+	 */
+	
 	public void hacerVisible() {
 		setVisible(true);
 	}
 
+	/**
+	 * El resto de getters y setters
+	 */
+	
 	public JLabel getError() {
 		return error;
 	}

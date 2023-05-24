@@ -20,16 +20,41 @@ import mvc.modelo.Alumno;
 import mvc.modelo.Area;
 import mvc.modelo.Proyectos;
 
+//Importaciones necesarias
+
+/**
+* <p>La clase BusquedaConsulta permite al usuario buscar y consultar información en la base de datos. Esta clase muestra los resultados de la búsqueda en una lista y permite al usuario seleccionar un resultado para obtener más información.</p>
+*
+* <p>El usuario también puede volver a la pantalla anterior utilizando un botón de "Atrás".</p>
+*
+* @author Aris, Miguel, Josep y Dani
+* @version 1.0
+* @since 2023-05-24
+*/
+
 public class BusquedaConsulta extends JFrame {
 
-	private JLabel titulo;
-	private JPanel panel;
-	private JScrollPane scrollPane;
-	private JButton seleccionar;
-	private JButton atras;
-	DefaultListModel<String> listModel;
-	JList<String> resultList;
+	 // Etiqueta de título
+    private JLabel titulo;
 
+    // Panel principal
+    private JPanel panel;
+
+    // ScrollPane para la lista de resultados de la búsqueda
+    private JScrollPane scrollPane;
+
+    // Botones para seleccionar un resultado y para volver a la pantalla anterior
+    private JButton seleccionar;
+    private JButton atras;
+
+    // Lista de resultados de la búsqueda
+    DefaultListModel<String> listModel;
+    JList<String> resultList;
+
+    /**
+     * <p>Constructor para la clase BusquedaConsulta. Inicializa la ventana y sus componentes.</p>
+     */
+    
 	public BusquedaConsulta() {
 		super("Búsqueda Consulta");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -37,6 +62,11 @@ public class BusquedaConsulta extends JFrame {
 		inicializarComponentes();
 	}
 
+	 /**
+     * <p>Método para inicializar todos los componentes de la ventana de BusquedaConsulta.</p>
+     * <p>Incluye la configuración de etiquetas, botones, listas, scrollpane y otros elementos de la interfaz de usuario.</p>
+     */
+	
 	public void inicializarComponentes() {
 		// Configuración de la ventana
 		setSize(442, 299);
@@ -78,10 +108,18 @@ public class BusquedaConsulta extends JFrame {
 		getContentPane().add(atras);
 	}
 
+	/**
+     * <p>Método para hacer visible la ventana de BusquedaConsulta.</p>
+     */
+	
 	public void hacerVisible() {
 		// Hacer visible la ventana
 		setVisible(true);
 	}
+	
+	/**
+     * <p>Los métodos rellenarListaAlumnos, rellenarListaProyectos, rellenarListaArea son utilizados para llenar la lista de resultados de búsqueda con los objetos apropiados.</p>
+     */
 	
 	public void rellenarListaAlumnos (ArrayList<Alumno> array) {
 		for(Alumno a : array) {
@@ -101,6 +139,10 @@ public class BusquedaConsulta extends JFrame {
 		}
 	}
 	
+	/**
+     * <p>Los métodos get y set son utilizados para obtener y modificar los atributos de la clase.</p>
+     */
+	
 	public JList<String> getResultList() {
 		return resultList;
 	}
@@ -108,6 +150,10 @@ public class BusquedaConsulta extends JFrame {
 	public void setResultList(JList<String> resultList) {
 		this.resultList = resultList;
 	}
+	
+	/**
+	 * Resto de getters y setters
+	 */
 	
 	public JLabel getTitulo() {
 		return titulo;

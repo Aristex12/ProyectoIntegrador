@@ -8,8 +8,21 @@ import mvc.controlador.ListenerBajaEnviar;
 import java.awt.Font;
 import java.awt.Color;
 
+/**
+ * <p>
+ * La clase VistaBaja permite al usuario dar de baja los datos de un
+ * alumno o proyecto específico en la base de datos.
+ * </p>
+ *
+ * @author Aris, Josep, Miguel y Dani
+ * @version 1.0
+ * @since 2023-05-24
+ */
+
 public class VistaBaja extends JFrame{
 
+	//Todos los componentes
+	
 	private JLabel titulo;
     private JLabel tipoLabel;
     private JRadioButton alumnoRadioButton;
@@ -20,6 +33,10 @@ public class VistaBaja extends JFrame{
     private JButton enviar;
     private JButton atras;
 
+    /**
+	 * Tenemos el constructor de la clase
+	 */
+    
     public VistaBaja() {
         super("Dar de Baja");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -27,6 +44,10 @@ public class VistaBaja extends JFrame{
         inicializarComponentes();
     }
 
+    /**
+	 * Inicilizamos todos los componentes de la vista
+	 */
+    
     public void inicializarComponentes() {
     	// Configuración de la ventana
         setSize(440, 250);
@@ -95,6 +116,10 @@ public class VistaBaja extends JFrame{
         getContentPane().add(atras);
     }
 
+    /**
+     * El resto de getters y settters
+     */
+    
     public JLabel getLabelError() {
 		return labelError;
 	}
@@ -167,6 +192,10 @@ public class VistaBaja extends JFrame{
 		this.atras = atras;
 	}
 
+	/**
+	 * Hace visible la ventana
+	 */
+	
 	public void hacerVisible() {
         // Hacer visible la ventana
         setVisible(true);

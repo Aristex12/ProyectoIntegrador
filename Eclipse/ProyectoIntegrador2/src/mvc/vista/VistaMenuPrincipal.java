@@ -11,8 +11,21 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import mvc.controlador.*;
 
+/**
+ * <p>
+ * Esta la vista de la consulta en donde el usuario puede elegir si consultar
+ * proyectos, alumnos o areas
+ * </p>
+ *
+ * @author Aris, Josep, Miguel y Dani
+ * @version 1.0
+ * @since 2023-05-24
+ */
+
 public class VistaMenuPrincipal extends JFrame {
 
+	//Los componentes de la vista
+	
 	private JButton btnDarAlta;
 	private JButton btnDarBaja;
 	private JButton btnModificacion;
@@ -20,12 +33,20 @@ public class VistaMenuPrincipal extends JFrame {
 	private JLabel lblGestinDeProyectos;
 	private JLabel label2;
 
+	/**
+	 * El constructor de la clase
+	 */
+	
 	public VistaMenuPrincipal() {
 		super("Menu");
 		setBackground(new Color(255, 255, 255));
 		inicializarComponentes();
 	}
 
+	/**
+	 * Inicilizamos todos los componentes de la vista
+	 */
+	
 	public void inicializarComponentes() {
 		// Cambios del editor visual
 		getContentPane().setBackground(new Color(255, 255, 255));
@@ -77,6 +98,10 @@ public class VistaMenuPrincipal extends JFrame {
 
 	}
 
+	/**
+	 * Hacemos que la ventana sea visible
+	 */
+	
 	public void hacerVisible() {
 		setVisible(true);
 	}

@@ -7,14 +7,32 @@ import mvc.modelo.Alta;
 import mvc.vista.VistaAltaAlumno;
 import mvc.vista.VistaConfirmacionAlta;
 
+/**
+ * <h1>ListenerAltaAlumno</h1>
+ * <p>La clase ListenerAltaAlumno implementa la interfaz ActionListener, proporcionando funcionalidad a los botones de la interfaz gráfica de usuario VistaAltaAlumno.</p>
+ */
+
 public class ListenerAltaAlumno implements ActionListener {
 
 	VistaAltaAlumno v;
 
+	/**
+     * <p>El constructor de la clase ListenerAltaAlumno.</p>
+     *
+     * @param vista Es un objeto de tipo VistaAltaAlumno que representa la vista que utiliza este Listener.
+     */
+	
 	public ListenerAltaAlumno(VistaAltaAlumno vista) {
 		v = vista;
 	}
 
+	/**
+     * <p>Este método se activa cuando el usuario interactúa con el elemento de la interfaz de usuario que tiene asignado este Listener.</p>
+     * <p>Se encarga de recoger los datos del formulario de la vista y comprobarlos para luego realizar el alta de un alumno.</p>
+     *
+     * @param e Es el evento que se genera cuando se interactúa con el elemento de la interfaz de usuario.
+     */
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
@@ -46,6 +64,13 @@ public class ListenerAltaAlumno implements ActionListener {
 
 		}
 	}
+	
+	/**
+     * <p>El método comprobarInputs() comprueba la validez de los datos introducidos en los campos del formulario de alta de alumno.</p>
+     *
+     * @param acceso Es un objeto de tipo Alta que representa la operación de alta que se va a realizar.
+     * @return Devuelve verdadero si los datos son válidos y falso en caso contrario.
+     */
 
 	public boolean comprobarInputs(Alta acceso) {
 
@@ -69,6 +94,13 @@ public class ListenerAltaAlumno implements ActionListener {
 
 	}
 
+	/**
+     * <p>El método comprobarId() se utiliza para verificar si el ID del proyecto ingresado en el formulario existe en la base de datos.</p>
+     *
+     * @param acceso Es un objeto de tipo Alta que representa la operación de alta que se va a realizar.
+     * @return Devuelve verdadero si el ID del proyecto existe y falso en caso contrario.
+     */
+	
 	public boolean comprobarId(Alta acceso) {
 
 		boolean flag = false;

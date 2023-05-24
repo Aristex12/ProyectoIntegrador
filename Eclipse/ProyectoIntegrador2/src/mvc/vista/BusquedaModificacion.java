@@ -20,16 +20,41 @@ import mvc.modelo.Alumno;
 import mvc.modelo.Area;
 import mvc.modelo.Proyectos;
 
+/**
+ * <p>La clase BusquedaModificacion permite al usuario buscar y modificar información en la base de datos. Muestra los resultados de la búsqueda en una lista y permite al usuario seleccionar un resultado para su modificación.</p>
+ *
+ * <p>El usuario también puede volver a la pantalla anterior utilizando un botón de "Atrás".</p>
+ *
+ * @author Aris, Miguel, Josep y Dani
+ * @version 1.0
+ * @since 2023-05-24
+ */
+
 public class BusquedaModificacion extends JFrame {
 
-	private JLabel titulo;
-	private JPanel panel;
-	private JScrollPane scrollPane;
-	private JButton seleccionar;
-	private JButton atras;
-	private DefaultListModel<String> listModel = new DefaultListModel<>();
-	private JList<String> resultList;
+	// Etiqueta de título
+    private JLabel titulo;
+    
+    // Panel principal
+    private JPanel panel;
+
+    // ScrollPane para la lista de resultados de la búsqueda
+    private JScrollPane scrollPane;
+
+    // Botones para seleccionar un resultado y para volver a la pantalla anterior
+    private JButton seleccionar;
+    private JButton atras;
+
+    // Modelo de la lista de resultados de la búsqueda
+    private DefaultListModel<String> listModel;
+
+    // Lista de resultados de la búsqueda
+    private JList<String> resultList;
 	
+    /**
+     * <p>Constructor para la clase BusquedaModificacion. Inicializa la ventana y sus componentes.</p>
+     */
+    
 	public BusquedaModificacion() {
 		super("Búsqueda Modificación");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -39,6 +64,11 @@ public class BusquedaModificacion extends JFrame {
 
 	}
 
+	/**
+     * <p>Método para inicializar todos los componentes de la ventana de BusquedaModificacion.</p>
+     * <p>Incluye la configuración de etiquetas, botones, listas, scrollpane y otros elementos de la interfaz de usuario.</p>
+     */
+	
 	public void inicializarComponentes() {
 		// Configuración de la ventana
 		setSize(442, 299);
@@ -84,6 +114,10 @@ public class BusquedaModificacion extends JFrame {
 		getContentPane().add(atras);
 	}
 
+	/**
+	 * El resto de getters y setters
+	 */
+	
 	public JLabel getTitulo() {
 		return titulo;
 	}
@@ -132,11 +166,19 @@ public class BusquedaModificacion extends JFrame {
 		this.listModel = listModel;
 	}
 
+	/**
+     * <p>Método para hacer visible la ventana de BusquedaModificacion.</p>
+     */
+	
 	public void hacerVisible() {
 		// Hacer visible la ventana
 		setVisible(true);
 	}
 
+	/**
+     * <p>Los métodos rellenarListaAlumnos, rellenarListaProyectos y rellenarListaArea son utilizados para llenar la lista de resultados de búsqueda con los objetos apropiados.</p>
+     */
+	
 	public void rellenarListaAlumnos(ArrayList<Alumno> array) {
 		for(Alumno a : array) {
 			listModel.addElement(a.toString());

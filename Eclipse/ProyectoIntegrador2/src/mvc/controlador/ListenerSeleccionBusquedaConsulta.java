@@ -6,6 +6,18 @@ import java.awt.event.ActionListener;
 import mvc.modelo.*;
 import mvc.vista.*;
 
+/**
+ * <div class="card">
+ *   <h3 class="card-title">ListenerSeleccionBusquedaConsulta</h3>
+ *   <div class="card-body">
+ *     <p>El ListenerSeleccionBusquedaConsulta es un controlador que maneja las acciones realizadas al seleccionar una opción de búsqueda en la consulta.</p>
+ *     <p>Implementa la interfaz ActionListener para poder capturar y manejar eventos de acción.</p>
+ *     <p>Autor: [Nombre del autor]</p>
+ *     <p>Versión: [Número de versión]</p>
+ *   </div>
+ * </div>
+ */
+
 public class ListenerSeleccionBusquedaConsulta implements ActionListener {
 
 	BusquedaConsulta v;
@@ -13,10 +25,32 @@ public class ListenerSeleccionBusquedaConsulta implements ActionListener {
 	Consulta con = new Consulta();
 	String texto = "";
 
+	/**
+	 * <div class="card">
+	 *   <h3 class="card-title">Constructor de la clase ListenerSeleccionBusquedaConsulta</h3>
+	 *   <div class="card-body">
+	 *     <p>Construye una instancia de ListenerSeleccionBusquedaConsulta.</p>
+	 *
+	 *     @param busquedaConsulta La vista de búsqueda y consulta asociada a este controlador.
+	 *   </div>
+	 * </div>
+	 */
+	
 	public ListenerSeleccionBusquedaConsulta(BusquedaConsulta busquedaConsulta) {
 		v = busquedaConsulta;
 	}
 
+	/**
+	 * <div class="card">
+	 *   <h3 class="card-title">actionPerformed</h3>
+	 *   <div class="card-body">
+	 *     <p>Maneja los eventos de acción generados al seleccionar una opción de búsqueda en la consulta.</p>
+	 *
+	 *     @param e El evento de acción.
+	 *   </div>
+	 * </div>
+	 */
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
@@ -38,6 +72,15 @@ public class ListenerSeleccionBusquedaConsulta implements ActionListener {
 
 	}
 
+	/**
+	 * <div class="card">
+	 *   <h3 class="card-title">mostrarInfoAlumno</h3>
+	 *   <div class="card-body">
+	 *     <p>Muestra la información de un alumno seleccionado en la consulta.</p>
+	 *   </div>
+	 * </div>
+	 */
+	
 	public void mostrarInfoAlumno() {
 
 		texto = v.getResultList().getSelectedValue();
@@ -66,6 +109,15 @@ public class ListenerSeleccionBusquedaConsulta implements ActionListener {
 		ventana.hacerVisible();
 	}
 
+	/**
+	 * <div class="card">
+	 *   <h3 class="card-title">mostrarInfoProyectos</h3>
+	 *   <div class="card-body">
+	 *     <p>Muestra la información de un proyecto seleccionado en la consulta.</p>
+	 *   </div>
+	 * </div>
+	 */
+	
 	public void mostrarInfoProyectos() {
 
 		texto = v.getResultList().getSelectedValue();
@@ -102,6 +154,15 @@ public class ListenerSeleccionBusquedaConsulta implements ActionListener {
 
 	}
 
+	/**
+	 * <div class="card">
+	 *   <h3 class="card-title">mostrarInfoAreas</h3>
+	 *   <div class="card-body">
+	 *     <p>Muestra la información de un área seleccionada en la consulta.</p>
+	 *   </div>
+	 * </div>
+	 */
+	
 	public void mostrarInfoAreas() {
 
 		texto = v.getResultList().getSelectedValue();
@@ -116,10 +177,32 @@ public class ListenerSeleccionBusquedaConsulta implements ActionListener {
 
 	}
 
+	/**
+	 * <div class="card">
+	 *   <h3 class="card-title">getMatricula</h3>
+	 *   <div class="card-body">
+	 *     <p>Devuelve la matrícula del alumno seleccionado.</p>
+	 *
+	 *     @return La matrícula del alumno.
+	 *   </div>
+	 * </div>
+	 */
+	
 	public String getMatricula() {
 		return matricula;
 	}
 
+	/**
+	 * <div class="card">
+	 *   <h3 class="card-title">setMatricula</h3>
+	 *   <div class="card-body">
+	 *     <p>Establece la matrícula del alumno seleccionado.</p>
+	 *
+	 *     @param matricula La matrícula del alumno.
+	 *   </div>
+	 * </div>
+	 */
+	
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}

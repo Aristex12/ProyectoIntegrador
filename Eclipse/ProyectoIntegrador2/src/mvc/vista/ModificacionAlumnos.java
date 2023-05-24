@@ -7,8 +7,20 @@ import mvc.controlador.*;
 import java.awt.Font;
 import java.awt.Color;
 
+/**
+ * <p>
+ * La clase ModificacionAlumnos permite al usuario modificar los datos de un
+ * alumno específico en la base de datos.
+ * </p>
+ *
+ * @author Aris, Josep, Miguel y Dani
+ * @version 1.0
+ * @since 2023-05-24
+ */
+
 public class ModificacionAlumnos extends JFrame{
 	
+	//Aqui estan todos los atributos
 	private JLabel titulo;
 	private JLabel nombre;
     private JTextField nombreTextField;
@@ -20,10 +32,18 @@ public class ModificacionAlumnos extends JFrame{
     private JButton atras;
     private JLabel labelError;
     
+    /**
+     * Constructor de la clase
+     */
+    
     public ModificacionAlumnos() {
     	super("Modificar Datos del Alumno");
     	inicializarComponentes();
     }
+    
+    /**
+     * Aqui inicializamos todos los componentes y le damos formato
+     */
     
     public void inicializarComponentes() {
     	// Configuración de la ventana
@@ -89,11 +109,20 @@ public class ModificacionAlumnos extends JFrame{
 
     }
 
+    /*
+     * Hace que la ventana sea visible
+     */
+    
 	public void hacerVisible() {
     	// Hacer visible la ventana
         setVisible(true);
     }
 
+	/**
+	 * El resto de getters y setters
+	 * @return
+	 */
+	
 	public JLabel getTitulo() {
 		return titulo;
 	}

@@ -6,16 +6,38 @@ import mvc.controlador.ListenerVolverMenuConfirmacionAlumno;
 
 import java.awt.*;
 
+/**
+ * <p>
+ * Esta la ventana de confirmacion cuando damos de alta un alumno o
+ * proyecto
+ * </p>
+ *
+ * @author Aris, Josep, Miguel y Dani
+ * @version 1.0
+ * @since 2023-05-24
+ */
+
 public class VistaConfirmacionAlta extends JFrame {
-    private JLabel titulo;
+    
+	//Los componentes
+	
+	private JLabel titulo;
     private JButton botonVolver;
 
+    /**
+	 * Tenemos el constructor de la clase
+	 */
+    
     public VistaConfirmacionAlta() {
         // Configuración de la ventana
         super("Confirmación de alta");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         inicializarComponentes();
     }
+    
+    /**
+	 * Inicilizamos todos los componentes de la vista
+	 */
     
     public void inicializarComponentes() {
     	setSize(400, 200);
@@ -39,6 +61,10 @@ public class VistaConfirmacionAlta extends JFrame {
         botonVolver.setBounds(129, 88, 126, 30);
         getContentPane().add(botonVolver);
     }
+    
+    /**
+	 * Hace visible la ventana
+	 */
     
     public void hacerVisible() {
     	setVisible(true);

@@ -7,6 +7,17 @@ import mvc.controlador.ListenerVolverAlMenuSeguroBaja;
 
 import java.awt.Font;
 
+/**
+ * <p>
+ * La clase ModificacionProyecto permite al usuario modificar los datos de un
+ * proyecto específico en la base de datos.
+ * </p>
+ *
+ * @author Aris, Josep, Miguel y Dani
+ * @version 1.0
+ * @since 2023-05-24
+ */
+
 public class SeguroBaja extends JDialog {
 
 	private JLabel mensaje;
@@ -14,6 +25,11 @@ public class SeguroBaja extends JDialog {
 	private JButton darDeBajaButton;
 	BusquedaDarBaja vistaBaja;
 
+	/**
+	 * Tenemos el constructor de la clase
+	 * @param vista es la vista a la cual esta asociada
+	 */
+	
 	public SeguroBaja(BusquedaDarBaja vista) {
 		vistaBaja = vista;
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -21,6 +37,10 @@ public class SeguroBaja extends JDialog {
 		inicializarComponentes();
 	}
 
+	/**
+	 * Inicilizamos todos los componentes de la vista
+	 */
+	
 	private void inicializarComponentes() {
 		// Configuración de la ventana
 		setSize(400, 200);
@@ -51,6 +71,10 @@ public class SeguroBaja extends JDialog {
 
 	}
 
+	/**
+	 * Hace visible la ventana
+	 */
+	
 	public void hacerVisible() {
 		// Hacer visible la ventana
 		setVisible(true);

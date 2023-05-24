@@ -6,18 +6,29 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * La clase Consulta se encarga de realizar consultas a una base de datos y recuperar los datos necesarios.
+ * @author Aris, Josep, Miguel y Dani
+ */
+
 public class Consulta {
 
+	//Todos los atributos que se utilizaran en la clase
+	
 	private String driver = "com.mysql.cj.jdbc.Driver";
 	private String url = "jdbc:mysql://localhost/proyectointegrador";
 	private String usuario = "root";
 	private String pw = "root";
 
+	//Los atributos que son de alumnos
+	
 	private String nombre;
 	private String apellidos;
 	private String matricula;
 	private String idProyectoAlumno;
 
+	//Los atributos que son de proyectos
+	
 	private String nombreProyecto;
 	private String año;
 	private String area;
@@ -26,11 +37,18 @@ public class Consulta {
 	private String github;
 	private String integrantes = "";
 	
+	//Los atributos que son de areas
+	
 	private String nombreArea;
 	private String descripcion;
 
 	Connection con = null;
 
+	/**
+	 * Metodo que se encarga de establecer la conexion con la base de datos
+	 * @return devuelve la conexion a la base de datos
+	 */
+	
 	public Connection getConexion() {
 
 		try {
@@ -59,75 +77,123 @@ public class Consulta {
 
 	}
 
-	public void datosAlumno() {
-
-		try {
-
-			Consulta acceso = new Consulta();
-			Statement statement = acceso.getConexion().createStatement();
-			String query = "SELECT * FROM alumnos WHERE numExpediente='" + matricula.trim() + "';";
-			ResultSet resultados = statement.executeQuery(query);
-			resultados.next();
-
-			nombre = resultados.getString("nombre");
-			apellidos = resultados.getString("apellidos");
-			idProyectoAlumno = resultados.getString("idProyectoFK");
-			
-
-		} catch (SQLException a) {
-		
-		} catch (Exception b) {
-		
-		}
-
-	}
-
-	public void buscarIntegrantes() {
-		
-		try {
-
-			Consulta acceso = new Consulta();
-			Statement statement = acceso.getConexion().createStatement();
-			String query = "SELECT * FROM alumnos WHERE idProyectoFK='" + idProyecto + "';";
-			ResultSet resultados = statement.executeQuery(query);
-
-			while(resultados.next()) {
-				
-				integrantes += resultados.getString("nombre") + " / ";
-				
-			}
-			
-		} catch (SQLException a) {
-			
-		} catch (Exception b) {
-			
-		}
-		
-	}
 	
-	public void datosProyecto() {
+    /**
+     * Obtiene los datos del alumno desde la base de datos.
+     */
+    public void datosAlumno() {
+        
+    	Statement statement = null;
+    	
+    	try {
+            Consulta acceso = new Consulta();
+            statement = acceso.getConexion().createStatement();
+            String query = "SELECT * FROM alumnos WHERE numExpediente='" + matricula.trim() + "';";
+            ResultSet resultados = statement.executeQuery(query);
+            resultados.next();
 
-		try {
+            nombre = resultados.getString("nombre");
+            apellidos = resultados.getString("apellidos");
+            idProyectoAlumno = resultados.getString("idProyectoFK");
+        } catch (SQLException a) {
+            // Manejar la excepción
+        } catch (Exception b) {
+            // Manejar la excepción
+        }finally {
 
-			Consulta acceso = new Consulta();
-			Statement statement = acceso.getConexion().createStatement();
-			String query = "SELECT * FROM proyectos WHERE nombreProyecto='" + nombreProyecto.trim() + "';";
-			ResultSet resultados = statement.executeQuery(query);
-			resultados.next();
+            try {
+                cerrarTodo(statement);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
-			año = resultados.getString("ano");
-			area = resultados.getString("codAreaFK");
-			nota = resultados.getInt("notaObtenida");
-			idProyecto = resultados.getInt("idProyecto");
-			github = resultados.getString("github");
-			
-		} catch (SQLException a) {
-			
-		} catch (Exception b) {
-			
-		}
+        }
+    }
 
+    /**
+     * Busca los integrantes de un proyecto en la base de datos.
+     */
+    public void buscarIntegrantes() {
+        
+    	Statement statement = null;
+    	
+    	try {
+            Consulta acceso = new Consulta();
+            statement = acceso.getConexion().createStatement();
+            String query = "SELECT * FROM alumnos WHERE idProyectoFK='" + idProyecto + "';";
+            ResultSet resultados = statement.executeQuery(query);
+
+            while (resultados.next()) {
+                integrantes += resultados.getString("nombre") + " / ";
+            }
+        } catch (SQLException a) {
+            // Manejar la excepción
+        } catch (Exception b) {
+            // Manejar la excepción
+        }finally {
+
+            try {
+                cerrarTodo(statement);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
+    /**
+     * Obtiene los datos del proyecto desde la base de datos.
+     */
+    public void datosProyecto() {
+        
+    	Statement statement = null;
+    	
+    	try {
+            Consulta acceso = new Consulta();
+            statement = acceso.getConexion().createStatement();
+            String query = "SELECT * FROM proyectos WHERE nombreProyecto='" + nombreProyecto.trim() + "';";
+            ResultSet resultados = statement.executeQuery(query);
+            resultados.next();
+
+            año = resultados.getString("ano");
+            area = resultados.getString("codAreaFK");
+            nota = resultados.getInt("notaObtenida");
+            idProyecto = resultados.getInt("idProyecto");
+            github = resultados.getString("github");
+        } catch (SQLException a) {
+            // Manejar la excepción
+        } catch (Exception b) {
+            // Manejar la excepción
+        }finally {
+
+            try {
+                cerrarTodo(statement);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+    
+    public void cerrarTodo(Statement stmt) throws SQLException {
+	    if (stmt != null) {
+	        try {
+	            stmt.close();
+	        } catch (SQLException e) {
+	            System.out.println("Error al cerrar Statement");
+	            e.printStackTrace();
+	        }
+	    }
+	    if (con != null) {
+	        try {
+	            con.close();
+	        } catch (SQLException e) {
+	            System.out.println("Error al cerrar la conexión");
+	            e.printStackTrace();
+	        }
+	    }
 	}
+
 	
 	public String getGithub() {
 		return github;
@@ -139,10 +205,12 @@ public class Consulta {
 
 	public void datosArea() {
 		
+		Statement statement = null;
+		
 		try {
 
 			Consulta acceso = new Consulta();
-			Statement statement = acceso.getConexion().createStatement();
+			statement = acceso.getConexion().createStatement();
 			String query = "SELECT * FROM areas WHERE nombre='" + nombreArea.trim() + "';";
 			ResultSet resultados = statement.executeQuery(query);
 			resultados.next();
@@ -153,7 +221,15 @@ public class Consulta {
 			
 		} catch (Exception b) {
 			
-		}
+		}finally {
+
+            try {
+                cerrarTodo(statement);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
 		
 	}
 

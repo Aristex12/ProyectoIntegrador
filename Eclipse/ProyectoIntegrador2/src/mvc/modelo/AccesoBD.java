@@ -7,6 +7,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ * La clase AccesoBD se encarga de establecer la conexión con la base de datos y realizar consultas.
+ * @author Aris, Josep, Dani y Miguel
+ */
+
 public class AccesoBD {
 
 	private String driver = "com.mysql.cj.jdbc.Driver";
@@ -16,6 +21,12 @@ public class AccesoBD {
 
 	Connection con = null;
 
+	/**
+     * Obtiene la conexión a la base de datos.
+     *
+     * @return La conexión a la base de datos.
+     */
+	
 	public Connection getConexion() {
 
 		try {
@@ -44,14 +55,23 @@ public class AccesoBD {
 
 	}
 
+	 /**
+     * Añade alumnos a una lista a partir de una consulta específica.
+     *
+     * @param buscarPor La consulta para buscar alumnos.
+     * @return Una lista de alumnos obtenidos de la consulta.
+     */
+	
 	public ArrayList<Alumno> añadirAlumnoALista(String buscarPor) {
 
 		ArrayList<Alumno> alumnos = new ArrayList<>();
 
+		Statement statement = null;
+		
 		try {
 
 			AccesoBD acceso = new AccesoBD();
-			Statement statement = acceso.getConexion().createStatement();
+			statement = acceso.getConexion().createStatement();
 			String query = buscarPor;
 			ResultSet resultados = statement.executeQuery(query);
 
@@ -68,19 +88,36 @@ public class AccesoBD {
 
 		} catch (Exception e) {
 
-		}
+		}finally {
+
+            try {
+                cerrarTodo(statement);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
 
 		return alumnos;
 	}
 
+	/**
+     * Añade proyectos a una lista a partir de una consulta específica.
+     *
+     * @param buscarPor La consulta para buscar proyectos.
+     * @return Una lista de proyectos obtenidos de la consulta.
+     */
+	
 	public ArrayList<Proyectos> añadirProyectoALista(String buscarPor) {
 
 		ArrayList<Proyectos> proyectos = new ArrayList<>();
 
+		Statement statement = null;
+		
 		try {
 
 			AccesoBD acceso = new AccesoBD();
-			Statement statement = acceso.getConexion().createStatement();
+			statement = acceso.getConexion().createStatement();
 			String query = buscarPor;
 			ResultSet resultados = statement.executeQuery(query);
 
@@ -98,19 +135,35 @@ public class AccesoBD {
 
 		} catch (Exception e) {
 
-		}
+		}finally {
+
+            try {
+                cerrarTodo(statement);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
 
 		return proyectos;
 	}
 	
+	/**
+     * Añade áreas a una lista a partir de una consulta específica.
+     *
+     * @param buscarPor La consulta para buscar áreas.
+     * @return Una lista de áreas obtenidas de la consulta.
+     */
+	
 	public ArrayList<Area> añadirAreaALista(String buscarPor) {
 
 		ArrayList<Area> areas = new ArrayList<>();
-
+		Statement statement = null;
+		
 		try {
 
 			AccesoBD acceso = new AccesoBD();
-			Statement statement = acceso.getConexion().createStatement();
+			statement = acceso.getConexion().createStatement();
 			String query = buscarPor;
 			ResultSet resultados = statement.executeQuery(query);
 
@@ -125,11 +178,49 @@ public class AccesoBD {
 
 		} catch (Exception e) {
 
-		}
+		}finally {
+
+            try {
+                cerrarTodo(statement);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
 
 		return areas;
 	}
 
+	/**
+     * Cierra el Statement y la conexión a la base de datos.
+     *
+     * @param stmt El Statement a cerrar.
+     * @throws SQLException Si ocurre un error al cerrar el Statement o la conexión.
+     */
+	
+	public void cerrarTodo(Statement stmt) throws SQLException {
+		if (stmt != null) {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+				System.out.println("Error al cerrar Statement");
+				e.printStackTrace();
+			}
+		}
+		if (con != null) {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				System.out.println("Error al cerrar la conexión");
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	/**
+	 * Todos los getters y los setters
+	 */
+	
 	public String getDriver() {
 		return driver;
 	}
